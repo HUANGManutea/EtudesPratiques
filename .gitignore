@@ -7,5 +7,7 @@
 *.fls
 *.nav
 *.snm
+*.out
+*.db
 *.fdb_latexmk
 *.synctex.gz
