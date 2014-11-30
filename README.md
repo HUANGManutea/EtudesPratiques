@@ -2,12 +2,7 @@ EtudesPratiques
 ===============
 Mes chers collaborateur,
 
-Il serait préférable (pour ne pas dire obligatoire sous peine de torture) de ne PAS commit les petits fichier inutiles qui servent à créer le PDF à partir du document .tex que l'on fait.
+Si jamais vous souhaitez regarder ce que l'on a fait et que vous comptez compiler le Diapo_EtudePratique.tex il faut prendre quelques précautions. Tout d'abord, avant de compiler, assurer vous que votre éditeur soit bien en anglais de Grande-Bretagne. Par défaut il doit être en français et du coup à la complilation il est pas content. Ici plus excatement :
 
-Mais comment on fait ?
 
-C'est pas bien compliqué ! Il suffit juste de chercher un truc du genre "Supprimer les fichiers inutiles". J'utilise TeXStudio. Alors pour moi je dois aller dans Outils -> Supprimer les fichiers auxiliaires.
-
-Voilà ! Si vous faites pas ça je vous étripe =)
-Bisous, bisous,
 Auré
