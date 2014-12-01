@@ -1,13 +1,12 @@
 \documentclass[a4paper,10pt]{beamer}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{english}
-\usepackage{graphicx}
+\usepackage{english,hyperref,graphicx}
 \usetheme{Berkeley}
 
 \setbeamertemplate{navigation symbols}{\insertframenumber /\inserttotalframenumber}
 
-\title{Presentation of the Practical Study}
+\title{3D object from a 2D drawing}
 \author[Groupe 3INFO]{Aurélien Fontaine, Manutea Huang, Etienne Geantet, Arnaud Martin}
 \institute[INSA de Rennes]{Institut National des Sciences Appliquées de Rennes}
 \date{\today}
@@ -16,6 +15,7 @@
 	\begin{frame}
 		\begin{titlepage}
 			\centerline{\includegraphics[scale=0.1]{images/logoINSA.jpg}}
+			Encadrants : François Lehericey	et Bertrand	Coüasnon	
 		\end{titlepage}
 	\end{frame}
 	
@@ -28,24 +28,27 @@
 		\subsection{Our subject}
 	
 			\begin{frame}{The subject}
-				
-				We have to develop an Android application on tablet. This application can create object in 3D from a 2D draw. It has to be as simple as possible for the user.
-				
-				\begin{block}{An important point}
-					We have to export our data to Unity.
-				\end{block}
+				\begin{itemize}
+					\item Create an object from a drawing on a tablet
+					\item 
+				\end{itemize}
+				Final objective : Occupy a room with simple objects made by an user
 			\end{frame}
 			
 		\subsection{Existing technologies}
 			
 			\begin{frame}{A project made by Sony}
 				Project PS4 : The PlayRoom (actually available)
+				\href{run:The_PlayRoom.avi}{\includegraphics[width=300pt]{images/The-Playroom.jpg}}
 			\end{frame}
 			
 			\begin{frame}{Drawing editors}
-				There are a lot of drawing editors, but we can't use them like : Markers, LayerPaint, SketchBook, ...
-				
-				Nice tools, but there are like Paint on Windows or Photoshop, they don't allows us to use them for create a 3D construction.
+				\begin{itemize}
+					\item A lot of drawing editors : Markers, LayerPaint, SketchBook, ...
+					\item Great drawings
+					\item No possibility of making a 3D object
+					\item Source code inaccessible
+				\end{itemize}
 			\end{frame}
 	
 	\section{Our graphic solution}
@@ -86,7 +89,12 @@
 		\subsection{FPS game-engine}
 		
 			\begin{frame}{Unreal Engine}
-				\includegraphics[height=120pt]{images/Unreal_Engine.png}
+				\includegraphics[height=120pt]{images/Unreal_Engine.png}\\
+				A game engine made for FPS
+				\begin{itemize}
+					\item Few help to develop on tablets
+					\item Have to go around for simple tasks (the interface = a pause menu)
+				\end{itemize}
 			\end{frame}
 			
 			\begin{frame}{CryEngine}
@@ -97,8 +105,11 @@
 			
 			\begin{frame}{OpenGl}
 				\includegraphics[height=75pt]{images/OpenGL_logo.png}
-				
-				API hardware oriented. There are some graphic-software which use this language like Blender.
+				\begin{itemize}
+					\item A language hardware oriented (hard to change of devices)
+					\item A long time to learn how to use it
+					\item A lot of code lines just for a simple form
+				\end{itemize}
 			\end{frame}
 			
 			\begin{frame}{Autodesk Maya}
