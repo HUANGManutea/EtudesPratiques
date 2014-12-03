@@ -9,5 +9,6 @@
 *.snm
 *.out
 *.db
+*.dvi
 *.fdb_latexmk
 *.synctex.gz
