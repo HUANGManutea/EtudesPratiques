@@ -2,7 +2,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-\usepackage{hyperref,graphicx}
+\usepackage{hyperref,graphicx,multicol,eurosym}
 \usetheme{Berkeley}
 
 \setbeamertemplate{navigation symbols}{\insertframenumber /\inserttotalframenumber}
@@ -140,15 +140,69 @@
 		
 	\section{The technology : the engine}
 			
+			\begin{frame}{The technology}
+				How could we make our application ?
+				\begin{itemize}
+					\item FPS (First-person shooter) game engines
+					\item API (Application Programming Interface)
+
+				\end{itemize}
+			\end{frame}
+			
 		\subsection{FPS game engines}
 		
-			\begin{frame}{FPS game engines}
-				\centerline{\includegraphics[height=120pt]{images/logos/Unreal_Engine.png}  \mbox{     }\includegraphics[height=100pt]{images/logos/Cry_Engine.png}}
+			\begin{frame}{Unreal engine}
+				\begin{multicols}{2}
+				\includegraphics[height=100pt]{images/logos/Unreal_Engine.png}\\
 				
-				Game engines made for FPS
+				\columnbreak 
+				
+				 \begin{itemize}
+				 	\item \underline{Use :}\\		
+					 FPS game engine	 
+					 \item \underline{Qualities :}\\
+						 \begin{itemize}
+						 	\item Can work with a lot of objects
+						 	\item Easy to use : C++
+						 \end{itemize}
+				 \end{itemize}		 
+				\end{multicols}
 				\begin{itemize}
-					\item Lack of tools to develop on tablets
-					\item Have to go around for simple tasks (the interface = a pause menu)
+					\item \underline{Defaults :}\\
+					\begin{itemize}
+						\item View FPS inevitable
+						\item Lack of tools to develop on tablets
+						\item Licence expensive (19\euro/month + 5\%)
+						\item A sand box for game
+					\end{itemize}
+				\end{itemize}
+			\end{frame}
+			
+			\begin{frame}{CryEngine}
+				\begin{multicols}{2}
+					\includegraphics[height=100pt]{images/logos/Cry_Engine.png}\\
+					
+					\columnbreak 
+					
+					\begin{itemize}
+						\item \underline{Use :}\\		
+						FPS game engine				
+						\item \underline{Qualities :}\\
+						\begin{itemize}
+							\item Can work with a lot of objects
+							\item Easy to use : C++
+							\item Cross platform
+						\end{itemize}
+					\end{itemize}		 
+				\end{multicols}
+				\begin{itemize}
+					\item \underline{Defaults :}\\
+					\begin{itemize}
+						\item View FPS inevitable
+						\item Lack of tools to develop on tablets
+						\item Licence expensive (9.99\euro/month)
+						\item A sand box for game
+					\end{itemize}
 				\end{itemize}
 			\end{frame}
 			
