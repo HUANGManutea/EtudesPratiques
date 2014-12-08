@@ -1,57 +1,56 @@
-Indeed, so we have to design an windows to our application.
+Indeed, so we have to design an inerface to our application.
 
 diapo 1:
-There hese about what we thought. A Frame divide in 3 area and a toolbar.
+There is what we thought. A Frame divided in 3 areas and a toolbar.
 
 diapo 2:
 On the first zone we got the 2D drawing panel, it's the zone where we will draw our object.
-The second it's a vue of the existing 3D models of our project.
+The second it's a vue of the existing 3D model of our project.
 And here, the list of these figures and the original frame.
 
 
 Now, we will see a normal use, our objective it's to draw a red cube. 
-And put it on the lft top corner of the grey cube.
-Let's started
+And put it on the top left hand corner of the grey cube.
+Let's start
 
 diapo 3:
 To begin we click on the new shape bouton, it allow us to draw on the zone. 
-To do that we have access to a drawing menu with some tools.
-A 2D cube it's a square so we maked a red square.
+To do that, we have access to a drawing menu with some tools.
+A 2D cube is a square so we simply have to draw a red square.
 
 Now we want to extrude it.
 
 diapo 4:
-When you click on the extrude item, a windows opened and ask you the extruding size.
-
-after that we got the problem to place our cube on the corner. 
-for that We choose a reference in our 3D world
+When you click on the extrude item, a windows open and ask you the size of the extrusion.
+after that we have to place our cube on the corner. 
+To do that we choose a reference in our 3D world
 
 diapo 5:
-To place an item in a world we have 6 movement possible, 3 translation and 3 rotation. One in each axe.
-We wanna to make it simply and easy to use, so we have cut that in 3 part
+To place an item in a 3D environment we have 6 possiblemovements : 3 translations and 3 rotations. One on each axis.
+We want to make it simple and easy to use, so we have cut that in 3 steps.
 
-these parts follow the same way of actions possible.
-Firstly we will move the screen to a 2D vue with the point of vue of the arrow
+these parts are similars.
+First we will move the screen to a 2D vue with the point of vue of the arrow
+We will then face the side we chose, on the original object.
 
 diapo 6:
-here we can move the red square with the cursors. 
+here we can move the red square with the cursors in a 2D frame.
 with this stape we have possibility to move in 2 translation and 1 rotation.
 
 after that the screen will show us a 2D vue of the 2 other direction and allow us the same thing
 
 diapo 7:
-with that we have place our object in the 3D environement.
-But a last thing can be modify, the size of our item. To that we will put a cursor bar who control that.
+With all of that, ce finaly placed our object in the 3D environment.
+But a last thing can be modify, is the size of our item. There will be a scaling bar who control that.
 
-So now we have an 3D obect composed by 2 items : a grey and a red cube. 
-We want to export it to the server who will put it in the rv room.
+So now we have a 3D obect composed by 2 items : a grey and a red cube. 
+We will then have to export it to the server, that will add it in the rv room.
 
 
 diapo 8:
 To export just click on the buton export and it's finish.
 
-
-the last boutons are an edit tool, an delete, an button to switch this two zone and a parameter
+the last boutons are an edit tool, a delete, a button to switch this two zone and a parameter
 a normal user don't have to click on this.
 
 
