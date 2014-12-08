@@ -19,4 +19,3 @@ model to show up at the screen
 how a network work:
 there is a computer which hosts a server (software that can accept requests from clients and can answer to it)
 "when I want to search something on google...
-

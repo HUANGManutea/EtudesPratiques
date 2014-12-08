@@ -2,7 +2,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-\usepackage{hyperref,graphicx,multicol,eurosym}
+\usepackage{hyperref,graphicx,multicol,eurosym,tabularx,color}
 \usetheme{Berkeley}
 
 \setbeamertemplate{navigation symbols}{\large \insertframenumber /\inserttotalframenumber}
@@ -48,8 +48,8 @@
 			Project PS4 : The PlayRoom (now available)
 			\href{run:Video_intro_playroom.wmv}{\includegraphics[width=200pt]{images/The-Playroom.jpg}}
 			\begin{itemize}
-				\item a closed software
-				\item too simple
+				\item A closed software
+				\item Too simple
 			\end{itemize}
 		\end{frame}
 		
@@ -83,10 +83,8 @@
 					\item Extrude
 					\item Placing in a 3D environment
 					\item Export to the server
-					
-					\item  
-					\item All that in less than 1 min for a novice user
 				\end{itemize}
+				All that in less than 1 min for a novice user
 			\end{frame}
 		
 		
@@ -99,7 +97,7 @@
 				
 				\pause
 				
-				Objective: draw a red cube => put it in the corner
+				\underline{Objective:} draw a red cube => put it in the corner
 			\end{frame}
 			
 			\begin{frame}{Draw 2D model}
@@ -285,7 +283,24 @@
 						\item Paying version for all the features
 					\end{itemize}
 				\end{itemize}
-
+			\end{frame}
+			
+			\begin{frame}{A recap}
+				\begin{tabularx}{10cm}{|c|X|X|X|X|}
+					\hline
+					\textbf{Software} & \textbf{Easy to learn} & \textbf{Manage many objects} & \textbf{Price} & \textbf{Help for tablet}\\
+					\hline
+					\textit{Unreal Engine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}{$\sim$} & \color{red}{$\times$}\\
+					\hline
+					\textit{CryEngine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}{$\sim$} & \color{orange}{$\sim$}\\
+					\hline
+					\textit{OpenGl} & \color{red}{$\times$} & \color{orange}{$\sim$} & \color{green}{\checkmark} & \color{red}{$\times$}\\
+					\hline
+					\textit{Autodesk Maya} & \color{red}{$\times$} & \color{green}{\checkmark} & \color{red}{$\times$} & \color{orange}{$\sim$}\\
+					\hline
+					\textit{Unity} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{green}{\checkmark} \\
+					\hline
+				\end{tabularx}
 			\end{frame}
 			
 	\section{Network}
