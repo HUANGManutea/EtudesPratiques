@@ -1,4 +1,7 @@
-Indeed, so we have to design an inerface to our application.
+Indeed, To construct an 3D objetc, we have decided to allow user to create 
+some simple item and assemble them.
+So we have to design an interface ergonomic to our application.
+
 
 diapo 1:
 There is what we thought. A Frame divided in 3 areas and a toolbar.
