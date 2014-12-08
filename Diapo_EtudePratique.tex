@@ -5,7 +5,7 @@
 \usepackage{hyperref,graphicx,multicol,eurosym}
 \usetheme{Berkeley}
 
-\setbeamertemplate{navigation symbols}{\insertframenumber /\inserttotalframenumber}
+\setbeamertemplate{navigation symbols}{\large \insertframenumber /\inserttotalframenumber}
 
 \title{3D objects from 2D drawings}
 \author[Groupe 3INFO]{Aurélien Fontaine, Manutea Huang, Etienne Geantet,\\ Arnaud Martin}
@@ -37,15 +37,16 @@
 			
 		\subsection{Our subject}
 		
-		\begin{frame}{The subject}	
-			Create an object from a drawing on a tablet
+		\begin{frame}{The subject}
+			\begin{itemize}
+				\item Create an object from a drawing on a tablet
 			%\centerline{\includegraphics[height=100pt]{images/cube.png}
 			%	\mbox{ }
 			%\includegraphics[height=100pt]{images/minute.jpg}}
-			Easy to use: <1min to create a new object
-			
+				\item Easy to use: <1min to create a new object
+			\end{itemize}
 			%\centerline{\includegraphics[height=100pt]{images/room.jpg}}              
-			Final objective : Occupy a room with simple objects made by a user
+			\underline{Final objective :} Occupy a room with simple objects made by a user
 		\end{frame}
 		
 			\begin{frame}{Drawing editors}
@@ -115,10 +116,10 @@
 				\includegraphics[height=100pt]{images/network/sending_model.png}\hspace{50pt}\pause\includegraphics[height=100pt]{images/network/plugin.png}
 				
 				\hspace{150pt}
-				simple
+				Simple
 
 				\hspace{150pt}
-				few lines
+				Few lines
 				
 			\end{frame}
 			
@@ -171,9 +172,9 @@
 					\item \underline{Defaults :}\\
 					\begin{itemize}
 						\item View FPS inevitable
+						\item A sand box for game
 						\item Lack of tools to develop on tablets
 						\item Licence expensive (19\euro/month + 5\%)
-						\item A sand box for game
 					\end{itemize}
 				\end{itemize}
 			\end{frame}
@@ -199,9 +200,9 @@
 					\item \underline{Defaults :}\\
 					\begin{itemize}
 						\item View FPS inevitable
+						\item A sand box for game
 						\item Lack of tools to develop on tablets
 						\item Licence expensive (9.99\euro/month)
-						\item A sand box for game
 					\end{itemize}
 				\end{itemize}
 			\end{frame}
@@ -211,43 +212,81 @@
 		
 			\begin{frame}{OpenGl}
 				\begin{multicols}{2}
-					\includegraphics[height=100pt]{images/logos/OpenGL_logo.png}\\
+					\includegraphics[height=70pt]{images/logos/OpenGL_logo.png}\\
 					
 					\columnbreak 
 					
 					\begin{itemize}
 						\item \underline{Use :}\\		
-						A hardware oriented language			
+						Hardware oriented language			
 						\item \underline{Qualities :}\\
 						\begin{itemize}
-							\item 
+							\item Need few resources
 						\end{itemize}
 					\end{itemize}		 
 				\end{multicols}
 				\begin{itemize}
 					\item \underline{Defaults :}\\
 					\begin{itemize}
-						\item New language, 
+						\item New language
+						\item Hard to create a simple object
 						\item Hard to move to different devices
+						\item OpenGl ES : less functions than OpenGl
 					\end{itemize}
 				\end{itemize}
 			\end{frame}
 			
 			\begin{frame}{Autodesk Maya}
-				\centerline{\includegraphics[height=75pt]{images/logos/Autodesk_Maya.png}}
-				
-				Used for special effects in movies
+				\begin{multicols}{2}
+					\includegraphics[height=60pt]{images/logos/Autodesk_Maya.png}\\
+					
+					\columnbreak 
+					
+					\begin{itemize}
+						\item \underline{Use :}\\		
+						3D computer graphics software		
+						\item \underline{Qualities :}\\
+						\begin{itemize}
+							\item Easy to use : C++
+							\item Very rich library
+						\end{itemize}
+					\end{itemize}		 
+				\end{multicols}
+				\begin{itemize}
+					\item \underline{Defaults :}\\
+					\begin{itemize}
+						\item Very expensive licence (\$185.00/month)
+						\item Made for specials effects in films
+					\end{itemize}
+				\end{itemize}
 			\end{frame}
-			
-		\subsection{Unity}
 		
 			\begin{frame}{Unity}
-				\includegraphics[height=75pt]{images/logos/Logo_Unity.jpg}
+				\begin{multicols}{2}
+					\includegraphics[height=80pt]{images/logos/Logo_Unity.jpg}\\
+					
+					\columnbreak 
+					
+					\begin{itemize}
+						\item \underline{Use :}\\		
+						Cross-platform game creation system 		
+						\item \underline{Qualities :}\\
+						\begin{itemize}
+							\item Easy to export to an Unity server
+							\item Easy to use : C\#
+							\item Lots of help for tablet development
+							\item Very rich library
+							\item Free
+						\end{itemize}
+					\end{itemize}		 
+				\end{multicols}
 				\begin{itemize}
-					\item now free
-					\item entity oriented
-					\item easier than others to use
+					\item \underline{Defaults :}\\
+					\begin{itemize}
+						\item None
+					\end{itemize}
 				\end{itemize}
+
 			\end{frame}
 			
 		
