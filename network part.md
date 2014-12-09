@@ -1,22 +1,71 @@
+#Network
+Thank you 
 Now we'll talk about Networking.
+##In the server
 
-Diapo How will it work:
-What we want is to send the model's data to a server running Unity.
+###What is already there:
+There is
+Unity running on
+server
+displaying 3D scene
+don't code this environment
 
-And in the server, we also have to create a little simple plugin with a few lines. It will be very light.
+----------
 
-Diapo External application:
-to send data, we first thought of Internet Protocols. We tried the most used protocols, which are http and ftp but there was some problem.
 
-Http wasn't made for sending this kind of data to a server.
+###The purpose:
+effectively
+send the model's data
+server running Unity
 
-Ftp was too complicated to use for the user (using a login, a password and an IP adress)
+The server catch data
+show up the model
+3D scene
+interact with other objects
+not our study
 
-We also didn't want to use another software than Unity because it will use more resources.
 
-Diapo Classic Networking:
-So this is a quick draw on sending data using the protocols. Not optimized. (with login, password, IP adress)
+----------
 
-Diapo Assets:
-In Unity there are assets which are like Java Class and there is some documentation in the internet.
-To simplify, it works like this, like a highway between 2 devices running unity.
+
+###Plugin:
+And in the server
+ create a simple plugin 
+ only make receive data
+ integrated 3Dscene
+
+
+----------
+
+
+##In the tablet: 
+
+###External application:
+first thought: application
+uploading client
+use resources
+difficult for the user
+software pipeline
+
+----------
+###Protocol to use:
+to convey
+Http great download  sort of data (html pages)
+Http not made to send this kind of file.
+
+Ftp was too complicated for the user (using a login, a password and an IP adress)
+
+----------
+
+###Unity Assets:
+
+In Unity there  assets like Java Class 
+some documentation 
+On the internet / books UnityDocumentation
+Last but not least:
+unity network asset operate great between unity
+
+To simplify, it works like this, like a straightforward road between 2 devices running unity.
+
+we have a unity server
+ a huge plus to work on unity 
