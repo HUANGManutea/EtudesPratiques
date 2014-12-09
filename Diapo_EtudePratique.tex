@@ -6,6 +6,7 @@
 \usetheme{Berkeley}
 
 \setbeamertemplate{navigation symbols}{\large \insertframenumber /\inserttotalframenumber}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 \title{3D objects from 2D drawings}
 \author[Groupe 3INFO]{Aurélien Fontaine, Manutea Huang, Etienne Geantet, Arnaud Martin}
@@ -296,21 +297,21 @@
 			\end{frame}
 			
 			\begin{frame}{A recap}
-				\begin{tabularx}{300pt}{|c|X|X|c|X|}
+				\begin{tabular}{|M{50pt}|M{30pt}|M{45pt}|M{80pt}|M{30pt}|}
 					\hline
 					\textbf{Software} & \textbf{Easy to learn} & \textbf{Manage many objects} & \textbf{Price} & \textbf{Help for tablet}\\
 					\hline
-					\textit{Unreal Engine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}{19\euro/month + 5 \%} & \color{red}{$\times$}\\
+					\textit{Unreal Engine} & \color{green}{\checkmark} & \color{green}{\checkmark} &19\euro/month + 5 \% & \color{red}{$\times$}\\
 					\hline
-					\textit{CryEngine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}{9.99\euro/month} & \color{orange}{$\sim$}\\
+					\textit{CryEngine} & \color{green}{\checkmark} & \color{green}{\checkmark} & 9.99\euro/month & \color{orange}{$\sim$}\\
 					\hline
-					\textit{OpenGl} & \color{red}{$\times$} & \color{orange}{$\sim$} & \color{green}{0\euro} & \color{red}{$\times$}\\
+					\textit{OpenGl} & \color{red}{$\times$} & $\sim$ & \color{green}{0\euro} & \color{red}{$\times$}\\
 					\hline
-					\textit{Autodesk Maya} & \color{red}{$\times$} & \color{green}{\checkmark} & \color{red}{\$185.00/month} & \color{orange}{$\sim$}\\
+					\textit{Autodesk Maya} & \color{red}{$\times$} & \color{green}{\checkmark} & \color{red}{\$185.00/month} & $\sim$\\
 					\hline
 					\textit{Unity} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{green}{0\euro : free licence} & \color{green}{\checkmark} \\
 					\hline
-				\end{tabularx}
+				\end{tabular}
 			\end{frame}
 			
 	\section{Network}
