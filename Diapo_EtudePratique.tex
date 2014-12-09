@@ -322,14 +322,20 @@
 			
 		\subsection{How will it work?}
 		
-			
-		
-			\begin{frame}{What do we have ?}
-				\centerline{\includegraphics[height=150pt]{images/network/server.png}}
+			\begin{frame}{What is already set up ?}
+					\centerline{\includegraphics[height=100pt]{images/network/server.png}
+					\pause
+					\includegraphics[height=200pt]{images/network/scenebefore.png}}
 			\end{frame}
 			
-			\begin{frame}{What do we want ?}
+			\begin{frame}{The purpose: sending the model}
 				\centerline{\includegraphics[height=150pt]{images/network/sending_model.png}}
+			\end{frame}
+			
+			\begin{frame}{The purpose: catching the model}
+				\includegraphics[height=125pt]{images/network/scenebefore.png}
+				\includegraphics[height=50pt]{images/network/arrow.png}
+				\includegraphics[height=125pt]{images/network/scene.png}
 			\end{frame}
 			
 		\subsection{In the server}
@@ -338,7 +344,7 @@
 				\begin{itemize}	
 					\item Little plugin
 					\item Only receive data from the tablet
-					\item Integrated in an Unity application
+					\item Integrated in the 3D scene
 				\end{itemize}	
 											
 			\end{frame}
@@ -368,8 +374,8 @@
 					\begin{multicols}{2}
 						HTTP:
 						\begin{itemize}
-							\item Used for: Getting data from a server
-							\item Problem: Posting specific data to a server
+							\item Use: Get data from a server
+							\item Problem: Only post specific files to a server
 						\end{itemize}
 						\pause
 						
@@ -379,7 +385,7 @@
 						\columnbreak
 						FTP:
 						\begin{itemize}
-							\item Used for: Sending data to a server
+							\item Use: Send files to a server
 							\item Problem: Too complex for the user
 						\end{itemize}
 						\pause
@@ -391,11 +397,12 @@
 			
 		\begin{frame}{Unity Assets}
 			\begin{itemize}
-				\item Unity Assets : Java Class look alike
+				\item Unity Assets : looks like Java Classes
 				\item Well implemented
 				\item Documentation available
 				\pause
 				\item \textbf{\underline{Facilitate Unity to Unity Networking}}
+				\pause
 			\end{itemize}
 			\centerline{\includegraphics[height=75pt]{images/network/easier.png}}
 		\end{frame}
