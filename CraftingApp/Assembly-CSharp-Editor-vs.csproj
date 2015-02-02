@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{15CC1B17-E40B-4D37-76E0-ADE67C9A08EC}</ProjectGuid>
+	<ProjectGuid>{1E8D8A38-0B9B-96F6-75AC-DD3D38F7AF48}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-UnityScript</AssemblyName>
+	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,18 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\CameraRelativeControl.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FirstPersonControl.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FollowTransform.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\Joystick.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\ObliqueNear.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\PlayerRelativeControl.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\RollABall.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\RotationConstraint.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\SidescrollControl.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\SmoothFollow2D.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\ZoomCamera.js" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\tapcontrol.js" />
+     <Compile Include="Assets\UCLAGameLab\Editor\MeshCreator.cs" />
+     <Compile Include="Assets\UCLAGameLab\Editor\MeshCreatorInspector.cs" />
+     <Compile Include="Assets\UCLAGameLab\Editor\MeshCreatorUndoManager.cs" />
+     <Compile Include="Assets\UCLAGameLab\Editor\MeshCreatorWizard.cs" />
+     <Compile Include="Assets\UCLAGameLab\Editor\SimpleSurfaceEdge.cs" />
+     <Compile Include="Assets\UCLAGameLab\Editor\Triangulator.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
@@ -68,9 +62,22 @@
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Vertex Colored.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
+ <Reference Include="Assembly-UnityScript">
+ <HintPath>C:/Users/Khayron/Documents/GitHub/EtudesPratiques/CraftingApp/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-vs.csproj">
+      <Project>{B433BC6B-253E-E388-076C-BA865A8AA5DC}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
