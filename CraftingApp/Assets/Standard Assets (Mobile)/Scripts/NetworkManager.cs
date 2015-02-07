@@ -5,6 +5,8 @@ public class NetworkManager : MonoBehaviour {
 	public string ipAddress;
 	public int port = 25565;
 	public int nbClient = 2;
+	public Transform spawnServer;
+	public GameObject objectPrefab;
 
 	//GUI
 	void OnGUI(){
@@ -12,6 +14,9 @@ public class NetworkManager : MonoBehaviour {
 		ipAddress = GUI.TextField(new Rect(150,100,100,20),ipAddress);
 		if(GUI.Button(new Rect(50,130,100,25),"Se connecter") && ipAddress.Length!=0){
 			Network.Connect(ipAddress,port);
+		}
+		if(GUI.Button(new Rect(50,200,100,25),"exporter")){
+			Network.Instantiate(objectPrefab,spawnServer.position,Quaternion.identity,0);
 		}
 		if(GUI.Button(new Rect(250,130,125,25),"Créer un serveur")){
 			Network.InitializeServer(nbClient,25565,false);
