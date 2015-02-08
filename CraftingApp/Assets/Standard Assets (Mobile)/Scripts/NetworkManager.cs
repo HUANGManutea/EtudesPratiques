@@ -16,14 +16,23 @@ public class NetworkManager : MonoBehaviour {
 			Network.Connect(ipAddress,port);
 		}
 		if(GUI.Button(new Rect(50,200,100,25),"exporter")){
-			Network.Instantiate(objectPrefab,spawnServer.position,Quaternion.identity,0);
+			networkView.RPC("instantPlayer",RPCMode.Server);
 		}
 		if(GUI.Button(new Rect(250,130,125,25),"Créer un serveur")){
 			Network.InitializeServer(nbClient,25565,false);
 		}
 	}
 
+
+	[RPC]
+	void instantPlayer(){
+		Instantiate(objectPrefab,spawnServer.position,Quaternion.identity);
+	}
+	
 	//messages
+	void OnPlayerConnected(){
+		Debug.Log("client connecté");
+	}
 	void OnConnectedToServer(){
 		Debug.Log("Connecté");
 	}
