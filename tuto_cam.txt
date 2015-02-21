@@ -30,22 +30,28 @@ http://docs.unity3d.com/Manual/class-Camera.html
 
 Tourner autour d'un objet en particulier (utile pour la preview, où on aura une vue isométrique autour de laquelle on peu tourner.
 
+
+
 using UnityEngine;
 
 public class CameraDrag : MonoBehaviour
 {
-	public GameObject go;
+	public float dragSpeed = 8;
+	public GameObject go;//objet autour duquel on veut tourner
 	
 	
 	void Update()
 	{
-		
-		
-		if(Input.GetKeyDown (KeyCode.M)){
-		transform.RotateAround (go.transform.position, Vector3.up, 10); 
-//10 étant l'angle, il faut encore trouver 
-//comment récup la position de la souris et déplacer le vecteur selon la dif sur X	
-	}
+
+
+		if (Input.GetMouseButton(0)) {
+					float origine = Input.GetAxis("Mouse X"); 
+//je ne sais pas vraiment comment marche cette ligne, mais en tout cas ça fonctionne
+
+					transform.RotateAround (go.transform.position, Vector3.up, origine*dragSpeed);
+//fonction pour tourner autour d'un point précis
+			}
+
 	}
 	
 	
