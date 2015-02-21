@@ -3,8 +3,9 @@ using System.Collections;
 
 public class DrawAFigure : MonoBehaviour {
 
+	public Draw_menu dm;
 	private Texture2D tex;
-	public int largeurTrait = 4;
+	public int largeurTrait;
 
 	void Start () {
 
@@ -16,6 +17,8 @@ public class DrawAFigure : MonoBehaviour {
 	void OnGUI ()
 	{
 		Event evt = Event.current;
+
+		largeurTrait = ((int)dm.getDiam());
 
 		if (evt.isMouse && Input.GetMouseButton (0)) 
 		{
@@ -48,7 +51,7 @@ public class DrawAFigure : MonoBehaviour {
 	void dessinePoint (int x, int y){
 		for (int i=x-largeurTrait; i<=(x+largeurTrait); i++) {
 			for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
-				tex.SetPixel(i,j,Color.black);
+				tex.SetPixel(i,j,dm.getColor ());
 			}
 		}
 	}

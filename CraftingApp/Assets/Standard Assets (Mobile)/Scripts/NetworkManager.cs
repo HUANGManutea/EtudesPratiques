@@ -27,7 +27,7 @@ public class NetworkManager : MonoBehaviour {
 
 	[RPC]
 	void instantObject(){
-		Instantiate(objectPrefab,new Vector(0,0,0),Quaternion.identity);
+		Instantiate(objectPrefab,new Vector3(0,0,0),Quaternion.identity);
 	}
 	
 	//messages

@@ -10,7 +10,7 @@ public class Draw_menu : MonoBehaviour {
 	private const int DIAM = 2;
 
 	public enum Tools {PENCIL,ERASER,BUCKET};
-	public enum Diam {SMALL = 5,MEDIUM = 10,LARGE = 20};
+	public enum Diam {SMALL = 2,MEDIUM = 4,LARGE = 6};
 
 	public Color color;
 	public Tools tool;
