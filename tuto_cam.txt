@@ -29,7 +29,10 @@ http://docs.unity3d.com/Manual/class-Camera.html
 ################
 
 Tourner autour d'un objet en particulier (utile pour la preview, où on aura une vue isométrique autour de laquelle on peu tourner.
+Il faudrait pour ces caméaras, les mettre en mode orthographic au lieu de perspective je pense. et rajouter un truc pour zoomer dezzomer, je cherche encore ça.
 
+
+il ya moyen de mettre pareil avec Mouse Y et vector3.left, mais le rendu est assez étrange si on bouge trop au bout d'un moment 
 
 
 using UnityEngine;
@@ -56,3 +59,4 @@ public class CameraDrag : MonoBehaviour
 	
 	
 }
+
