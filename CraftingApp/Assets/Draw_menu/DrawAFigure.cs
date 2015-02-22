@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DrawAFigure : MonoBehaviour {
 
+	public bool isDrawing;
 	public Draw_menu dm;
 	private Texture2D tex;
 	public int largeurTrait;
@@ -17,17 +18,17 @@ public class DrawAFigure : MonoBehaviour {
 	void OnGUI ()
 	{
 		Event evt = Event.current;
-
 		largeurTrait = ((int)dm.getDiam());
 
 		if (evt.isMouse && Input.GetMouseButton (0)) 
 		{
+			isDrawing = true;
 			// Utiliser un Ray qui coupe la plan en au niveau de la mousePosition
 			
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			
-			if (collider.Raycast (ray, out hit, Mathf.Infinity))
+			if (collider.Raycast (ray, out hit, Mathf.Infinity) && isDrawing)
 			{
 				// Trouevr les coordonnées u,v de la texture
 
@@ -49,11 +50,11 @@ public class DrawAFigure : MonoBehaviour {
 
 	//Dessine un poit de largeur largeurTrait aux coordonnées x et y
 	void dessinePoint (int x, int y){
-		for (int i=x-largeurTrait; i<=(x+largeurTrait); i++) {
-			for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
-				tex.SetPixel(i,j,dm.getColor ());
+			for (int i=x-largeurTrait; i<=(x+largeurTrait); i++) {
+				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
+					tex.SetPixel (i, j, dm.getColor ());
+				}
 			}
-		}
 	}
 
 	//Dessine une ligne entre deux points
