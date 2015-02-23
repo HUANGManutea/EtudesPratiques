@@ -56,7 +56,8 @@ public class DrawAFigure : MonoBehaviour {
 	void dessinePoint (int x, int y){
 			for (int i=x-largeurTrait; i<=(x+largeurTrait); i++) {
 				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
-					tex.SetPixel (i, j, dm.getColor ());
+					if(norme(x,y,i,j)<=largeurTrait)
+				   		tex.SetPixel (i, j, dm.getColor ());
 				}
 			}
 	}
@@ -73,6 +74,11 @@ public class DrawAFigure : MonoBehaviour {
 				dessinePoint (i, i * pente);
 			}
 		}
+	}
+
+	//rend la distance entre deux points
+	private int norme(int x1, int y1, int x2, int y2){
+		return (int) Mathf.Sqrt (Mathf.Pow ((x2 - x1), 2) + Mathf.Pow ((y2 - y1), 2));
 	}
 
 }
