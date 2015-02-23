@@ -36,6 +36,7 @@ public class NetworkManager : MonoBehaviour {
 	[RPC]
 	void instantObject(){
 		Instantiate(objectPrefab,new Vector3(0,0,0),Quaternion.identity);
+<<<<<<< HEAD
 	}
 
 	void export(){
@@ -44,6 +45,8 @@ public class NetworkManager : MonoBehaviour {
 
 	void import(){
 		AssetDatabase.ImportPackage("Entire Project",true);
+=======
+>>>>>>> origin/master
 	}
 	//messages
 	void OnPlayerConnected(){
