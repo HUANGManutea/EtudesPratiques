@@ -3,16 +3,20 @@ using System.Collections;
 
 public class DrawAFigure : MonoBehaviour {
 
-	public bool isDrawing;
+	public bool isSelected;
 	public Draw_menu dm;
 	private Texture2D tex;
 	public int largeurTrait;
 
 	void Start () {
-
+		isSelected = false;
 		Texture2D tex = new Texture2D(600,300);
 		gameObject.renderer.material.SetTexture(0, tex);
 
+	}
+
+	public void setIsSelect(bool b){
+		isSelected = b;
 	}
 	
 	void OnGUI ()
@@ -20,15 +24,15 @@ public class DrawAFigure : MonoBehaviour {
 		Event evt = Event.current;
 		largeurTrait = ((int)dm.getDiam());
 
-		if (evt.isMouse && Input.GetMouseButton (0)) 
+		if (evt.isMouse && Input.GetMouseButton (0) && !isSelected) 
 		{
-			isDrawing = true;
+
 			// Utiliser un Ray qui coupe la plan en au niveau de la mousePosition
 			
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			
-			if (collider.Raycast (ray, out hit, Mathf.Infinity) && isDrawing)
+			if (collider.Raycast (ray, out hit, Mathf.Infinity))
 			{
 				// Trouevr les coordonnées u,v de la texture
 
