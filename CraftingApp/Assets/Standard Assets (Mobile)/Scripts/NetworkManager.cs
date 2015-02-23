@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 public class NetworkManager : MonoBehaviour {
 
 	public string ipAddress;
@@ -12,12 +13,19 @@ public class NetworkManager : MonoBehaviour {
 	void OnGUI(){
 		GUI.Label(new Rect(5,100,200,20),"Adresse ip du serveur: ");
 		ipAddress = GUI.TextField(new Rect(150,100,100,20),ipAddress);
+
 		if(GUI.Button(new Rect(50,130,100,25),"Se connecter") && ipAddress.Length!=0){
 			Network.Connect(ipAddress,port);
 		}
 		if(GUI.Button(new Rect(50,200,100,25),"exporter")){
-			networkView.RPC("instantObject",RPCMode.Server);
-
+			//networkView.RPC("instantObject",RPCMode.Server);
+			Network.Instantiate(objectPrefab,new Vector3(0,0,0),Quaternion.identity,0);
+		}
+		if(GUI.Button(new Rect(250,200,100,25),"package")){
+			export();
+		}
+		if(GUI.Button(new Rect(50,250,100,25),"imp package")){
+			import();
 		}
 		if(GUI.Button(new Rect(250,130,125,25),"Créer un serveur")){
 			Network.InitializeServer(nbClient,25565,false);
@@ -27,9 +35,16 @@ public class NetworkManager : MonoBehaviour {
 
 	[RPC]
 	void instantObject(){
-		Instantiate(objectPrefab,new Vector(0,0,0),Quaternion.identity);
+		Instantiate(objectPrefab,new Vector3(0,0,0),Quaternion.identity);
 	}
-	
+
+	void export(){
+		AssetDatabase.ExportPackage("Assets/ActualDraw", "Entire Project.unitypackage",ExportPackageOptions.Interactive | ExportPackageOptions.Recurse | ExportPackageOptions.IncludeLibraryAssets|ExportPackageOptions.IncludeDependencies    );
+	}
+
+	void import(){
+		AssetDatabase.ImportPackage("Entire Project",true);
+	}
 	//messages
 	void OnPlayerConnected(){
 		Debug.Log("client connecté");
