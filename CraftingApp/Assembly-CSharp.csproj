@@ -49,7 +49,7 @@
      <Compile Include="Assets\Draw_menu\DrawAFigure.cs" />
      <Compile Include="Assets\Draw_menu\Draw_menu.cs" />
      <Compile Include="Assets\Draw_menu\Image.cs" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\ConnexionButton.cs" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\ConnectManager.cs" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\NetworkManager.cs" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\SocketManager.cs" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\SocketReceive.cs" />
