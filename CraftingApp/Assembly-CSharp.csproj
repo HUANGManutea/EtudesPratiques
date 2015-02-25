@@ -50,10 +50,7 @@
      <Compile Include="Assets\Draw_menu\Draw_menu.cs" />
      <Compile Include="Assets\Draw_menu\Image.cs" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\ConnectManager.cs" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\NetworkManager.cs" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\SocketManager.cs" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\SocketReceive.cs" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\SocketSend.cs" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FtpSend.cs" />
      <Compile Include="Assets\UCLAGameLab\Scripts\MeshCreatorData.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
