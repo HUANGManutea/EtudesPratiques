@@ -13,7 +13,7 @@ public class FtpSend : MonoBehaviour {
 			request.Method = WebRequestMethods.Ftp.UploadFile;
 			
 			// This example assumes the FTP site uses anonymous logon.
-			request.Credentials = new NetworkCredential ("manu","=k1r0nn4g4");
+			request.Credentials = new NetworkCredential ("manu","******");
 			
 			// Copy the contents of the file to the request stream.
 			StreamReader sourceStream = new StreamReader("Assets/ActualDraw/sphere.prefab");
