@@ -34,7 +34,7 @@ public class DrawAFigure : MonoBehaviour {
 			
 			if (collider.Raycast (ray, out hit, Mathf.Infinity))
 			{
-				// Trouevr les coordonnées u,v de la texture
+				// Trouver les coordonnées u,v de la texture
 
 				Vector2 uv;
 				uv.x = (hit.point.x - hit.collider.bounds.min.x) / hit.collider.bounds.size.x;
