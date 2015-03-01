@@ -65,6 +65,8 @@ public class DrawAFigure : MonoBehaviour {
 	//Dessine une ligne entre deux points
 	//MARCHE PAS
 	void dessineLigne (int x1, int y1, int x2, int y2){
+		int points = nbPoints (x1, y1, x2, y2);
+
 		if (x1 == x2) {
 			for (int i = Mathf.Min(y1,y2); i<= Mathf.Max(y1,y2); i++)
 				dessinePoint (x1, i);
@@ -74,6 +76,11 @@ public class DrawAFigure : MonoBehaviour {
 				dessinePoint (i, i * pente);
 			}
 		}
+	}
+
+	//Nombre points maximums à mettre entre deux points pour dessiner une ligne
+	private int nbPoints (int x1, int y1, int x2, int y2){
+		return Mathf.Min ((Mathf.Max (x1,x2) - Mathf.Min(x1,x2)),(Mathf.Max (y1,y2) - Mathf.Min(y1,y2)));
 	}
 
 	//rend la distance entre deux points
