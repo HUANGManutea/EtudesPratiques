@@ -54,34 +54,90 @@ public class DrawAFigure : MonoBehaviour {
 
 	//Dessine un poit de largeur largeurTrait aux coordonnées x et y
 	void dessinePoint (int x, int y){
-			for (int i=x-largeurTrait; i<=(x+largeurTrait); i++) {
+		// y<largeurTrait || y>(300-largeurTrait)
+		
+		//Pointeur proche du bord gauche
+		if(x<largeurTrait)
+		{
+			for (int i=0; i<=(x+largeurTrait); i++) {
 				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
 					if(norme(x,y,i,j)<=largeurTrait)
-				   		tex.SetPixel (i, j, dm.getColor ());
+						tex.SetPixel (i, j, dm.getColor ());
 				}
 			}
+			return;
+		}
+
+		//Pointeur proche du bord droit
+		if(x>(600-largeurTrait))
+		{
+			for (int i=x; i<=599; i++) {
+				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
+					if(norme(x,y,i,j)<=largeurTrait)
+						tex.SetPixel (i, j, dm.getColor ());
+				}
+			}
+			return;
+		}
+		
+		//Pointeur proche du bord bas
+		if(y<largeurTrait)
+		{
+			for (int i=x; i<=(x+largeurTrait); i++) {
+				for (int j=0; j<=(y+largeurTrait); j++) {
+					if(norme(x,y,i,j)<=largeurTrait)
+						tex.SetPixel (i, j, dm.getColor ());
+				}
+			}
+			return;
+		}
+		
+		//Pointeur proche du bord haut
+		if(y>(300-largeurTrait))
+		{
+			for (int i=x; i<=(x+largeurTrait); i++) {
+				for (int j=y-largeurTrait; j<=299; j++) {
+					if(norme(x,y,i,j)<=largeurTrait)
+						tex.SetPixel (i, j, dm.getColor ());
+				}
+			}
+			return;
+		}
+
+		//Sinon on dessine un point
+		for (int i=x-largeurTrait; i<=(x+largeurTrait); i++) {
+			for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
+				if(norme(x,y,i,j)<=largeurTrait)
+			   		tex.SetPixel (i, j, dm.getColor ());
+			}
+		}
+
 	}
 
 	//Dessine une ligne entre deux points
 	//MARCHE PAS
-	void dessineLigne (int x1, int y1, int x2, int y2){
+	/*void dessineLigne (int x1, int y1, int x2, int y2){
 		int points = nbPoints (x1, y1, x2, y2);
 
 		if (x1 == x2) {
 			for (int i = Mathf.Min(y1,y2); i<= Mathf.Max(y1,y2); i++)
 				dessinePoint (x1, i);
 		} else {
-			int pente = (y2 - y1) / (x2 - x1);
-			for (int i=Mathf.Min(x1,x2); i<=Mathf.Max(x1,x2); i++) {
-				dessinePoint (i, i * pente);
+			if(){
+				int pente = (y2 - y1) / (x2 - x1);
+				for (int i=Mathf.Min(x1,x2); i<=Mathf.Max(x1,x2); i++) {
+					dessinePoint (i, i * pente);
+				}
 			}
 		}
-	}
+	}*/
 
 	//Nombre points maximums à mettre entre deux points pour dessiner une ligne
+	//SERT A RIEN
+	/*
 	private int nbPoints (int x1, int y1, int x2, int y2){
 		return Mathf.Min ((Mathf.Max (x1,x2) - Mathf.Min(x1,x2)),(Mathf.Max (y1,y2) - Mathf.Min(y1,y2)));
-	}
+	}*/
 
 	//rend la distance entre deux points
 	private int norme(int x1, int y1, int x2, int y2){
