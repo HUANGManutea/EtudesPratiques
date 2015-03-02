@@ -2,11 +2,7 @@
 using UnityEditor;
 using System.Collections;
 
-public enum ObjectMeshType
-{
-	Flat2D = 0,
-	Full3D = 1
-}
+
 public class UclaExtrusion : MonoBehaviour {
 
 	public Texture2D textureToCreateMeshFrom;
@@ -92,18 +88,17 @@ public class UclaExtrusion : MonoBehaviour {
 			mcd.usePhysicMaterial = false;
 			//mcd.addRigidBody = false;
 		}*/
-		else // default to none
+		/*else // default to none
 		{
 			mcd.generateCollider = false;
 			mcd.usePrimitiveCollider = false;
 			mcd.maxNumberBoxes = 20;
 			mcd.usePhysicMaterial = false;
 			//mcd.addRigidBody = false;
-		}
+		}*/
 		
 		// update the mesh
 		MeshCreator.UpdateMesh(newObject);
-		Close();
-	}
+		//Close();
 	}
 }
