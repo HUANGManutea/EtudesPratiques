@@ -69,7 +69,7 @@ public class DrawAFigure : MonoBehaviour {
 		}
 
 		//Pointeur proche du bord droit
-		if(x>(600-largeurTrait))
+		if(x>(600-largeurTrait) && (x<(600+largeurTrait)))
 		{
 			for (int i=x; i<=599; i++) {
 				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
@@ -93,7 +93,7 @@ public class DrawAFigure : MonoBehaviour {
 		}
 		
 		//Pointeur proche du bord haut
-		if(y>(300-largeurTrait))
+		if(y>(300-largeurTrait) && (y<(300+largeurTrait)))
 		{
 			for (int i=x; i<=(x+largeurTrait); i++) {
 				for (int j=y-largeurTrait; j<=299; j++) {
