@@ -69,7 +69,7 @@ public class DrawAFigure : MonoBehaviour {
 		}
 
 		//Pointeur proche du bord droit
-		if(x>(600-largeurTrait) && (x<(600+largeurTrait)))
+		if(x>(600-(largeurTrait+1)) && (x<(600+largeurTrait)))
 		{
 			for (int i=x; i<=599; i++) {
 				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
@@ -93,7 +93,7 @@ public class DrawAFigure : MonoBehaviour {
 		}
 		
 		//Pointeur proche du bord haut
-		if(y>(300-largeurTrait) && (y<(300+largeurTrait)))
+		if(y>(300-(largeurTrait+1)) && (y<(300+largeurTrait)))
 		{
 			for (int i=x; i<=(x+largeurTrait); i++) {
 				for (int j=y-largeurTrait; j<=299; j++) {
@@ -117,26 +117,25 @@ public class DrawAFigure : MonoBehaviour {
 	//Dessine une ligne entre deux points
 	//MARCHE PAS
 	/*void dessineLigne (int x1, int y1, int x2, int y2){
-		int points = nbPoints (x1, y1, x2, y2);
+		int points = norme (x1, y1, x2, y2);
 
 		if (x1 == x2) {
-			for (int i = Mathf.Min(y1,y2); i<= Mathf.Max(y1,y2); i++)
+			for (int i = (int) Mathf.Min(y1,y2); i<= (int) Mathf.Max(y1,y2); i++)
 				dessinePoint (x1, i);
-		} else {
-			if(){
-				int pente = (y2 - y1) / (x2 - x1);
-				for (int i=Mathf.Min(x1,x2); i<=Mathf.Max(x1,x2); i++) {
-					dessinePoint (i, i * pente);
-				}
-			}
+			return;
+		} 
+		
+		if(y1 == y2){
+			for (int i = (int) Mathf.Min(x1,x2); i<= (int) Mathf.Max(x1,x2); i++)
+				dessinePoint (i, y1);
+			return;
 		}
-	}*/
 
-	//Nombre points maximums à mettre entre deux points pour dessiner une ligne
-	//SERT A RIEN
-	/*
-	private int nbPoints (int x1, int y1, int x2, int y2){
-		return Mathf.Min ((Mathf.Max (x1,x2) - Mathf.Min(x1,x2)),(Mathf.Max (y1,y2) - Mathf.Min(y1,y2)));
+		
+			int pente = (y2 - y1) / (x2 - x1);
+			for (int i = (int) Mathf.Min(x1,x2); i<= (int) Mathf.Max(x1,x2); i++) {
+				dessinePoint (i, i * pente);
+			}
 	}*/
 
 	//rend la distance entre deux points
