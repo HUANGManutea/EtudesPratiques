@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Draw_menu\DrawAFigure.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Cam\CameraDrag.cs">
     <Files>
-      <File FileName="Assets\Draw_menu\DrawAFigure.cs" Line="131" Column="11" />
+      <File FileName="Assets\Cam\CameraDrag.cs" Line="27" Column="45" />
       <File FileName="Assets\UCLAGameLab\Editor\UclaExtrusion.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
