@@ -50,7 +50,10 @@ public class DrawAFigure : MonoBehaviour {
 					lastPosX = (int)(uv.x * tex.width);
 					lastPosY = (int)(uv.y * tex.height);
 				}
-				dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height));
+				//dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height));
+
+				dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height));
+
 				tex.Apply ();
 				gameObject.renderer.material.SetTexture(0, tex);
 				lastPosX = (int)(uv.x * tex.width);
@@ -124,53 +127,131 @@ public class DrawAFigure : MonoBehaviour {
 
 	//Dessine une ligne entre deux points
 	//MARCHE PAS
+	/*
 	void dessineLigne (int x1, int y1, int x2, int y2){
 		int points = norme (x1, y1, x2, y2);
 		int tempX=x1,tempY=y1;
+		int pas = 1;
 
+		if(points!=0){
 		while (points > largeurTrait){
-			if(x1==x2){
+			if(tempX==x2){
 				//Nord
-				if(y1 <= y2){
-					
-				}
-				//Sud
-				if(y1 > y2){
-					
+				if(tempY <= y2){
+					tempY+=pas;
+					dessinePoint(tempX,tempY);
+					points = norme (tempX,tempY,x2,y2);
+				}else{
+					//Sud
+					if(y1 > y2){
+						tempY-=pas;
+						dessinePoint(tempX,tempY);
+						points = norme (tempX,tempY,x2,y2);
+					}
 				}
 			}
 			//Direction droite
-			if(x1>x2){
+			if(tempX>x2){
 				//Nord Est
 				if(y1 <= y2){
-					
+					tempX+=pas;
+					tempY+=pas;
+					dessinePoint(tempX,tempY);
+					points = norme (tempX,tempY,x2,y2);
 				}
 				//Est
-				if(y1==y2){
-					
+				if(tempY==y2){
+					tempX+=pas;
+					dessinePoint(tempX,tempY);
+					points = norme (tempX,tempY,x2,y2);
 				}
 				//Sud Est
-				if(y1 > y2){
-					
+				if(tempY > y2){
+					tempX+=pas;
+					tempY-=pas;
+					points = norme (tempX,tempY,x2,y2);
 				}
 
 			}else{
 				//Direction gauche
 				//Sud Ouest
-				if(y1 > y2){
-					
+				if(tempY > y2){
+					tempX-=pas;
+					tempY-=pas;
+					dessinePoint(tempX,tempY);
+					points = norme (tempX,tempY,x2,y2);
 				}
 				//Ouest
-				if(y1==y2){
-					
+				if(tempY==y2){
+					tempX-=pas;
+					dessinePoint(tempX,tempY);
+					points = norme (tempX,tempY,x2,y2);
 				}
 				//Nord Ouest
-				if(y1 <= y2){
-					
+				if(tempY <= y2){
+					tempX-=pas;
+					tempY+=pas;
+					dessinePoint(tempX,tempY);
+					points = norme (tempX,tempY,x2,y2);
 				}
 			}
 
 		}//while
+		}
+	}//dessineLigne
+	*/
+	public void dessinContinu(int x1, int y1, int x2, int y2){
+		int i;
+		//Vertical
+		if(x1==x2){
+			for (i= Mathf.Min(x1,x2); i<=Mathf.Max (x1,x2);i++)
+				dessinePoint(i,y1);
+			return;
+		}
+		//Horizontal
+		if(y1==y2){
+			for (i= Mathf.Min(y1,y2); i<=Mathf.Max (y1,y2);i++)
+				dessinePoint(x1,i);
+			return;
+		}
+		i = norme(x1, y1, x2, y2);
+		dessinContinuRec(x1, y1, x2, y2, i);
+
+	}//dessinContinu
+
+	public void dessinContinuRec(int x1, int y1, int x2, int y2, int longueur){
+
+		if (longueur <= 1) return;
+		else{
+			//Nord-Est
+			if(x1<=x2 && y1<=y2){
+				x1++;
+				y1++;
+				dessinePoint(x1,y1);
+				dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2));
+			}
+			//Sud-Est
+			if(x1<=x2 && y1>y2){
+				x1++;
+				y1--;
+				dessinePoint(x1,y1);
+				dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2));
+			}
+			//Sud-Ouest
+			if(x1>x2 && y1>y2){
+				x1--;
+				y1--;
+				dessinePoint(x1,y1);
+				dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2));
+			}
+			//Nord-Ouest
+			if(x1>x2 && y1<=y2){
+				x1--;
+				y1++;
+				dessinePoint(x1,y1);
+				dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2));
+			}
+		}
 	}
 
 	//rend la distance entre deux points
