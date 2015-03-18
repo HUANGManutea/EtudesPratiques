@@ -7,12 +7,15 @@ public class DrawAFigure : MonoBehaviour {
 	public Draw_menu dm;
 	private Texture2D tex;
 	public int largeurTrait;
+	protected int lastPosX;
+	protected int lastPosY;
 
 	void Start () {
 		isSelected = false;
 		Texture2D tex = new Texture2D(600,300);
 		gameObject.renderer.material.SetTexture(0, tex);
-
+		lastPosX = -1;
+		lastPosY = -1;
 	}
 
 	public void setIsSelect(bool b){
@@ -40,13 +43,18 @@ public class DrawAFigure : MonoBehaviour {
 				uv.x = (hit.point.x - hit.collider.bounds.min.x) / hit.collider.bounds.size.x;
 				uv.y = (hit.point.y - hit.collider.bounds.min.y) / hit.collider.bounds.size.y;
 
-				// Peindre ce point en noir (pour l'instant)
+				// Peindre ce point de la couleur selectionnee
 
 				tex = (Texture2D)hit.transform.gameObject.renderer.sharedMaterial.mainTexture;
+				if((lastPosX == -1) && (lastPosY == -1)){
+					lastPosX = (int)(uv.x * tex.width);
+					lastPosY = (int)(uv.y * tex.height);
+				}
 				dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height));
 				tex.Apply ();
 				gameObject.renderer.material.SetTexture(0, tex);
-
+				lastPosX = (int)(uv.x * tex.width);
+				lastPosY = (int)(uv.y * tex.height);
 			}
 		}
 
@@ -116,27 +124,54 @@ public class DrawAFigure : MonoBehaviour {
 
 	//Dessine une ligne entre deux points
 	//MARCHE PAS
-	/*void dessineLigne (int x1, int y1, int x2, int y2){
+	void dessineLigne (int x1, int y1, int x2, int y2){
 		int points = norme (x1, y1, x2, y2);
+		int tempX=x1,tempY=y1;
 
-		if (x1 == x2) {
-			for (int i = (int) Mathf.Min(y1,y2); i<= (int) Mathf.Max(y1,y2); i++)
-				dessinePoint (x1, i);
-			return;
-		} 
-		
-		if(y1 == y2){
-			for (int i = (int) Mathf.Min(x1,x2); i<= (int) Mathf.Max(x1,x2); i++)
-				dessinePoint (i, y1);
-			return;
-		}
-
-		
-			int pente = (y2 - y1) / (x2 - x1);
-			for (int i = (int) Mathf.Min(x1,x2); i<= (int) Mathf.Max(x1,x2); i++) {
-				dessinePoint (i, i * pente);
+		while (points > largeurTrait){
+			if(x1==x2){
+				//Nord
+				if(y1 <= y2){
+					
+				}
+				//Sud
+				if(y1 > y2){
+					
+				}
 			}
-	}*/
+			//Direction droite
+			if(x1>x2){
+				//Nord Est
+				if(y1 <= y2){
+					
+				}
+				//Est
+				if(y1==y2){
+					
+				}
+				//Sud Est
+				if(y1 > y2){
+					
+				}
+
+			}else{
+				//Direction gauche
+				//Sud Ouest
+				if(y1 > y2){
+					
+				}
+				//Ouest
+				if(y1==y2){
+					
+				}
+				//Nord Ouest
+				if(y1 <= y2){
+					
+				}
+			}
+
+		}//while
+	}
 
 	//rend la distance entre deux points
 	private int norme(int x1, int y1, int x2, int y2){
