@@ -56,8 +56,13 @@ public class DrawAFigure : MonoBehaviour {
 
 				tex.Apply ();
 				gameObject.renderer.material.SetTexture(0, tex);
-				lastPosX = (int)(uv.x * tex.width);
-				lastPosY = (int)(uv.y * tex.height);
+				if(Input.GetMouseButton (0)){
+					lastPosX = (int)(uv.x * tex.width);
+					lastPosY = (int)(uv.y * tex.height);
+				}else{
+					lastPosX = -1;
+					lastPosY = -1;
+				}
 			}
 		}
 
@@ -128,18 +133,6 @@ public class DrawAFigure : MonoBehaviour {
 	//Cree une ligne continu entre chaque point
 	public void dessinContinu(int x1, int y1, int x2, int y2){
 		int i;
-		//Vertical
-		if(x1==x2){
-			for (i= Mathf.Min(x1,x2); i<=Mathf.Max (x1,x2);i++)
-				dessinePoint(i,y1);
-			return;
-		}
-		//Horizontal
-		if(y1==y2){
-			for (i= Mathf.Min(y1,y2); i<=Mathf.Max (y1,y2);i++)
-				dessinePoint(x1,i);
-			return;
-		}
 		i = norme(x1, y1, x2, y2);
 		dessinContinuRec(x1, y1, x2, y2, i);
 
