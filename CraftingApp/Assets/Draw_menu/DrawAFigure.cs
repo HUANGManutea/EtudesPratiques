@@ -18,8 +18,14 @@ public class DrawAFigure : MonoBehaviour {
 		lastPosY = -1;
 	}
 
+	//Active ou désactive la zone de dessin
 	public void setIsSelect(bool b){
 		isSelected = b;
+	}
+
+	//Pour Aurelien : rend la texture dessinee
+	public Texture2D getTex(){
+		return tex;
 	}
 	
 	void OnGUI ()
