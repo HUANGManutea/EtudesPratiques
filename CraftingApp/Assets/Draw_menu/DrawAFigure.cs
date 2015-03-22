@@ -27,13 +27,13 @@ public class DrawAFigure : MonoBehaviour {
 	public Texture2D getTex(){
 		return tex;
 	}
-	
-	void OnGUI ()
+	void Update ()
+	//void OnGUI ()
 	{
-		Event evt = Event.current;
+		//Event evt = Event.current;
 		largeurTrait = ((int)dm.getDiam());
 
-		if (evt.isMouse && Input.GetMouseButton (0) && !isSelected) 
+		if (/*evt.isMouse && */Input.GetMouseButton (0) && !isSelected) 
 		{
 
 			// Utiliser un Ray qui coupe la plan en au niveau de la mousePosition
@@ -56,7 +56,7 @@ public class DrawAFigure : MonoBehaviour {
 					lastPosX = (int)(uv.x * tex.width);
 					lastPosY = (int)(uv.y * tex.height);
 				}
-				//dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height));
+				dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height));
 
 				dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height));
 
@@ -65,11 +65,13 @@ public class DrawAFigure : MonoBehaviour {
 				if(Input.GetMouseButton (0)){
 					lastPosX = (int)(uv.x * tex.width);
 					lastPosY = (int)(uv.y * tex.height);
-				}else{
-					lastPosX = -1;
-					lastPosY = -1;
 				}
+
 			}
+		}
+		if(!Input.GetMouseButton (0)){
+			lastPosX = -1;
+			lastPosY = -1;
 		}
 
 	}
