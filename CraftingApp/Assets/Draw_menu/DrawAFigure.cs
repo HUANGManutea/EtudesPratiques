@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class DrawAFigure : MonoBehaviour {
 
 	public bool isSelected;
 	public Draw_menu dm;
 	private Texture2D tex;
+	private Color color;
 	public int largeurTrait;
 	protected int lastPosX;
 	protected int lastPosY;
@@ -32,6 +34,8 @@ public class DrawAFigure : MonoBehaviour {
 	{
 		//Event evt = Event.current;
 		largeurTrait = ((int)dm.getDiam());
+		color = dm.getColor ();
+
 
 		if (/*evt.isMouse && */Input.GetMouseButton (0) && !isSelected) 
 		{
@@ -56,9 +60,14 @@ public class DrawAFigure : MonoBehaviour {
 					lastPosX = (int)(uv.x * tex.width);
 					lastPosY = (int)(uv.y * tex.height);
 				}
-				dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height));
-
-				dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height));
+				if(dm.getTool()==Draw_menu.Tools.PENCIL){
+					dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height), color);
+					dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), color);
+				}
+				if(dm.getTool()==Draw_menu.Tools.ERASER){
+					dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height), Color.clear);
+					dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), Color.clear);
+				}
 
 				tex.Apply ();
 				gameObject.renderer.material.SetTexture(0, tex);
@@ -73,11 +82,10 @@ public class DrawAFigure : MonoBehaviour {
 			lastPosX = -1;
 			lastPosY = -1;
 		}
-
 	}
 
 	//Dessine un poit de largeur largeurTrait aux coordonnées x et y
-	void dessinePoint (int x, int y){
+	void dessinePoint (int x, int y, Color c){
 		// y<largeurTrait || y>(300-largeurTrait)
 		
 		//Pointeur proche du bord gauche
@@ -86,7 +94,7 @@ public class DrawAFigure : MonoBehaviour {
 			for (int i=0; i<=(x+largeurTrait); i++) {
 				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
 					if(norme(x,y,i,j)<=largeurTrait)
-						tex.SetPixel (i, j, dm.getColor ());
+						tex.SetPixel (i, j, c);
 				}
 			}
 			return;
@@ -98,7 +106,7 @@ public class DrawAFigure : MonoBehaviour {
 			for (int i=x; i<=599; i++) {
 				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
 					if(norme(x,y,i,j)<=largeurTrait)
-						tex.SetPixel (i, j, dm.getColor ());
+						tex.SetPixel (i, j, c);
 				}
 			}
 			return;
@@ -110,7 +118,7 @@ public class DrawAFigure : MonoBehaviour {
 			for (int i=x; i<=(x+largeurTrait); i++) {
 				for (int j=0; j<=(y+largeurTrait); j++) {
 					if(norme(x,y,i,j)<=largeurTrait)
-						tex.SetPixel (i, j, dm.getColor ());
+						tex.SetPixel (i, j, c);
 				}
 			}
 			return;
@@ -122,7 +130,7 @@ public class DrawAFigure : MonoBehaviour {
 			for (int i=x; i<=(x+largeurTrait); i++) {
 				for (int j=y-largeurTrait; j<=299; j++) {
 					if(norme(x,y,i,j)<=largeurTrait)
-						tex.SetPixel (i, j, dm.getColor ());
+						tex.SetPixel (i, j, c);
 				}
 			}
 			return;
@@ -132,31 +140,31 @@ public class DrawAFigure : MonoBehaviour {
 		for (int i=x-largeurTrait; i<=(x+largeurTrait); i++) {
 			for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
 				if(norme(x,y,i,j)<=largeurTrait)
-			   		tex.SetPixel (i, j, dm.getColor ());
+			   		tex.SetPixel (i, j, c);
 			}
 		}
 
 	}
 
 	//Cree une ligne continu entre chaque point
-	public void dessinContinu(int x1, int y1, int x2, int y2){
+	public void dessinContinu(int x1, int y1, int x2, int y2, Color c){
 		int i;
 		i = norme(x1, y1, x2, y2);
-		dessinContinuRec(x1, y1, x2, y2, i);
+		dessinContinuRec(x1, y1, x2, y2, i, c);
 
 	}//dessinContinu
 
-	public void dessinContinuRec(int x1, int y1, int x2, int y2, int longueur){
+	public void dessinContinuRec(int x1, int y1, int x2, int y2, int longueur, Color c){
 		int i;
 		if (longueur <= 1) return;
 		if(x1==x2){
 			for (i= Mathf.Min(x1,x2); i<=Mathf.Max (x1,x2);i++)
-				dessinePoint(i,y1);
+				dessinePoint(i, y1, c);
 			return;
 			}
 		if(y1==y2){
 			for (i= Mathf.Min(y1,y2); i<=Mathf.Max (y1,y2);i++)
-				dessinePoint(x1,i);
+				dessinePoint(x1, i, c);
 			return;
 			}
 
@@ -164,29 +172,29 @@ public class DrawAFigure : MonoBehaviour {
 		if(x1<=x2 && y1<=y2){
 			x1++;
 			y1++;
-			dessinePoint(x1,y1);
-			dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2));
+			dessinePoint(x1,y1, c);
+			dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2), c);
 		}
 		//Sud-Est
 		if(x1<=x2 && y1>y2){
 			x1++;
 			y1--;
-			dessinePoint(x1,y1);
-			dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2));
+			dessinePoint(x1,y1, c);
+			dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2), c);
 		}
 		//Sud-Ouest
 		if(x1>x2 && y1>y2){
 			x1--;
 			y1--;
-			dessinePoint(x1,y1);
-			dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2));
+			dessinePoint(x1,y1, c);
+			dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2), c);
 		}
 		//Nord-Ouest
 		if(x1>x2 && y1<=y2){
 			x1--;
 			y1++;
-			dessinePoint(x1,y1);
-			dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2));
+			dessinePoint(x1,y1, c);
+			dessinContinuRec(x1,y1,x2,y2,norme(x1,y1,x2,y2), c);
 		}
 	}
 
