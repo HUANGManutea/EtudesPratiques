@@ -203,12 +203,32 @@ public class DrawAFigure : MonoBehaviour {
 		}
 	}
 
+
+	private Color colorToBucket;
 	//Pot de peinture
 	//http://fr.wikipedia.org/wiki/Algorithme_de_remplissage_par_diffusion
+	private void bucket(int x, int y, Color cApply,Color cOrigin,Texture2D tex){
+		if(x>=0 && x<600 && y>=0 && y<300){
+			if(!equals(tex.GetPixel(x,y),cApply)  &&  equals (tex.GetPixel(x,y), cOrigin)){
+				colorToBucket = tex.GetPixel(x,y);
+				tex.SetPixel(x,y,cApply);
+				tex.Apply ();
+				bucket (x,y+1,cApply,colorToBucket,tex);
+				bucket (x,y-1,cApply,colorToBucket,tex);
+				bucket (x+1,y,cApply,colorToBucket,tex);
+				bucket (x-1,y,cApply,colorToBucket,tex);
+			}
+		}
+	}
 
 	//rend la distance entre deux points
 	private int norme(int x1, int y1, int x2, int y2){
 		return (int) Mathf.Sqrt (Mathf.Pow ((x2 - x1), 2) + Mathf.Pow ((y2 - y1), 2));
+	}
+
+	//Compare deux Color
+	private bool equals(Color c1,Color c2){
+		return (c1.a == c2.a && c1.b == c2.b && c1.g == c2.g && c1.r == c2.r);
 	}
 
 }
