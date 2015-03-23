@@ -15,6 +15,10 @@ public class DrawAFigure : MonoBehaviour {
 	void Start () {
 		isSelected = false;
 		Texture2D tex = new Texture2D(600,300);
+		for(int i=0;i<=600;i++){
+			for(int j=0;j<=300;j++)
+				tex.SetPixel(i,j,Color.clear);
+		}
 		gameObject.renderer.material.SetTexture(0, tex);
 		lastPosX = -1;
 		lastPosY = -1;
