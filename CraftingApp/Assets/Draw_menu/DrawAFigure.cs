@@ -203,6 +203,9 @@ public class DrawAFigure : MonoBehaviour {
 		}
 	}
 
+	//Pot de peinture
+	//http://fr.wikipedia.org/wiki/Algorithme_de_remplissage_par_diffusion
+
 	//rend la distance entre deux points
 	private int norme(int x1, int y1, int x2, int y2){
 		return (int) Mathf.Sqrt (Mathf.Pow ((x2 - x1), 2) + Mathf.Pow ((y2 - y1), 2));
