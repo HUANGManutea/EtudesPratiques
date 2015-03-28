@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +54,13 @@
      <Compile Include="Assets\Redimension.cs" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\ConnectManager.cs" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FtpSend.cs" />
+     <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreator.cs" />
+     <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreatorInspector.cs" />
+     <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreatorUndoManager.cs" />
+     <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreatorWizard.cs" />
+     <Compile Include="Assets\UCLAGameLab\PasEditor\SimpleSurfaceEdge.cs" />
+     <Compile Include="Assets\UCLAGameLab\PasEditor\Triangulator.cs" />
+     <Compile Include="Assets\UCLAGameLab\PasEditor\UclaExtrusion.cs" />
      <Compile Include="Assets\UCLAGameLab\Scripts\MeshCreatorData.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
@@ -66,7 +73,7 @@
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

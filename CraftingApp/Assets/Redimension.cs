@@ -24,11 +24,11 @@ public class Redimension : MonoBehaviour {
 		
 		largeurEcran = Screen.width;
 		hauteurEcran = Screen.height;
-		Debug.Log("aaaaaaaaaa " + largeurEcran + " " + hauteurEcran);
+		//Debug.Log("aaaaaaaaaa " + largeurEcran + " " + hauteurEcran);
 		
 		largeur =  largeurEcran * (W-X);
 		hauteur = hauteurEcran * (H-Y);
-		print (largeur);
+		//print (largeur);
 
 		gameObject.transform.localScale = new Vector3(largeur/10, 1, hauteur/10);
 
