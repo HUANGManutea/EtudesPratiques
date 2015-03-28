@@ -26,15 +26,15 @@ sysinfo.txt
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
 [Ee]xported[Oo]bj/
-/*.userprefs
-/*.csproj
-/*.pidb
-/*.suo
-/*.sln*
-/*.sln
-/*.user
-/*.unityproj
-/*.booproj
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln*
+*.sln
+*.user
+*.unityproj
+*.booproj
  
 # ============ #
 # OS generated #
