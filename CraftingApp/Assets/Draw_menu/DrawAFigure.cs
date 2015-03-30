@@ -73,6 +73,10 @@ public class DrawAFigure : MonoBehaviour {
 					dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height), Color.clear);
 					dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), Color.clear);
 				}
+				if(dm.getTool()==Draw_menu.Tools.BUCKET){
+					bucket ((int)(uv.x * tex.width),(int)(uv.y * tex.height),color,tex.GetPixel ((int) uv.x,(int) uv.y),tex);
+				}
+
 
 				tex.Apply ();
 				gameObject.renderer.material.SetTexture(0, tex);
@@ -210,13 +214,11 @@ public class DrawAFigure : MonoBehaviour {
 	private void bucket(int x, int y, Color cApply,Color cOrigin,Texture2D tex){
 		if(x>=0 && x<600 && y>=0 && y<300){
 			if(!equals(tex.GetPixel(x,y),cApply)  &&  equals (tex.GetPixel(x,y), cOrigin)){
-				colorToBucket = tex.GetPixel(x,y);
 				tex.SetPixel(x,y,cApply);
-				tex.Apply ();
-				bucket (x,y+1,cApply,colorToBucket,tex);
-				bucket (x,y-1,cApply,colorToBucket,tex);
-				bucket (x+1,y,cApply,colorToBucket,tex);
-				bucket (x-1,y,cApply,colorToBucket,tex);
+				bucket (x,y+1,cApply,cOrigin,tex);
+				bucket (x,y-1,cApply,cOrigin,tex);
+				bucket (x+1,y,cApply,cOrigin,tex);
+				bucket (x-1,y,cApply,cOrigin,tex);
 			}
 		}
 	}
