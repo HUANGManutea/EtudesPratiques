@@ -9,13 +9,17 @@ public class UclaExtrusion : MonoBehaviour {
 	public string gameObjectName = "Mesh Creator Object";
 	public ObjectMeshType meshType = ObjectMeshType.Flat2D;
 	public DrawAFigure drawing;
+	public Vector3 posIni = new Vector3(3829, 50 ,30);
 	private string testTexture = "Asset/textures/test.png";
 
 	public void doTheCube(){
 		
 		// create the new object and set the proper variables		
 		GameObject newObject = new GameObject(gameObjectName);
+		newObject.transform.position = posIni;
+		
 		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath(testTexture, typeof(Texture2D));
+
 		//textureToCreateMeshFrom = drawing.getTex();
 		MeshCreatorData mcd = newObject.AddComponent("MeshCreatorData") as MeshCreatorData;
 		
