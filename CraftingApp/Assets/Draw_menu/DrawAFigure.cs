@@ -32,6 +32,7 @@ public class DrawAFigure : MonoBehaviour {
 
 	//Pour Aurelien : rend la texture dessinee
 	public Texture2D getTex(){
+		tex.Apply ();
 		return tex;
 	}
 	void Update ()

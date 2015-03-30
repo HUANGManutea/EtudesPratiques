@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 //using UnityEditor;
 using System.Collections;
+using System.IO;
 
 
 public class UclaExtrusion : MonoBehaviour {
@@ -10,7 +11,7 @@ public class UclaExtrusion : MonoBehaviour {
 	public ObjectMeshType meshType = ObjectMeshType.Flat2D;
 	public DrawAFigure drawing;
 	public Vector3 posIni = new Vector3(3829, 50 ,30);
-	private string testTexture = "Asset/textures/test.png";
+	private string testTexture = "Assets/textures/test.png";
 
 	public void doTheCube(){
 		
@@ -18,9 +19,12 @@ public class UclaExtrusion : MonoBehaviour {
 		GameObject newObject = new GameObject(gameObjectName);
 		newObject.transform.position = posIni;
 		
-		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath(testTexture, typeof(Texture2D));
-
+		//textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath(testTexture, typeof(Texture2D));
 		//textureToCreateMeshFrom = drawing.getTex();
+		var bytes = drawing.getTex().EncodeToPNG();
+		File.WriteAllBytes("Assets/textures/test2.png", bytes);
+		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath("Assets/textures/test2.png", typeof(Texture2D));
+
 		MeshCreatorData mcd = newObject.AddComponent("MeshCreatorData") as MeshCreatorData;
 		
 		// set up mesh creator data
