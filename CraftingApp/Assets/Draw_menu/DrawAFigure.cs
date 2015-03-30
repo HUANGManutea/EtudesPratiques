@@ -75,7 +75,9 @@ public class DrawAFigure : MonoBehaviour {
 					dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), Color.clear);
 				}
 				if(dm.getTool()==Draw_menu.Tools.BUCKET){
-					bucket ((int)(uv.x * tex.width),(int)(uv.y * tex.height),color,tex.GetPixel ((int) uv.x,(int) uv.y),tex);
+					int x = (int)(uv.x * tex.width);
+					int y = (int)(uv.y * tex.height);
+					bucket (x,y,color,tex.GetPixel (x,y),tex);
 				}
 
 
@@ -213,9 +215,11 @@ public class DrawAFigure : MonoBehaviour {
 	//Pot de peinture
 	//http://fr.wikipedia.org/wiki/Algorithme_de_remplissage_par_diffusion
 	private void bucket(int x, int y, Color cApply,Color cOrigin,Texture2D tex){
+		//Debug.Log("bucket " + cApply + " " + cOrigin );
 		if(x>=0 && x<600 && y>=0 && y<300){
 			if(!equals(tex.GetPixel(x,y),cApply)  &&  equals (tex.GetPixel(x,y), cOrigin)){
 				tex.SetPixel(x,y,cApply);
+				//tex.Apply();
 				bucket (x,y+1,cApply,cOrigin,tex);
 				bucket (x,y-1,cApply,cOrigin,tex);
 				bucket (x+1,y,cApply,cOrigin,tex);
