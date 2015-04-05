@@ -13,7 +13,7 @@
 	\\
 	Encadrants : François \textsc{LEHERICEY}	Bertrand \textsc{COUASNON}}
 
-\date{1 Juin 2015}                    % Ne pas modifier
+\date{4 Mai 2015}                    % Ne pas modifier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -40,15 +40,27 @@
 		%Rappel rapide des technologies utilisées
 	\section{Organisation du travail}
 	%découpage des tâches et répartition du travail + explication séances hebdomadaires
-	Dès le début du projet, nous nous sommes divisé le travail afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, et l'export de la figure finale sur un serveur Unity. 
+	Dès le début du projet, nous nous sommes divisé le travail afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'export de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagé entre nous.
 	
-	Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectués par les différents membres de notre projet et nous pouvions être épaulés dans le développement par M. François LEHERICEY.
+	Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectués par les différents membres de notre projet et nous pouvions bénéficié de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont ont ne trouvais pas les solutions.
 	\section{Présentation de l'application}
 		%combien de temps passé pour chaque tâche
 		%Problèmes rencontrées et solutions apportées, en quoi ces solutions ont été utilisées par la suite
 		\subsection{L'IHM}
+			Nous devions d'abord crée le design de l'Interface Homme-Machine. On avais défini sur papier à quoi ressemblerai les divers menus. Pour les mettre en place sous Unity, nous avons dû nous servir de leur mise à jour 4.6 qui contiens un système de fenêtre adaptées aux menus (UI), sortie fin novembre 2014. Au vue de sa date de sortie récente, nous avions accès à peu d'aide sur internet. Après une avancées assez laborieuse sur le début, on as réussi à mettre en place ce canvas principal.
+			
+			Le temps passer sur cette partie nous as permis d'acquérir les connaissances nécessaires sur les outils UI de Unity et donc d'avancer plus rapidement dans la suite. de plus les différents boutons étaient en place et n'attendent plus que les scripts écris dans les autres parties.
+		
 		\subsection{Le dessin}
+			La capture du dessins étant une partie lourde, nous avons décidé de séparé les outils de cette partie. C'est la personne en charge de l'IHM, donc déjà accoutumé avec les menus qui s'en est occupée.
+		
+		
 			\subsubsection{Les outils}
+				Suite direct de l'IHM, un sous menus coulissant devais être présent pour pouvoir choisir les outils de dessins. Pour rendre le menus coulissant, la solution qui nous a paru la plus adaptées est de se servir de la gestion des animations d'Unity. Une fois celle-ci faites, elles ont été lié à des boutons pour les enclenchées. 
+				
+				Dans cette partie la difficulté étais de choisir comment codé la sélection d'outils. Pour cela nous avons choisis de crée une énumération pour chaque ensemble d'outils (couleurs, diamètres, pinceau/gomme/pot de peinture). Des fonctions pour récupéré les outils courants ont été implanté, pour permettre au reste de l'application d'avoir connaissance de l'état des outils. De même des fonctions de Set ont été liés aux boutons appropriés. Pour respecter les droits d'images, nous avons dessiné nous même les icônes des boutons.
+				
+				Cette partie n'étais pas très compliqué en elle même. Après des tests utilisateurs nous avons accéléré les animations. Et au cours du dévellopement, ces animations ont dû être plusieurs fois refaite car déclenchais des bugs non-expliqués.
 			\subsubsection{La zone de dessin}
 		\subsection{L'extrusion}
 		\subsection{Placement de la figure}
