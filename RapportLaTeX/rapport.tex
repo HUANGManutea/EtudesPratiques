@@ -35,7 +35,7 @@
 		%Présentation succinte du projet
 		Notre équipe s'est mobilisée autour d'une question : Comment un utilisateur novice peut-il créer facilement et rapidement un objet en 3D à partir d'un gribouilli ?
 		
-		Afin d'y répondre nous avons cherché à développer une application intuitive. Mais nous avions quelques contraintes : l'utilisateur dessinera sur tablette et les objets 3D devront être exportés sur un serveur Unity. Cet envoi à un serveur Unity doit permettre aux chercheurs de IRISA d'insérer rapidement des objets simples dans une de leurs scènes.
+		Afin d'y répondre nous avons cherchés à développer une application intuitive. Mais nous avions quelques contraintes : l'utilisateur dessinera sur la tablette et les objets 3D devront être exportés vers un serveur Unity. Cet envoi à un serveur Unity doit permettre aux chercheurs de l'IRISA d'insérer rapidement des objets simples dans une de leurs scènes.
 	\section{État de l'art}
 		%Rappel rapide des technologies utilisées
 	\section{Organisation du travail}
@@ -48,7 +48,7 @@
 		%Problèmes rencontrées et solutions apportées, en quoi ces solutions ont été utilisées par la suite
 		\subsection{L'IHM}
 			Nous devions d'abord crée le design de l'Interface Homme-Machine. On avais défini sur papier à quoi ressemblerai les divers menus. Pour les mettre en place sous Unity, nous avons dû nous servir de leur mise à jour 4.6 qui contiens un système de fenêtre adaptées aux menus (UI), sortie fin novembre 2014. Au vue de sa date de sortie récente, nous avions accès à peu d'aide sur internet. Après une avancées assez laborieuse sur le début, on as réussi à mettre en place ce canvas principal.
-			
+			%expliquer ce qu'est un canvas ?
 			Le temps passer sur cette partie nous as permis d'acquérir les connaissances nécessaires sur les outils UI de Unity et donc d'avancer plus rapidement dans la suite. de plus les différents boutons étaient en place et n'attendent plus que les scripts écris dans les autres parties.
 		
 		\subsection{Le dessin}
@@ -56,12 +56,16 @@
 		
 		
 			\subsubsection{Les outils}
-				Suite direct de l'IHM, un sous menus coulissant devais être présent pour pouvoir choisir les outils de dessins. Pour rendre le menus coulissant, la solution qui nous a paru la plus adaptées est de se servir de la gestion des animations d'Unity. Une fois celle-ci faites, elles ont été lié à des boutons pour les enclenchées. 
+				Suite direct de l'IHM, un sous menus coulissant devais être présent pour pouvoir choisir les outils de dessins. Pour rendre le menus coulissant, la solution qui nous a paru la plus adaptées est de se servir de la gestion des animations d'Unity. Une fois celle-ci faites, elles ont été lié à des boutons pour les enclenchées.  
 				
-				Dans cette partie la difficulté étais de choisir comment codé la sélection d'outils. Pour cela nous avons choisis de crée une énumération pour chaque ensemble d'outils (couleurs, diamètres, pinceau/gomme/pot de peinture). Des fonctions pour récupéré les outils courants ont été implanté, pour permettre au reste de l'application d'avoir connaissance de l'état des outils. De même des fonctions de Set ont été liés aux boutons appropriés. Pour respecter les droits d'images, nous avons dessiné nous même les icônes des boutons.
+				Dans cette partie la difficulté étais de choisir comment codé la sélection d'outils. Pour cela nous avons choisis de crée une énumération pour chaque ensemble d'outils (couleurs, diamètres, pinceau/gomme/pot de peinture). Des fonctions pour récupéré les outils courants ont été implanté, pour permettre au reste de l'application d'avoir connaissance de l'état des outils. De même des fonctions de Set ont été liés aux boutons appropriés. Pour respecter les droits d'images, nous avons dessiné nous même les i...(line truncated)...
 				
 				Cette partie n'étais pas très compliqué en elle même. Après des tests utilisateurs nous avons accéléré les animations. Et au cours du dévellopement, ces animations ont dû être plusieurs fois refaite car déclenchais des bugs non-expliqués.
 			\subsubsection{La zone de dessin}
+			
+			C'est pour nous la première étape de la création d'un objet 3D. A la suite de cette étape, nous souhaitions obtenir une image à extruder. Les images sont appelées textures sous Unity. Nous avons utilisé un plan comme object de référence pour la zone de dessin.
+			
+			Un premier problème apparut alors quant au dimensionnement de cette zone de dessin. Le plan ayant une taille précise, il fallait être capable de modifier sa taille par rapport à celle du canvas. Nous avons donc rédigé un script qui initialise la dimension de la zone de dessin, autant pour le plan que pour la texture qui lui est associée.
 		\subsection{L'extrusion}
 		\subsection{Placement de la figure}
 		\subsection{La gestion de la liste des figures}
