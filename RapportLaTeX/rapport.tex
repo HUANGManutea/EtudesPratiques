@@ -40,7 +40,7 @@
 		%Rappel rapide des technologies utilisées
 	\section{Organisation du travail}
 	%découpage des tâches et répartition du travail + explication séances hebdomadaires
-	Dès le début du projet, nous nous sommes divisés le travail afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
+	Dès le début du projet, nous nous sommes divisés le travail et hébergé notre projet sous git afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
 	
 	Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont on ne trouvait pas les solutions.
 	\section{Présentation de l'application}
@@ -68,6 +68,7 @@
 			Un premier problème apparut alors quant au dimensionnement de cette zone de dessin. Le plan ayant une taille précise, il fallait être capable de modifier sa taille par rapport à celle du canvas. Nous avons donc rédigé un script qui initialise la dimension de la zone de dessin, autant pour le plan que pour la texture qui lui est associée.
 		\subsection{L'extrusion}
 		\subsection{Placement de la figure}
+			Pour placer une figure dans le décor 3D, il fallait créer des menus pour dirigée celle-ci. Et crée une caméra qui filmerait l'objet courant selon ses axes. Après de multiples recherches sur la gestion des caméras Unity, nous avons finalement réussi à écrire un script assurant ce suivi avec une possibilité de changer aisément l'axe de vue. Ensuite il y a eu la mise en place d'un menu pour diriger notre figure. Celui-ci est relativement simple à mettre en place aux vues de ce que l'on a réalisé précédemment dans l'IHM. La difficulté de cette partie est de concevoir un script pour modifier la taille de notre figure.
 		\subsection{La gestion de la liste des figures}
 		\subsection{L'envoi}
 	\section{Objectifs}
@@ -76,5 +77,10 @@
 		%Ce que l'on se souviendra du projet
 		%Si c'était à refaire, quoi changer?
 		%Quelles sont les évolutions que l'on pourrait apporter à notre application finale
+			Nous en retenons qu'Unity est un outil puissant, mais pas encore adapté à la création de menus. Ce travail nous a permis d'appréhender Git, ce qui est nécessaire dans notre domaine. Ce qui en ressort aussi c'est que l'on doit se fixer des objectifs clairs et essayer au maximum de se donner des délais pour chacune des tâches. Cela évite qu'une partie minime du projet ne nous accapare tout notre temps.
+			
+			Si l'on nous représentait ce projet, nous changerions notre méthode de travail sur plusieurs points. Notamment, nous passerions moins de temps sur l'état de l'art, dès le début il était quasiment sûr qu'Unity serait notre choix. Ensuite, nous procéderions à un partage des recherches et des réflexions aux premiers instants du projet. Et nous commencerions à apprendre Unity en octobre. Car ce manque d'apprentissage nous a fait défaut, nous cherchions des solutions à des problèmes précis sans nécessairement comprendre les solutions trouvées. Mais le manque de temps ne nous permettais pas de faire autrement en décembre.
+			
+			Notre application a encore plusieurs voies d'améliorations possibles. Comme l'implantation d'outils pour faire des sphères, avec des extrusions circulaires.
 	
 \end{document}
