@@ -47,7 +47,7 @@
 		%combien de temps passé pour chaque tâche
 		%Problèmes rencontrées et solutions apportées, en quoi ces solutions ont été utilisées par la suite
 		\subsection{L'IHM}
-			Nous devions d'abord créer le design de l'Interface Homme-Machine (HIM). Nous avons défini sur papier auquel devaient ressembler les divers menus. Afin de les mettre en place sous Unity, nous avons dû nous servir de leur mise à jour 4.6 qui contient un système de fenêtre adapté à la création de menus (UI), sortie fin novembre 2014. Au vu de sa date de sortie récente, nous avions accès à peu d'aides sur Internet. Après une avancée assez laborieuse sur le début, nous avons réussi à mettre en place un canva...(line truncated)...
+			Nous devions d'abord créer le design de l'Interface Homme-Machine (IHM). Nous avons défini sur papier auquel devaient ressembler les divers menus. Afin de les mettre en place sous Unity, nous avons dû nous servir de leur mise à jour 4.6 qui contient un système de fenêtre adapté à la création de menus (UI), sortie fin novembre 2014. Au vu de sa date de sortie récente, nous avions accès à peu d'aides sur Internet. Après une avancée assez laborieuse sur le début, nous avons réussi à mettre en place un canevas.
 			%expliquer ce qu'est un canvas ?
 			Le temps passé sur cette partie, nous avons permis d'acquérir les connaissances nécessaires sur les outils UI d'Unity et donc d'avancer plus rapidement dans la suite du développement. De plus les différents boutons étaient en place et n'attendaient plus que les scripts écrits dans les autres parties.
 		
@@ -58,7 +58,7 @@
 			\subsubsection{Les outils}				
 				Suite directe de l'IHM, un sous-menu coulissant devait être présent pour pouvoir choisir les outils de dessin. Pour rendre le menu coulissant, la solution qui nous a paru la plus adaptée est de se servir de la gestion des animations d'Unity. Une fois celles-ci faites, elles ont été liées à des boutons pour les enclencher.
 					
-				Dans cette partie la difficulté était de choisir comment coder la sélection d'outils. Pour cela, nous avons choisi de créer une énumération pour chaque ensemble d'outils (couleurs, diamètres, pinceau/gomme/pot de peinture). Des fonctions pour récupérer les outils courants ont été implantées, pour permettre au reste de l'application d'avoir connaissance de l'état des outils. De même des fonctions de Set ont été liées aux boutons appropriés. Pour respecter les droits d'images, nous avons dessiné nous-même...(line truncated)...
+				Dans cette partie la difficulté était de choisir comment coder la sélection d'outils. Pour cela, nous avons choisi de créer une énumération pour chaque ensemble d'outils (couleurs, diamètres, pinceau/gomme/pot de peinture). Des fonctions pour récupérer les outils courants ont été implantées, pour permettre au reste de l'application d'avoir connaissance de l'état des outils. De même des fonctions de Set ont été liées aux boutons appropriés. Pour respecter les droits d'images, nous avons dessiné nous-même.
 				
 				Cette partie n'était pas très compliquée en elle-même. Après des tests utilisateurs, nous avons accéléré les animations. Et au cours du développement, ces animations ont dû être plusieurs fois refaites, car elles déclenchaient des bugs non expliqués.
 			\subsubsection{La zone de dessin}
