@@ -77,8 +77,14 @@
 
 		\subsection{La gestion de la liste des figures}
 		\subsection{L'envoi}
+			Un fois l'objet en 3D créé, nous devons l'envoyer à un serveur qui affichera cet objet dans une scène 3D.
+			Nous avons tout d'abord pensé utiliser les assets , c'est-à-dire les classes, propres à unity gérant le réseau entre différentes applications Unity. Mais nous avons très vite été confronté à un problème: Unity est avant tout un moteur de jeu, et les classes sont développées dans cette optique.
+			Par exemple, si on examine un jeu en multijoueur, on se rend compte que le contenu, les objets, sont déjà tous connus du serveur et des clients. Or, nous créons un objet à partir de zéro, et nous voulons l'envoyer au serveur. On ne peut donc pas utiliser les classes dédiées au réseau. Nous avons donc décidé de nous orienter vers d'autres solutions.
+			Comme notre application a été codée en C\#, nous avons décidé de passer par les classes de .NET pour la gestion du réseau.
+			La nouvelle piste est d'utiliser les "sockets" ou connecteurs réseau qui permettent, entre autre, de connecter un serveur et un client et d'échanger des données. Nous avons dû choisir parmi deux protocoles d'échange de données: UDP et TCP.
+			M. François LEHERICEY nous a informé que le protocole UDP ne fonctionnerait pas sur le réseau de l'IRISA, ainsi nous avons choisi le protocole TCP.
 	\section{Objectifs}
-		%Nos objectifs ont-il été atteints? Si Non, quels ont été les choix faits en cours de routes pour changer ou abandonner certains objectifs.
+		L'échange de données entre le serveur et l'application n'est pas encore au point, il faut donc travailler sur cet aspect. Mais nous sommes confiant, car nous avons une piste solide, comparé au début où nous cherchions sans trop savoir quoi utiliser.
 	\section{Conclusion}
 		%Ce que l'on se souviendra du projet
 		%Si c'était à refaire, quoi changer?
