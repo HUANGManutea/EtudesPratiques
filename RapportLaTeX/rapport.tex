@@ -23,19 +23,21 @@
 \thispagestyle{empty}      % Supprime le numéro de page sur la 1re page
 
 \begin{abstract}
-	Lors de leur troisième année, les étudiants de l'INSA de Rennes doivent réaliser un projet. Notre groupe a choisi de travailler sur le développement d'une application sur tablette. Cette application doit permettre à un utilisateur novice de créer rapidement et facilement des objets en 3D à partir d'un dessin 2D. 
+	Lors de leur troisième année, les étudiants de l'INSA de Rennes doivent réaliser un projet. Notre groupe a choisi de travailler sur le développement d'une application sur tablette. Ce logiciel doit être assez intuitive pour permettre à un utilisateur novice, de créer rapidement et facilement des objets en 3D à partir d'un dessin 2D.
 \end{abstract}
 	
 	\section{Remerciements}
 		Nous souhaitons tout d'abord remercier Monsieur François LEHERICEY pour sa disponibilité ainsi que pour ses précieuses informations.
 		
 		Nous voudrions également remercier Monsieur Bertrand COUASNON pour son apport de connaissances ainsi que son aide dans l'élaboration de nos différentes présentations.
-				
+		
+	\newpage %saut de page
+	
 	\section{Introduction} %Pas oublier de changer GRIBOUILLI
 		%Présentation succinte du projet
-		Notre équipe s'est mobilisée autour d'une question : Comment un utilisateur novice peut-il créer facilement et rapidement un objet en 3D à partir d'un gribouilli ?
+		Notre équipe s'est mobilisée autour d'une question : Comment un utilisateur novice peut-il créer facilement et rapidement un objet en 3D à partir d'un dessin simpliste ?
 		
-		Afin d'y répondre nous avons cherchés à développer une application intuitive. Mais nous avions quelques contraintes : l'utilisateur dessinera sur la tablette et les objets 3D devront être exportés vers un serveur Unity. Cet envoi à un serveur Unity doit permettre aux chercheurs de l'IRISA d'insérer rapidement des objets simples dans une de leurs scènes.
+		Afin d'y répondre nous avons cherché à développer une application intuitive. Mais nous avions quelques contraintes : l'utilisateur dessinera sur la tablette et les objets 3D devront être exportés vers un serveur Unity. Cet envoi à un serveur Unity doit permettre aux chercheurs de l'IRISA d'insérer rapidement des objets simples dans une de leurs scènes.
 	\section{État de l'art}
 		%Rappel rapide des technologies utilisées
 	\section{Organisation du travail}
@@ -43,13 +45,15 @@
 	Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
 	
 	Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont nous ne trouvions pas les solutions.
+	\newpage
+	
 	\section{Présentation de l'application}
 		%combien de temps passé pour chaque tâche
 		%Problèmes rencontrées et solutions apportées, en quoi ces solutions ont été utilisées par la suite
 		\subsection{L'IHM}
-			Nous devions d'abord créer le design de l'Interface Homme-Machine (IHM). Nous avons défini sur papier à quoi devaient ressembler les divers menus. Afin de les mettre en place sous Unity, nous avons dû nous servir de leur mise à jour 4.6 qui contient un système de fenêtres adapté à la création de menus (UI), sortie fin novembre 2014. Au vu de sa date de sortie récente, nous avions accès à peu d'aides sur Internet. Après une avancée assez laborieuse sur le début, nous avons réussi à mettre en place le canevas principal.
+			Nous devions d'abord créer le design de l'Interface Homme-Machine (IHM). Nous avons défini sur papier à quoi devaient ressembler les divers menus. Afin de les mettre en place sous Unity, nous avons dû nous servir de la mise à jour 4.6 qui contient un système de fenêtres adapté à la création de menus (UI), sortie fin novembre 2014. Au vu de sa date de sortie récente, nous avions accès à peu d'aides sur Internet. Après une avancée assez laborieuse sur le début, nous avons réussi à mettre en place le canevas principal.
 			%expliquer ce qu'est un canvas ?
-			Le temps passé sur cette partie, nous avons permis d'acquérir les connaissances nécessaires sur les outils UI d'Unity et donc d'avancer plus rapidement dans la suite du développement. De plus les différents boutons étaient en place et n'attendaient plus que les scripts écrits dans les autres parties.
+			Le temps passé sur cette partie, nous avons permis d'acquérir les connaissances nécessaires sur les outils UI d'Unity et donc d'avancer plus rapidement dans la suite du développement. De plus, les différents boutons étaient en place et n'attendaient plus que les scripts écrits dans les autres parties.
 		
 		\subsection{Le dessin}
 			La capture du dessin étant une partie lourde, nous avons décidé de séparer les outils de cette partie. C'est la personne en charge de l'IHM, donc déjà accoutumée avec les menus qui s'en sont occupés.
@@ -70,10 +74,10 @@
 			Il fallait ensuite être capable de dessiner sur la texture, or l'objet (le plan ici) et la texture ont des dimensions différentes : nous avons d'abord tenté de modifier la texture à l'endroit on l'ont cliquait, mais il y avait toujours un décalage à l'affichage. Finalement, la solution la plus efficace fut de projeter un Ray, objet monodirectionnel qui traverse l'espace, au moment où l'on clique dans la zone de dessin, et de trouver le pixel à l'intersection de ces deux objets. On a ainsi pu, dans un premier temps, modifier un pixel en cliquant dessus. Ensuite, pour garder un tracé continu, nous avons implémenté une méthode qui trace la droite entre le dernier point colorié, et le point sur lequel on clique. Il restait à faire le lien entre la zone de dessin, et les différents outils définis plus tôt. Ainsi, la zone de dessin va chercher les différentes couleurs, la largeur du trait, et les outils à utiliser dans le menu déroulant. Nous avons aussi implémenté des méthodes "eraser" et "bucket", capables de gommer et remplir rapidement une surface.
 		\subsection{L'extrusion}
 		
-		L'extrusion est une autre tâche importante du projet. En effet, il faut partir d'une texture, créée un objet en 3D. Pour ce faire, nous sommes partis d'une application déjà existante : UCLA Mesh Creator. C'est un créateur d'objets 3D à partir d'une texture. Seulement, il a fallu repris le code pour l'adapter à notre utilisation. Initialement, cette application sert à créer rapidement et simplement un objet afin de pouvoir l'insérer dans son jeu rapidement. De plus, il est possible de la faire fonctionner uniquement en mode "édition". Il y a deux modes quand on l'on travaille sous Unity : le mode "édition", qui nous permet de créer des scènes avec nos objets, nos animations, ..., et un mode "jeu" où l'on voit le rendu final que l'utilisateur verra. Nous nous sommes donc concentrés sur l'adaptation du code déjà existant plutôt que sur la recherche et l'implémentation d'un ou plusieurs algorithmes afin de détecter les contours d'une image. Seulement, comme c'est une adaptation, il y a une longue phase de compréhension et de test afin de faire fonctionner comme il faut cette application. 
+		L'extrusion est une autre tâche importante du projet. En effet, il faut à partir d'une texture, créer un objet en 3D. Pour ce faire, nous sommes partis d'une extension Unity déjà existante : UCLA Mesh Creator. C'est un créateur d'objets 3D, à partir d'une texture. Seulement, il a fallu reprendre le code pour l'adapter à notre utilisation. Initialement, cette application sert à créer rapidement et simplement un objet afin de pouvoir l'insérer dans son jeu. De plus, il est possible de la faire fonctionner uniquement en mode "édition". Il y a deux modes quand on l'on travaille sous Unity : le mode "édition", qui nous permet de créer des scènes avec nos objets ,nos animations, et un mode "jeu" où l'on voit le rendu final que l'utilisateur verra. Nous nous sommes donc concentrés sur l'adaptation du code déjà existant plutôt que sur la recherche et l'implémentation d'un ou plusieurs algorithmes afin de détecter les contours d'une image. Seulement, comme c'est une adaptation, il y a une longue phase de compréhension et de test afin de faire fonctionner comme il faut cette application. 
 		\subsection{Placement de la figure}
 		
-			Pour placer une figure dans le décor 3D, il fallait créer des menus pour diriger celle-ci. Et intégrer une caméra qui filmerait l'objet courant selon ses axes. Après de multiples recherches sur la gestion des caméras Unity, nous avons finalement réussi à écrire un script assurant ce suivi avec une possibilité de changer aisément l'axe de vue. Ensuite il y a eu la mise en place d'un menu pour diriger notre figure. Celui-ci est relativement simple à mettre en place aux vues de ce que l'on a réalisé précédemment dans l'IHM. La difficulté de cette partie est de concevoir un script pour modifier la taille de notre figure.
+			Pour placer une figure dans le décor 3D, il faut créer des menus pour diriger celle-ci. Et intégrer une caméra qui filmerait l'objet courant selon ses axes. Après de multiples recherches sur la gestion des caméras Unity, nous avons finalement réussi à écrire un script assurant ce suivi avec une possibilité de changer aisément l'axe de vue. Ensuite il y a eu la mise en place d'un menu pour diriger notre figure. Celui-ci est relativement simple à mettre en place aux vues de ce que l'on a réalisé précédemment dans l'IHM. La difficulté de cette partie est de concevoir un script pour modifier la taille de notre figure.
 
 		\subsection{La gestion de la liste des figures}
 		\subsection{L'envoi}
@@ -90,7 +94,7 @@
 		%Ce que l'on se souviendra du projet
 		%Si c'était à refaire, quoi changer?
 		%Quelles sont les évolutions que l'on pourrait apporter à notre application finale
-			Nous en retenons qu'Unity est un outil puissant, mais pas encore adapté à la création de menus. Ce travail nous a permis d'appréhender Git, ce qui est nécessaire dans notre domaine. Ce qui en ressort aussi c'est que l'on doit se fixer des objectifs clairs et essayer au maximum de se donner des délais pour chacune des tâches. Cela évite qu'une partie minime du projet ne nous accapare tout notre temps.
+			Nous en retenons qu'Unity est un outil puissant, mais pas encore adapté à la création de menus, et orienté pair-à-pair. Ce travail nous a permis d'appréhender Git, ce qui est nécessaire dans notre domaine. Ce qui en ressort aussi c'est que l'on doit se fixer des objectifs clairs et essayer au maximum de se donner des délais pour chacune des tâches. Cela évite qu'une partie minime du projet ne nous accapare tout notre temps.
 			
 			Si l'on nous représentait ce projet, nous changerions notre méthode de travail sur plusieurs points. Notamment, nous passerions moins de temps sur l'état de l'art, dès le début il était quasiment sûr qu'Unity serait notre choix. Ensuite, nous procéderions à un partage des recherches et des réflexions aux premiers instants du projet. Et nous commencerions à apprendre Unity en octobre. Car ce manque d'apprentissage nous a fait défaut, nous cherchions des solutions à des problèmes précis sans nécessairement comprendre les solutions trouvées. Mais le manque de temps ne nous permettais pas de faire autrement en décembre.
 			
