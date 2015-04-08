@@ -62,6 +62,7 @@
      <Compile Include="Assets\UCLAGameLab\PasEditor\Triangulator.cs" />
      <Compile Include="Assets\UCLAGameLab\PasEditor\UclaExtrusion.cs" />
      <Compile Include="Assets\UCLAGameLab\Scripts\MeshCreatorData.cs" />
+     <Compile Include="Assets\quit.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
