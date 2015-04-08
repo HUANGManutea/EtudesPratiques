@@ -14,11 +14,11 @@ public class FollowObject : MonoBehaviour {
 		dir = Direction.X;
 	}
 	
-	void setName(string s){
+	public void setName(string s){
 		name = s;
 	}
 	
-	void setDir(char s){
+	public void setDir(char s){
 		switch (s) {
 		case 'X':
 			dir = Direction.X;
