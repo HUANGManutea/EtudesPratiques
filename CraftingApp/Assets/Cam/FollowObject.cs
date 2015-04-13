@@ -18,8 +18,8 @@ public class FollowObject : MonoBehaviour {
 		name = s;
 	}
 	
-	public void setDir(char s){
-		switch (s) {
+	public void setDir(string s){
+		switch (s[0]) {
 		case 'X':
 			dir = Direction.X;
 			break;
@@ -31,6 +31,13 @@ public class FollowObject : MonoBehaviour {
 			break;
 		}
 		
+	}
+
+	public void front(){
+		camera.depth = 2;
+		}
+	public void back(){
+		camera.depth = -2;
 	}
 	
 	
