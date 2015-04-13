@@ -14,12 +14,6 @@ public class Redimension : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-
-
-	}
-	
-	void Update () {
-		
 		myobject.transform.localPosition = new Vector3 (11, -17, -10);
 		
 		largeurEcran = Screen.width;
@@ -29,9 +23,15 @@ public class Redimension : MonoBehaviour {
 		largeur =  largeurEcran * (W-X);
 		hauteur = hauteurEcran * (H-Y);
 		//print (largeur);
-
-		gameObject.transform.localScale = new Vector3(largeur/10, 1, hauteur/10);
 		
+		gameObject.transform.localScale = new Vector3(largeur/10, 1, hauteur/10);
+
+
+	}
+	
+	void Update () {
+		
+
 
 	}
 }
