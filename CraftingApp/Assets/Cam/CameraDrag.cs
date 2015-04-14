@@ -14,14 +14,13 @@ public class CameraDrag : MonoBehaviour
 	void Start(){
 			largeur = Screen.width;
 			hauteur = Screen.height;
+			
 		}
 
 	void Update()
 	{
 		Vector3 pos = Input.mousePosition;
 
-
-		
 		if (Input.GetMouseButton(0) && (pos.x > X*largeur && pos.x < W*largeur) && 
 		    	(pos.y > Y*hauteur && pos.y < H*hauteur)) {
 			float origine = Input.GetAxis("Mouse X");
@@ -33,7 +32,19 @@ public class CameraDrag : MonoBehaviour
 			//transform.RotateAround (go.transform.position, Vector3.left, origine2*dragSpeed);
 			//fonction pour tourner autour d'un point précis
 		}
+		//Pos ();
 		
+	}
+
+	void Pos(){
+		Renderer[] child = go.GetComponentsInChildren<Renderer> ();
+		float max = child[0].bounds.max.x;
+		float min = child[0].bounds.min.x;
+		foreach(Renderer o in child){
+			max = Mathf.Max(max,o.bounds.max.x);
+			min = Mathf.Min(min,o.bounds.min.x);
+		}
+		print (max +"  " + min);
 	}
 	
 	
