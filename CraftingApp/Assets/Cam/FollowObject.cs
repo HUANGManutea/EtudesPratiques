@@ -59,7 +59,7 @@ public class FollowObject : MonoBehaviour {
 			transform.rotation = Quaternion.LookRotation (target.right);
 			transform.position = new Vector3 (target.position.x, target.position.y,target.position.z);
 			
-			for (int i =0; i<10; i++) {
+			for (int i =0; i<target.localScale.x/2; i++) {
 				transform.Translate(Vector3.left, target);
 			}
 			break;
@@ -68,7 +68,7 @@ public class FollowObject : MonoBehaviour {
 			transform.rotation = Quaternion.LookRotation (target.up);
 			transform.position = new Vector3 (target.position.x, target.position.y,target.position.z);
 			
-			for (int i =0; i<10; i++) {
+			for (int i =0; i<target.localScale.y/2; i++) {
 				transform.Translate(Vector3.down, target);
 			}
 			break;
@@ -77,7 +77,7 @@ public class FollowObject : MonoBehaviour {
 			transform.rotation = Quaternion.LookRotation (target.forward);
 			transform.position = new Vector3 (target.position.x, target.position.y,target.position.z);
 			
-			for (int i =0; i<10; i++) {
+			for (int i =0; i<target.localScale.z/2; i++) {
 				transform.Translate(Vector3.back, target);
 			}
 			break;
