@@ -28,7 +28,14 @@ public class Redimension : MonoBehaviour {
 
 
 	}
-	
+
+	public float getLargeur(){
+		return largeur;
+	}
+	public float getHauteur(){
+		return hauteur;
+	}
+
 	void Update () {
 		
 
