@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Translate : MonoBehaviour {
 	Transform target;
@@ -7,9 +8,10 @@ public class Translate : MonoBehaviour {
 	private Direction dir;
 	private string name = "Exemple1";
 	public Camera followObject;
+	public Slider s;
+	private bool valide = false;
 	// Use this for initialization
 	void Start () {
-		//name = Extrude.name;
 		target = GameObject.Find(name).transform;
 		dir = Direction.X;
 	}
@@ -17,9 +19,12 @@ public class Translate : MonoBehaviour {
 	public void setName(string s){
 		name = s;
 		target = GameObject.Find(name).transform;
+		valide = true;
 
 		}
-
+	public void setV(bool b){
+		valide = b;
+		}
 
 	public void up(){
 		target.Translate (Vector3.up, followObject.transform);
@@ -65,6 +70,11 @@ public class Translate : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
-	}
+		if (valide) {
+			float v = s.value;
+			Vector3 courant = target.localScale;
+			target.localScale = new Vector3 (v, v, v);
+			
+		}
+}
 }
