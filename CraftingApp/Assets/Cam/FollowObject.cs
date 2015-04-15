@@ -8,6 +8,7 @@ public class FollowObject : MonoBehaviour {
 	public enum Direction {X,Y,Z};
 	private Direction dir;
 	private string name = "Exemple1";
+	public Translate t;
 	
 	void Start () {
 		target = GameObject.Find(name).transform;
@@ -16,6 +17,8 @@ public class FollowObject : MonoBehaviour {
 	
 	public void setName(string s){
 		name = s;
+		t.setName (s);
+		target = GameObject.Find(name).transform;
 	}
 	
 	public void setDir(string s){

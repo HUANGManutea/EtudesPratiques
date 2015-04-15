@@ -14,6 +14,12 @@ public class Translate : MonoBehaviour {
 		dir = Direction.X;
 	}
 
+	public void setName(string s){
+		name = s;
+		target = GameObject.Find(name).transform;
+
+		}
+
 
 	public void up(){
 		target.Translate (Vector3.up, followObject.transform);
