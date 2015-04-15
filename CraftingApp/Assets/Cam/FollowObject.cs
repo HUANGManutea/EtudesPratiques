@@ -9,16 +9,23 @@ public class FollowObject : MonoBehaviour {
 	private Direction dir;
 	private string name = "Exemple1";
 	public Translate t;
+	public GameObject destination;
+	Renderer target2;
 	
 	void Start () {
-		target = GameObject.Find(name).transform;
+		GameObject go = GameObject.Find (name);
+		target = go.transform;
+		target2 = go.renderer;
 		dir = Direction.X;
+
 	}
 	
 	public void setName(string s){
 		name = s;
 		t.setName (s);
-		target = GameObject.Find(name).transform;
+		GameObject go = GameObject.Find (name);
+		target = go.transform;
+		target2 = go.renderer;
 	}
 	
 	public void setDir(string s){
@@ -76,4 +83,42 @@ public class FollowObject : MonoBehaviour {
 			break;
 		}
 	}
+
+	public void makeTran(){
+				Renderer[] child = destination.GetComponentsInChildren<Renderer> ();
+				foreach (Renderer o in child) {
+
+						for (int j = 0; j < o.materials.Length; j++) {
+				
+								Color color = o.materials [j].color;
+								color.a = 0.5f;
+								o.materials [j].color = color;
+						}
+				}
+
+				for (int j = 0; j < target2.materials.Length; j++)
+				{
+					
+					Color color = target2.materials[j].color;
+					color.a = 1f;
+					target2.materials[j].color = color;
+				}
+			
+		}
+
+	public void makeNorm(){
+		Renderer[] child = destination.GetComponentsInChildren<Renderer> ();
+		foreach (Renderer o in child) {
+			
+			for (int j = 0; j < o.materials.Length; j++) {
+				
+				Color color = o.materials [j].color;
+				color.a = 1f;
+				o.materials [j].color = color;
+			}
+		}
+
+
+	}
+	
 }

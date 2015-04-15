@@ -22,7 +22,8 @@ public class UclaExtrusion : MonoBehaviour {
 		//ajout pour la suite, a placer après la création de l'objet! tout en fin de la fonction, ça foire.
 	/*	placement.SetActive (true);
 		followObject.front();
-		followObject.setName (gameObjectName);*/
+		followObject.setName (gameObjectName);
+		 followObject.makeTran();*/
 
 		// create the new object and set the proper variables		
 		GameObject newObject = new GameObject(gameObjectName);
