@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using System;
 
 
 public class DrawAFigure : MonoBehaviour {
@@ -7,14 +8,19 @@ public class DrawAFigure : MonoBehaviour {
 	public bool isSelected;
 	public Draw_menu dm;
 	private Texture2D tex;
+	public Redimension dimension;
 	private Color color;
 	public int largeurTrait;
+	protected int texWidth;
+	protected int texHight;
 	protected int lastPosX;
 	protected int lastPosY;
 
 	void Start () {
 		isSelected = false;
-		Texture2D tex = new Texture2D(600,300,TextureFormat.RGBA32,false);
+		texWidth=(int)dimension.getLargeur();
+		texHight=(int)dimension.getHauteur();
+		Texture2D tex = new Texture2D(6*100,3*100,TextureFormat.RGBA32,false);
 		for(int i=0;i<=600;i++){
 			for(int j=0;j<=300;j++)
 				tex.SetPixel(i,j,Color.clear);
@@ -212,19 +218,27 @@ public class DrawAFigure : MonoBehaviour {
 
 
 	private Color colorToBucket;
+	private Stack lesX = new Stack(300*600);
+	private Stack lesY = new Stack(300*600);
+
 	//Pot de peinture
 	//http://fr.wikipedia.org/wiki/Algorithme_de_remplissage_par_diffusion
 	private void bucket(int x, int y, Color cApply,Color cOrigin,Texture2D tex){
 		//Debug.Log("bucket " + cApply + " " + cOrigin );
 		if(x>=0 && x<600 && y>=0 && y<300){
 			if(!equals(tex.GetPixel(x,y),cApply)  &&  equals (tex.GetPixel(x,y), cOrigin)){
-				tex.SetPixel(x,y,cApply);
+				lesX.Push(x);
+				lesY.Push(y);
+				//tex.SetPixel(x,y,cApply);
 				//tex.Apply();
 				bucket (x,y+1,cApply,cOrigin,tex);
 				bucket (x,y-1,cApply,cOrigin,tex);
 				bucket (x+1,y,cApply,cOrigin,tex);
 				bucket (x-1,y,cApply,cOrigin,tex);
 			}
+		}
+		while (lesX.Count != 0){
+			tex.SetPixel((int)lesX.Pop(),(int)lesY.Pop(),cApply);
 		}
 	}
 
