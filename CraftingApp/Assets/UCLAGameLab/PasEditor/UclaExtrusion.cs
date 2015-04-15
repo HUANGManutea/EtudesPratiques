@@ -13,8 +13,18 @@ public class UclaExtrusion : MonoBehaviour {
 	public Vector3 posIni = new Vector3(3829, 50 ,30);
 	private string testTexture = "Assets/textures/test.png";
 
+	//lien pour la suite
+	public GameObject placement;
+	public FollowObject followObject;
+
 	public void doTheCube(){
-		
+
+		//ajout pour la suite, a placer après la création de l'objet! tout en fin de la fonction, ça foire.
+	/*	placement.SetActive (true);
+		followObject.front();
+		followObject.setName (gameObjectName);
+		 followObject.makeTran();*/
+
 		// create the new object and set the proper variables		
 		GameObject newObject = new GameObject(gameObjectName);
 		newObject.transform.position = posIni;
@@ -72,5 +82,7 @@ public class UclaExtrusion : MonoBehaviour {
 		// update the mesh
 		MeshCreator.UpdateMesh(newObject);
 		//Close();
+	
+
 	}
 }
