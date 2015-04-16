@@ -33,7 +33,7 @@ public class DrawAFigure : MonoBehaviour {
 
 	//Active ou désactive la zone de dessin
 	public void setIsSelect(bool b){
-		System.Threading.Thread.Sleep(250);
+		System.Threading.Thread.Sleep(100);
 		isSelected = b;
 	}
 
