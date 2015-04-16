@@ -13,10 +13,15 @@ public class UclaExtrusion : MonoBehaviour {
 	public Vector3 posIni = new Vector3(0, 0, 0);
 	public float size = 1;
 
-	//Récupère la taille donnée par le Slider
+	//Appellée à tout changement de valeur du slider
 	public void setSize(float s){
 		size = s;
 		//Debug.Log ("Size = " + s);
+	}
+
+	//Appellée à la fin de l'édition de la boite nom
+	public void setName(string s){
+		gameObjectName = s;
 	}
 
 	//Texture de test
