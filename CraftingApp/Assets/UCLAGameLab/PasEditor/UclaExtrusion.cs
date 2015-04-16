@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-//using UnityEditor;
+using UnityEditor;
 using System.Collections;
 using System.IO;
 
@@ -10,8 +10,17 @@ public class UclaExtrusion : MonoBehaviour {
 	public string gameObjectName = "Mesh Creator Object";
 	public ObjectMeshType meshType = ObjectMeshType.Flat2D;
 	public DrawAFigure drawing;
-	public Vector3 posIni = new Vector3(3829, 50 ,30);
-	private string testTexture = "Assets/textures/test.png";
+	public Vector3 posIni = new Vector3(0, 0, 0);
+	public float size = 1;
+
+	//Récupère la taille donnée par le Slider
+	public void setSize(float s){
+		size = s;
+		//Debug.Log ("Size = " + s);
+	}
+
+	//Texture de test
+	//private string testTexture = "Assets/textures/test.png";
 
 	//lien pour la suite
 	public GameObject placement;
@@ -20,20 +29,22 @@ public class UclaExtrusion : MonoBehaviour {
 	public void doTheCube(){
 
 		//ajout pour la suite, a placer après la création de l'objet! tout en fin de la fonction, ça foire.
-	/*	placement.SetActive (true);
+		/*placement.SetActive (true);
 		followObject.front();
 		followObject.setName (gameObjectName);
-		 followObject.makeTran();*/
+		followObject.makeTran();*/
 
 		// create the new object and set the proper variables		
 		GameObject newObject = new GameObject(gameObjectName);
 		newObject.transform.position = posIni;
-		
+
+		//Utilisation de la texture de test
 		//textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath(testTexture, typeof(Texture2D));
-		//textureToCreateMeshFrom = drawing.getTex();
+
+		//Utilisation de la texture rendue par le DrawAFigure
 		var bytes = drawing.getTex().EncodeToPNG();
-		File.WriteAllBytes("Assets/textures/test2.png", bytes);
-		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath("Assets/textures/test2.png", typeof(Texture2D));
+		File.WriteAllBytes("Assets/textures/textureExtruded.png", bytes);
+		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath("Assets/textures/textureExtruded.png", typeof(Texture2D));
 
 		MeshCreatorData mcd = newObject.AddComponent("MeshCreatorData") as MeshCreatorData;
 		
@@ -64,7 +75,7 @@ public class UclaExtrusion : MonoBehaviour {
 			mcd.meshWidth = 1.0f;
 		}
 		
-		mcd.meshDepth = 1.0f;
+		mcd.meshDepth = size * 0.25f;
 		
 		// set up the depth options
 		if (meshType == ObjectMeshType.Full3D)
@@ -81,6 +92,12 @@ public class UclaExtrusion : MonoBehaviour {
 		}
 		// update the mesh
 		MeshCreator.UpdateMesh(newObject);
+		Debug.Log ("Objet créé");
+		
+		//TODO Detruire la texture créée
+		//File.Delete("Assets/textures/textureExtruded.png");
+
+
 		//Close();
 	
 
