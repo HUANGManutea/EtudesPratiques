@@ -5,7 +5,7 @@ using System;
 
 public class DrawAFigure : MonoBehaviour {
 
-	public bool isSelected;
+	public int isSelected;
 	public Draw_menu dm;
 	private Texture2D tex;
 	public Redimension dimension;
@@ -17,7 +17,7 @@ public class DrawAFigure : MonoBehaviour {
 	protected int lastPosY;
 
 	void Start () {
-		isSelected = false;
+		isSelected = 0;
 		texWidth=(int)dimension.getLargeur();
 		texHight=(int)dimension.getHauteur();
 		Texture2D tex = new Texture2D(6*100,3*100,TextureFormat.RGBA32,false);
@@ -31,10 +31,16 @@ public class DrawAFigure : MonoBehaviour {
 		lastPosY = -1;
 	}
 
+	//reinitialise la zone
+	public void reboot(){
+
+		}
+
+
 	//Active ou désactive la zone de dessin
-	public void setIsSelect(bool b){
+	public void setIsSelect(int i){
 		System.Threading.Thread.Sleep(100);
-		isSelected = b;
+		isSelected += i;
 	}
 
 	//Pour Aurelien : rend la texture dessinee
@@ -50,7 +56,7 @@ public class DrawAFigure : MonoBehaviour {
 		color = dm.getColor ();
 
 
-		if (/*evt.isMouse && */Input.GetMouseButton (0) && !isSelected) 
+		if (/*evt.isMouse && */Input.GetMouseButton (0) && (isSelected==0)) 
 		{
 
 			// Utiliser un Ray qui coupe la plan en au niveau de la mousePosition
