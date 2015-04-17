@@ -7,25 +7,29 @@ using System.Text;
 using System.IO;
 
 public class TcpServer : MonoBehaviour {
-	private TcpListener tcpListener;
-	public static Thread listenThread;
-	public GameObject spawn;
-	public volatile bool okPrefab = false;
+	private TcpListener tcpListener;  //We use a listener
+	private Thread listenThread; //I prefere to use threads
+	public GameObject spawn; //Reference point for the prefab to spawn
+	public volatile bool okPrefab = false; //If the prefab is received this value is true
 
 	void Start(){
 		okPrefab = false;
-		tcpListener = new TcpListener(IPAddress.Any,3000);
-		listenThread = new Thread(new ThreadStart(ListenForClients));
+		tcpListener = new TcpListener(IPAddress.Any,3000); //starting the listener
+		listenThread = new Thread(new ThreadStart(ListenForClients)); 
+		listenThread.IsBackground = true;
 		listenThread.Start();
 		Debug.Log("Starting listener");
 	}
 
+	/*The prefab will we instantiated just after being saved in a file*/
 	void Update(){
 		if(okPrefab){
 			appear();
 			okPrefab = false;
 		}
 	}
+
+	/*This method waits for clients to connect*/
 	public void ListenForClients(){
 		this.tcpListener.Start();
 		Debug.Log("Waiting for client");
@@ -33,42 +37,49 @@ public class TcpServer : MonoBehaviour {
 			//blocks until client connected
 			TcpClient client = this.tcpListener.AcceptTcpClient();
 			Debug.Log ("Client connected");
-			//create thread to handle com
-			//with connected cli
+			//create thread to handle com with connected client
 			Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
+			clientThread.IsBackground = true;
 			clientThread.Start(client);
-
 		}
 	}
 
+
+	/*This core method will retrieve the data from the connection
+	 * using a NetworkStream for the tunnel
+	 * using a MemoryStream to stock the data
+	 * using a fileStream to write the data in a file
+	 */
 	private void HandleClientComm(object client){
 		TcpClient tcpClient = (TcpClient)client;
 		NetworkStream clientStream = tcpClient.GetStream();
-		byte[] message = new byte[1024];
+		byte[] message = new byte[1024]; //transfert Ko by Ko
 		MemoryStream ms = new MemoryStream();
 		int numBytesRead;
 		string localWritePath = "C:/Users/Khayron/Documents/GitHub/EtudesPratiques/etudeServer/Assets/Resources/";
 		while((numBytesRead = clientStream.Read(message,0,message.Length))>0){
-			//blocks until a client sends a message
+			//we register the file in a memoryStream progressively
 			ms.Write(message,0,numBytesRead);
 		}
 		
-		//message has successfully been received
+		//file has successfully been received
 		Debug.Log ("Stream success");
 		byte[] msArray = ms.ToArray();
-		FileStream fs = File.Create(localWritePath+"recu.prefab");
+		FileStream fs = File.Create(localWritePath+"recu.prefab"); //creating the file here if don't exist, else rewriting
 		fs.Write(msArray,0,msArray.Length);
 		Debug.Log("file written");
-		fs.Close();
-		tcpClient.Close();
+		fs.Close(); //important, close the file or an error will occur
+		tcpClient.Close(); //closing the client
+
 		FileInfo fi = new FileInfo(localWritePath+"recu.prefab");
 		while(IsFileLocked(fi)){
-			Debug.Log ("waiting for the file");
+			Debug.Log ("waiting for the file"); //Is the file currently locked? just precaution
 		}
 		Debug.Log("filestream closed");
-		okPrefab = true;
+		okPrefab = true; //the prefab is ready to be instantiated
 	}
 
+	/*Just a method to check if a file is locked*/
 	protected virtual bool IsFileLocked(FileInfo file)
 	{
 		FileStream stream = null;
@@ -94,7 +105,8 @@ public class TcpServer : MonoBehaviour {
 		//file is not locked
 		return false;
 	}
-	
+
+	/*This method will instantiate the prefab*/
 	private void appear(){
 		GameObject go = Instantiate(Resources.Load("recu",typeof(GameObject)),spawn.transform.position,Quaternion.identity) as GameObject;
 		Debug.Log("Object instantiated");
