@@ -9,6 +9,9 @@ public class Translate : MonoBehaviour {
 	private string name = "Exemple1";
 	public Camera followObject;
 	public Slider s;
+	public Slider sX;
+	public Slider sY;
+	public Slider sZ;
 	private bool valide = false;
 	// Use this for initialization
 	void Start () {
@@ -70,11 +73,24 @@ public class Translate : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (valide) {
-			float v = s.value;
-			Vector3 courant = target.localScale;
-			target.localScale = new Vector3 (v, v, v);
+		float v = sX.value;
+		Vector3 courant = target.localScale;
+		target.localScale = new Vector3 (courant.x, v, courant.z);
+
+		v = sY.value;
+		courant = target.localScale;
+		target.localScale = new Vector3 (courant.x, courant.y, v);
+
+		v = sZ.value;
+		courant = target.localScale;
+		target.localScale = new Vector3 (v, courant.y, courant.z);
+
+		v = s.value;
+		v /= 10.0f;
+		courant = target.localScale;
+		target.localScale = new Vector3 (courant.x*v, courant.y*v, courant.z*v);
 			
-		}
+
+
 }
 }
