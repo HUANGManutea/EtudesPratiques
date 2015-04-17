@@ -44,6 +44,12 @@ public class DrawAFigure : MonoBehaviour {
 		print (isSelected);
 	}
 
+	public void initIsSelect(){
+		System.Threading.Thread.Sleep(100);
+		isSelected =0;
+		print (isSelected);
+	}
+
 	//Pour Aurelien : rend la texture dessinee
 	public Texture2D getTex(){
 		tex.Apply ();
