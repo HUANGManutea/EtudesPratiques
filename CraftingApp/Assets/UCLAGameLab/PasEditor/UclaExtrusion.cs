@@ -32,18 +32,10 @@ public class UclaExtrusion : MonoBehaviour {
 	public FollowObject followObject;
 
 	public void doTheCube(){
-
-
-
+		
 		// create the new object and set the proper variables		
 		GameObject newObject = new GameObject(gameObjectName);
 		newObject.transform.position = posIni;
-
-		//ajout pour la suite, a placer après la création de l'objet! tout en fin de la fonction, ça foire.
-		/*placement.SetActive (true);
-		followObject.front();
-		followObject.setName (gameObjectName);
-		followObject.makeTran();*/
 
 		//Utilisation de la texture de test
 		//textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath(testTexture, typeof(Texture2D));
@@ -100,6 +92,12 @@ public class UclaExtrusion : MonoBehaviour {
 		// update the mesh
 		MeshCreator.UpdateMesh(newObject);
 		Debug.Log ("Objet créé");
+
+		//ajout pour la suite, a placer après la création de l'objet! tout en fin de la fonction, ça foire.
+		placement.SetActive (true);
+		followObject.front();
+		followObject.setName (gameObjectName);
+		followObject.makeTran();
 		
 		//TODO Detruire la texture créée
 		//File.Delete("Assets/textures/textureExtruded.png");
