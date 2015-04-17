@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class getInput : MonoBehaviour {
 	public GameObject textfield;
-	public static string ip;
+	public static string ip = "";
 
 	void Start(){
 		ip = textfield.GetComponent<InputField>().text;
