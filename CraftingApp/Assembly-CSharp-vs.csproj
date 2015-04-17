@@ -53,8 +53,8 @@
      <Compile Include="Assets\Draw_menu\Image.cs" />
      <Compile Include="Assets\Draw_menu\Redimension.cs" />
      <Compile Include="Assets\Placement\Translate.cs" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\ConnectManager.cs" />
-     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FtpSend.cs" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\Client.cs" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\getInput.cs" />
      <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreator.cs" />
      <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreatorInspector.cs" />
      <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreatorUndoManager.cs" />
