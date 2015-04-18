@@ -96,6 +96,10 @@ public class UclaExtrusion : MonoBehaviour {
 		MeshCreator.UpdateMesh(newObject);
 		Debug.Log ("Objet créé");
 
+
+		//met un shader transparant
+		newObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
+
 		//ajout pour la suite, a placer après la création de l'objet! tout en fin de la fonction, ça foire.
 		placement.SetActive (true);
 		followObject.front();
