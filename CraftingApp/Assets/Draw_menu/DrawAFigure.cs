@@ -234,10 +234,11 @@ public class DrawAFigure : MonoBehaviour {
 		}
 	}
 
-
-	private Color colorToBucket;
+	
 	private Stack lesX = new Stack(texWidth*texHight);
 	private Stack lesY = new Stack(texWidth*texHight);
+	private int leX;
+	private int leY;
 
 	//Pot de peinture
 	//http://fr.wikipedia.org/wiki/Algorithme_de_remplissage_par_diffusion
@@ -249,14 +250,29 @@ public class DrawAFigure : MonoBehaviour {
 				lesY.Push(y);
 				//tex.SetPixel(x,y,cApply);
 				//tex.Apply();
-				bucketRec (x,y+1,cApply,cOrigin);
-				/*bucket (x,y-1,cApply,cOrigin,tex);
-				bucket (x+1,y,cApply,cOrigin,tex);
-				bucket (x-1,y,cApply,cOrigin,tex);*/
+				while(lesX.Count != 0){
+					leX=(int)lesX.Pop();
+					leY=(int)lesY.Pop();
+					tex.SetPixel((int)leX,(int)leY,cApply);
+
+					if(!equals(tex.GetPixel(leX,leY+1),cApply)  && equals (tex.GetPixel(leX,leY+1), cOrigin)){
+						lesX.Push (leX);
+						lesY.Push (leY+1);
+					}
+					if(!equals(tex.GetPixel(leX+1,leY),cApply)  && equals (tex.GetPixel(leX+1,leY), cOrigin)){
+						lesX.Push (leX+1);
+						lesY.Push (leY);
+					}
+					if(!equals(tex.GetPixel(leX,leY-1),cApply)  && equals (tex.GetPixel(leX,leY-1), cOrigin)){
+						lesX.Push (leX);
+						lesY.Push (leY-1);
+					}
+					if(!equals(tex.GetPixel(leX-1,leY),cApply)  && equals (tex.GetPixel(leX-1,leY), cOrigin)){
+						lesX.Push (leX-1);
+						lesY.Push (leY);
+					}
+				}
 			}
-		}
-		while (lesX.Count != 0){
-			tex.SetPixel((int)lesX.Pop(),(int)lesY.Pop(),cApply);
 		}
 	}
 
@@ -268,20 +284,6 @@ public class DrawAFigure : MonoBehaviour {
 	//Compare deux Color
 	private bool equals(Color c1,Color c2){
 		return (c1.a == c2.a && c1.b == c2.b && c1.g == c2.g && c1.r == c2.r);
-	}
-
-	private void bucketRec(int x, int y,Color cApply, Color cOrigin){
-		if(x>=0 && x<texWidth && y>=0 && y<texHight){
-			if(!equals(tex.GetPixel(x,y),cApply)  &&  equals (tex.GetPixel(x,y), cOrigin)){
-				lesX.Push(x);
-				lesY.Push(y);
-
-				bucketRec (x,y+1,cApply,cOrigin);
-				bucketRec (x,y-1,cApply,cOrigin);
-				bucketRec (x+1,y,cApply,cOrigin);
-				bucketRec (x-1,y,cApply,cOrigin);
-			}
-		}
 	}
 
 }
