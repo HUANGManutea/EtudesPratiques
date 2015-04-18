@@ -137,7 +137,7 @@ public class DrawAFigure : MonoBehaviour {
 		}
 
 		//Pointeur proche du bord droit
-		if(x>(texWidth-(largeurTrait+1)) && (x<(texWidth+largeurTrait)))
+		if(x>(texWidth-(largeurTrait+1)) && (x<(texWidth+largeurTrait+1)))
 		{
 			for (int i=x; i<=texWidth-1; i++) {
 				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
@@ -152,7 +152,7 @@ public class DrawAFigure : MonoBehaviour {
 		if(y<largeurTrait)
 		{
 			for (int i=x; i<=(x+largeurTrait); i++) {
-				for (int j=0; j<=(y+largeurTrait); j++) {
+				for (int j=1; j<=(y+largeurTrait); j++) {
 					if(norme(x,y,i,j)<=largeurTrait)
 						tex.SetPixel (i, j, c);
 				}
@@ -249,10 +249,10 @@ public class DrawAFigure : MonoBehaviour {
 				lesY.Push(y);
 				//tex.SetPixel(x,y,cApply);
 				//tex.Apply();
-				bucket (x,y+1,cApply,cOrigin,tex);
-				bucket (x,y-1,cApply,cOrigin,tex);
+				bucketRec (x,y+1,cApply,cOrigin);
+				/*bucket (x,y-1,cApply,cOrigin,tex);
 				bucket (x+1,y,cApply,cOrigin,tex);
-				bucket (x-1,y,cApply,cOrigin,tex);
+				bucket (x-1,y,cApply,cOrigin,tex);*/
 			}
 		}
 		while (lesX.Count != 0){
@@ -268,6 +268,20 @@ public class DrawAFigure : MonoBehaviour {
 	//Compare deux Color
 	private bool equals(Color c1,Color c2){
 		return (c1.a == c2.a && c1.b == c2.b && c1.g == c2.g && c1.r == c2.r);
+	}
+
+	private void bucketRec(int x, int y,Color cApply, Color cOrigin){
+		if(x>=0 && x<texWidth && y>=0 && y<texHight){
+			if(!equals(tex.GetPixel(x,y),cApply)  &&  equals (tex.GetPixel(x,y), cOrigin)){
+				lesX.Push(x);
+				lesY.Push(y);
+
+				bucketRec (x,y+1,cApply,cOrigin);
+				bucketRec (x,y-1,cApply,cOrigin);
+				bucketRec (x+1,y,cApply,cOrigin);
+				bucketRec (x-1,y,cApply,cOrigin);
+			}
+		}
 	}
 
 }
