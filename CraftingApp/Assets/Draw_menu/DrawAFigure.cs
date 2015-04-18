@@ -20,9 +20,9 @@ public class DrawAFigure : MonoBehaviour {
 		isSelected = 0;
 		texWidth=(int)dimension.getLargeur();
 		texHight=(int)dimension.getHauteur();
-		Texture2D tex = new Texture2D(6*100,3*100,TextureFormat.RGBA32,false);
-		for(int i=0;i<=600;i++){
-			for(int j=0;j<=300;j++)
+		Texture2D tex = new Texture2D(texWidth,texHight,TextureFormat.RGBA32,false);
+		for(int i=0;i<=texWidth;i++){
+			for(int j=0;j<=texHight;j++)
 				tex.SetPixel(i,j,Color.clear);
 		}
 		tex.Apply();
@@ -33,8 +33,12 @@ public class DrawAFigure : MonoBehaviour {
 
 	//reinitialise la zone
 	public void reboot(){
-
+		for(int i=0;i<=texWidth;i++){
+			for(int j=0;j<=texHight;j++)
+				tex.SetPixel(i,j,Color.clear);
 		}
+		tex.Apply();
+	}
 
 
 	//Active ou désactive la zone de dessin
