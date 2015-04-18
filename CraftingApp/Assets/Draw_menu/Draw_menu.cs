@@ -1,32 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 
 public class Draw_menu : MonoBehaviour {
 
+	//Constantes pour géré les switchs (type)
 	private const int COULEUR = 0;
 	private const int TOOLS = 1;
 	private const int DIAM = 2;
 
+	//Enumeration pour les types d'outils
 	public enum Tools {PENCIL,ERASER,BUCKET};
 	public enum Diam {SMALL = 2,MEDIUM = 4,LARGE = 6};
 
+	//Selection courante
 	public Color color;
 	public Tools tool;
 	public Diam diam;
 
+	//Boutons courant
+	public Button colorSelect;
+	public Button toolSelect;
+	public Button diamSelect;
 
-	public UnityEngine.UI.Button colorSelect;
-	public UnityEngine.UI.Button toolSelect;
-	public UnityEngine.UI.Button diamSelect;
-
+	//initialisation
 	public void Start(){
 		setBlack ();
 		setPencil ();
 		setMedium ();
 	}
 
+
+	//A partir d'un nom de bouton et du type de ce bouton, on set les variables
 	public void selectionne(string c,int type){
 
 		GameObject bouton = GameObject.Find (c);
@@ -77,8 +84,9 @@ public class Draw_menu : MonoBehaviour {
 		}
 
 
-	//Selection des couleurs
 
+
+	//Selection des couleurs
 	public void setRed(){
 		color = Color.red;
 
@@ -128,8 +136,8 @@ public class Draw_menu : MonoBehaviour {
 		selectionne ("white",COULEUR);
 	}
 
+
 	//Selection des outils
-	
 	public void setPencil(){
 		tool = Tools.PENCIL;
 		
@@ -149,7 +157,8 @@ public class Draw_menu : MonoBehaviour {
 		
 	}
 
-	//Selection diamètre
+
+	//Selection des diamètres
 	public void setSmall(){
 		diam = Diam.SMALL;
 		
@@ -170,7 +179,7 @@ public class Draw_menu : MonoBehaviour {
 	}
 
 
-
+	//getters
 	public Color getColor(){
 				return color;
 		}

@@ -3,35 +3,45 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Translate : MonoBehaviour {
+
+	//transform de l'objet à déplacer
 	Transform target;
+
+	//enum des direction pour les switchs
 	public enum Direction {X,Y,Z};
-	private Direction dir;
+
+	//direction courante
+	private Direction dir = Direction.X;
+
+	//objet à déplacer
 	private string name = "Exemple1";
+
+	//camera qui suis l'objet lors du placement
 	public Camera followObject;
+
+	//sliders de taille (voir windows => placement menu)
 	public Slider s;
 	public Slider sX;
 	public Slider sY;
 	public Slider sZ;
-	private bool valide = false;
-	// Use this for initialization
+
+
+	//fonction à supprimer au moment de la compilation(car exemple1 n'existera plus)
 	void Start () {
 		target = GameObject.Find(name).transform;
 		dir = Direction.X;
 	}
 
+	//set de la figure à déplacer
 	public void setName(string s){
 		name = s;
 		target = GameObject.Find(name).transform;
-		valide = true;
+	}
 
-		}
-	public void setV(bool b){
-		valide = b;
-		}
-
+	//translations
 	public void up(){
 		target.Translate (Vector3.up, followObject.transform);
-		}
+	}
 
 	public void down(){
 		target.Translate (Vector3.down, followObject.transform);
@@ -44,14 +54,14 @@ public class Translate : MonoBehaviour {
 	}
 
 
+	//rotation, deux par axes, 5 choisi abitrairement pour la vitesse
 	public void rLeftX(){
 		target.Rotate (5,0,0);
 	}
 	public void rRightX(){
 		target.Rotate (-5,0,0);
 	}
-
-
+	
 	public void rLeftY(){
 		target.Rotate (0,5,0);
 
@@ -70,8 +80,8 @@ public class Translate : MonoBehaviour {
 
 
 
-
-	// Update is called once per frame
+	//Fonction de changement de taille, changer les bornes, voir les sliders
+	//(voir windows => placement menu)
 	void Update () {
 		float v = sX.value;
 		Vector3 courant = target.localScale;

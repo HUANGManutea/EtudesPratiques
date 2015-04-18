@@ -50,7 +50,6 @@
      <Compile Include="Assets\Cam\FollowObject.cs" />
      <Compile Include="Assets\Draw_menu\DrawAFigure.cs" />
      <Compile Include="Assets\Draw_menu\Draw_menu.cs" />
-     <Compile Include="Assets\Draw_menu\Image.cs" />
      <Compile Include="Assets\Draw_menu\Redimension.cs" />
      <Compile Include="Assets\Placement\Translate.cs" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\Client.cs" />
