@@ -13,6 +13,7 @@ public class UclaExtrusion : MonoBehaviour {
 	public Vector3 posIni = new Vector3(0, 0, 0);
 	public float size = 1;
 
+
 	//Appellée à tout changement de valeur du slider
 	public void setSize(float s){
 		size = s;
@@ -36,6 +37,8 @@ public class UclaExtrusion : MonoBehaviour {
 		// create the new object and set the proper variables		
 		GameObject newObject = new GameObject(gameObjectName);
 		newObject.transform.position = posIni;
+		//le place comme fils
+		newObject.transform.SetParent(transform,false);
 
 		//Utilisation de la texture de test
 		//textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath(testTexture, typeof(Texture2D));
