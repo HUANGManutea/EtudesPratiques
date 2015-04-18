@@ -11,8 +11,8 @@ public class DrawAFigure : MonoBehaviour {
 	public Redimension dimension;
 	private Color color;
 	public int largeurTrait;
-	protected int texWidth;
-	protected int texHight;
+	protected static int texWidth;
+	protected static int texHight;
 	protected int lastPosX;
 	protected int lastPosY;
 
@@ -137,9 +137,9 @@ public class DrawAFigure : MonoBehaviour {
 		}
 
 		//Pointeur proche du bord droit
-		if(x>(600-(largeurTrait+1)) && (x<(600+largeurTrait)))
+		if(x>(texWidth-(largeurTrait+1)) && (x<(texWidth+largeurTrait)))
 		{
-			for (int i=x; i<=599; i++) {
+			for (int i=x; i<=texWidth-1; i++) {
 				for (int j=y-largeurTrait; j<=(y+largeurTrait); j++) {
 					if(norme(x,y,i,j)<=largeurTrait)
 						tex.SetPixel (i, j, c);
@@ -161,10 +161,10 @@ public class DrawAFigure : MonoBehaviour {
 		}
 		
 		//Pointeur proche du bord haut
-		if(y>(300-(largeurTrait+1)) && (y<(300+largeurTrait)))
+		if(y>(texHight-(largeurTrait+1)) && (y<(texHight+largeurTrait)))
 		{
 			for (int i=x; i<=(x+largeurTrait); i++) {
-				for (int j=y-largeurTrait; j<=299; j++) {
+				for (int j=y-largeurTrait; j<=texHight-1; j++) {
 					if(norme(x,y,i,j)<=largeurTrait)
 						tex.SetPixel (i, j, c);
 				}
@@ -236,14 +236,14 @@ public class DrawAFigure : MonoBehaviour {
 
 
 	private Color colorToBucket;
-	private Stack lesX = new Stack(300*600);
-	private Stack lesY = new Stack(300*600);
+	private Stack lesX = new Stack(texWidth*texHight);
+	private Stack lesY = new Stack(texWidth*texHight);
 
 	//Pot de peinture
 	//http://fr.wikipedia.org/wiki/Algorithme_de_remplissage_par_diffusion
 	private void bucket(int x, int y, Color cApply,Color cOrigin,Texture2D tex){
 		//Debug.Log("bucket " + cApply + " " + cOrigin );
-		if(x>=0 && x<600 && y>=0 && y<300){
+		if(x>=0 && x<texWidth && y>=0 && y<texHight){
 			if(!equals(tex.GetPixel(x,y),cApply)  &&  equals (tex.GetPixel(x,y), cOrigin)){
 				lesX.Push(x);
 				lesY.Push(y);
