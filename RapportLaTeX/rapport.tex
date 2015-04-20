@@ -1,6 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 
 \usepackage{exptech}
+\usepackage[colorlinks=true, linkcolor=black]{hyperref}
 
 %Décommanter pour la relecture (interlignes plus importantes)
 %\linespread{1,6}
@@ -25,18 +26,21 @@
 \thispagestyle{empty}      % Supprime le numéro de page sur la 1re page
 
 \begin{abstract}
-	Lors de leur troisième année, les étudiants de l'INSA de Rennes doivent réaliser un projet. Notre groupe a choisi de travailler sur le développement d'une application sur tablette. Cette application est destinée à être utilisée lors de séances de démonstration dans la salle de réalité augmentée Immersia. Nous devons permettre au sujet de la démonstration de réaliser simplement et sans besoin d'explications sur le fonctionnement de l'application, des objets 3D à partir de dessins 2D qu'il aura fait. Une fois sa création faites, elle doit être envoyée vers la machine gérant la salle.
+	Lors de leur troisième année, les étudiants de l'INSA de Rennes doivent réaliser un projet. Notre groupe a choisi de travailler sur le développement d'une application sur tablette. Cette application est destinée à être utilisée lors de séances de démonstration dans la salle de réalité augmentée Immersia. Nous devons permettre au sujet de la démonstration de réaliser simplement et sans besoin d'explications sur le fonctionnement de l'application, des objets 3D à partir de dessins 2D qu'il aura fait. Une fois sa création effectuée, elle doit être envoyée vers la machine gérant la salle.
 \end{abstract}
 	
 	\section{Introduction}
 		%Présentation succinte du projet
-		Au cours de ce rapport, vous trouverez les choix fait pour développer cette application. Tout d'abord, la sélections des technologies les plus amènes de respecter le cahier des charges. Ensuite comment à partir de ces choix, nous avons défini l'architecture de l'application. Sur chaque partie de celle-ci, vous verrez les parties pris réalisés par l'équipe. Puis nous présenterons notre répartition du travails et le suivit de celui-ci au sein de notre équipe. Pour finir, nous concluons sur les objectifs atteints et les futurs possibles pour le développement de cette application.
-	\section{Cahier des charges}	
+		Au cours de ce rapport, vous trouverez les choix faits pour développer cette application. Tout d'abord, la sélection des technologies les plus à même de respecter le cahier des charges. Ensuite comment à partir de ces choix, nous avons défini l'architecture de l'application. Sur chaque partie de celle-ci, vous verrez les choix réalisés par l'équipe. Puis nous présenterons notre répartition du travail et le suivit de celui-ci au sein de notre équipe. Pour finir, nous concluons sur les objectifs atteints et les futurs possibles pour le développement de cette application.
+	\section{Cahier des charges}
+		Afin de pouvoir livrer une application en adéquation avec l'idée que se fait notre "client", nous avons du suivre un cahier des charges.
+		
+		Tout d'abord, il faut que l'usage de l'application se fasse de manière intuitive et qu'un utilisateur novice puisse s'en servir sans explication. Le serveur qui va recevoir le nouvel objet est sous Unity, il faut donc que l'objet exporté puisse être compatible avec le système Unity. 	
 	\section{État de l'art}
 	%Rappel rapide des technologies utilisées
 		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur Unity. 
 		
-		En développant notre application sur Unity, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute la partie extrusion développée plus loin(5.3). Une fois toutes ces informations réunies, nous avons pu passer à l'étape suivante, c'est-à-dire l'organisation du travail.
+		En développant notre application sur Unity, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute \hyperlink{ancre}{la partie \ref{extrusion}, qui est l'extrusion}, développée plus loin à la page \pageref{extrusion}. Une fois toutes ces informations réunies, nous avons pu passer à l'étape suivante, c'est-à-dire l'organisation du travail.
 	\section{Architecture logiciel}
 		%découpage des tâches et répartition du travail + explication séances hebdomadaires
 		Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
@@ -68,8 +72,10 @@
 			Un premier problème apparut alors quant au dimensionnement de cette zone de dessin. Le plan ayant une taille précise, il fallait être capable de modifier sa taille par rapport à celle du canevas. Nous avons donc rédigé un script qui initialise la dimension de la zone de dessin, autant pour le plan que pour la texture qui lui est associée.
 			
 			Il fallait ensuite être capable de dessiner sur la texture, or l'objet (le plan ici) et la texture ont des dimensions différentes : nous avons d'abord tenté de modifier la texture à l'endroit où l'on cliquait, mais il y avait toujours un décalage à l'affichage. Finalement, la solution la plus efficace fut de projeter un Ray, objet monodirectionnel qui traverse l'espace, au moment où l'on clique dans la zone de dessin, et de trouver le pixel à l'intersection de ces deux objets. On a ainsi pu, dans un premier temps, modifier un pixel en cliquant dessus. Ensuite, pour garder un tracé continu, nous avons implémenté une méthode qui trace la droite entre le dernier point colorié, et le point sur lequel on clique. Il restait à faire le lien entre la zone de dessin, et les différents outils définis plus tôt. Ainsi, la zone de dessin va chercher les différentes couleurs, la largeur du trait, et les outils à utiliser dans le menu déroulant. Nous avons aussi implémenté des méthodes "eraser" et "bucket", capables de gommer et remplir rapidement une surface.
-		\subsection{L'extrusion}
-		
+			
+		\hypertarget{ancre}{
+		\subsection{L'extrusion}}
+		\label{extrusion}
 		L'extrusion est une autre tâche importante du projet. En effet, il faut à partir d'une texture, créer un objet en 3D. Pour ce faire, nous sommes partis d'une extension Unity déjà existante : UCLA Mesh Creator. C'est un créateur d'objets 3D, à partir d'une texture. Seulement, il a fallu reprendre le code pour l'adapter à notre utilisation. Initialement, cette application sert à créer rapidement et simplement un objet afin de pouvoir l'insérer dans son jeu. De plus, il est possible de la faire fonctionner uniquement en mode "édition". Il y a deux modes quand on l'on travaille sous Unity : le mode "édition", qui nous permet de créer des scènes avec nos objets, nos animations, et un mode "jeu" où l'on voit le rendu final avec lequel l'utilisateur interagira. Nous nous sommes donc concentrés sur l'adaptation du code déjà existant plutôt que sur la recherche et l'implémentation d'un ou plusieurs algorithmes afin de détecter les contours d'une image. Seulement, comme c'est une adaptation, il y a eu une longue phase de compréhension et de test afin de faire fonctionner comme il faut cette application. 
 		\subsection{Placement de la figure}
 		
