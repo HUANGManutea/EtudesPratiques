@@ -25,24 +25,23 @@
 \thispagestyle{empty}      % Supprime le numéro de page sur la 1re page
 
 \begin{abstract}
-	Lors de leur troisième année, les étudiants de l'INSA de Rennes doivent réaliser un projet. Notre groupe a choisi de travailler sur le développement d'une application sur tablette. Ce logiciel doit être assez intuitive pour permettre à un utilisateur novice, de créer rapidement et facilement des objets en 3D à partir d'un dessin 2D.
+	Lors de leur troisième année, les étudiants de l'INSA de Rennes doivent réaliser un projet. Notre groupe a choisi de travailler sur le développement d'une application sur tablette. Cette application est destinée à être utilisée lors de séances de démonstration dans la salle de réalité augmentée Immersia. Nous devons permettre au sujet de la démonstration de réaliser simplement et sans besoin d'explications sur le fonctionnement de l'application, des objets 3D à partir de dessins 2D qu'il aura fait. Une fois sa création faites, elle doit être envoyée vers la machine gérant la salle.
 \end{abstract}
 	
 	\section{Introduction}
 		%Présentation succinte du projet
-		Notre équipe s'est mobilisée autour d'une question : Comment un utilisateur novice peut-il créer facilement et rapidement un objet en 3D à partir d'un dessin simpliste ?
-		
-		Afin d'y répondre nous avons cherché à développer une application intuitive. Mais nous avions quelques contraintes : l'utilisateur dessinera sur la tablette et les objets 3D devront être exportés vers un serveur Unity. Cet envoi à un serveur Unity doit permettre aux chercheurs de l'IRISA d'insérer rapidement des objets simples dans une de leurs scènes.
+		Au cours de ce rapport, vous trouverez les choix fait pour développer cette application. Tout d'abord, la sélections des technologies les plus amènes de respecter le cahier des charges. Ensuite comment à partir de ces choix, nous avons défini l'architecture de l'application. Sur chaque partie de celle-ci, vous verrez les parties pris réalisés par l'équipe. Puis nous présenterons notre répartition du travails et le suivit de celui-ci au sein de notre équipe. Pour finir, nous concluons sur les objectifs atteints et les futurs possibles pour le développement de cette application.
+	\section{Cahier des charges}	
 	\section{État de l'art}
 	%Rappel rapide des technologies utilisées
 		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur Unity. 
 		
 		En développant notre application sur Unity, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute la partie extrusion développée plus loin(5.3). Une fois toutes ces informations réunies, nous avons pu passer à l'étape suivante, c'est-à-dire l'organisation du travail.
-	\section{Organisation du travail}
-	%découpage des tâches et répartition du travail + explication séances hebdomadaires
-	Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
-	
-	Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont nous ne trouvions pas les solutions.
+	\section{Architecture logiciel}
+		%découpage des tâches et répartition du travail + explication séances hebdomadaires
+		Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
+		
+		Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont nous ne trouvions pas les solutions.
 	
 	\section{Présentation de l'application}
 		%combien de temps passé pour chaque tâche
@@ -84,6 +83,7 @@
 			Comme notre application a été codée en C\#, nous avons décidé de passer par les classes de .NET pour la gestion du réseau.
 			La nouvelle piste a été d'utiliser les "sockets" ou connecteurs réseau qui permettent, entre autre, de connecter un serveur et un client et d'échanger des données. Nous avons dû choisir parmi deux protocoles d'échange de données: UDP et TCP.
 			M. François LEHERICEY nous a informé que le protocole UDP ne fonctionnerait pas sur le réseau de l'IRISA, ainsi nous avons choisi le protocole TCP.
+	\section{Organisation du travail}
 	\section{Objectifs}
 		%Qu'est-ce qu'on a : changé, abandonné ...
 		Au cours de l'avancement du projet, nous avons du faire certains choix, et changer ou abandonner certaines de nos idées initiales.
