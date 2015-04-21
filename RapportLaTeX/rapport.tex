@@ -33,14 +33,31 @@
 		%Présentation succinte du projet
 		Au cours de ce rapport, vous trouverez les choix faits pour développer cette application. Tout d'abord, la sélection des technologies les plus à même de respecter le cahier des charges. Ensuite comment à partir de ces choix, nous avons défini l'architecture de l'application. Sur chaque partie de celle-ci, vous verrez les choix réalisés par l'équipe. Puis nous présenterons notre répartition du travail et le suivit de celui-ci au sein de notre équipe. Pour finir, nous concluons sur les objectifs atteints et les futurs possibles pour le développement de cette application.
 	\section{Cahier des charges}
-		Afin de pouvoir livrer une application en adéquation avec l'idée que se fait notre "client", nous avons du suivre un cahier des charges.
+		Notre client nous as imposé le cahier des charges qui suis:
 		
-		Tout d'abord, il faut que l'usage de l'application se fasse de manière intuitive et qu'un utilisateur novice puisse s'en servir sans explication. Le serveur qui va recevoir le nouvel objet est sous Unity, il faut donc que l'objet exporté puisse être compatible avec le système Unity. 	
+		-Supportable par Android Tablette
+		-Application ergonomique: utilisation rapide pour un nouvelle utilisateur
+		-Outils de dessin
+		-Création d'objet 3D depuis les dessins ainsi fait
+		-pouvoir exporter la création vers un serveur Unity
 	\section{État de l'art}
 	%Rappel rapide des technologies utilisées
+		\subsection{Quelle technologie utilisé?}
 		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur Unity. 
 		
-		En développant notre application sur Unity, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute \hyperlink{ancre}{la partie \ref{extrusion}, qui est l'extrusion}, développée plus loin à la page \pageref{extrusion}. Une fois toutes ces informations réunies, nous avons pu passer à l'étape suivante, c'est-à-dire l'organisation du travail.
+		En développant notre application sur Unity, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute \hyperlink{ancre}{la partie \ref{extrusion}, qui est l'extrusion}, développée plus loin à la page \pageref{extrusion}. 
+		
+		\subsection{Comment être ergonomique?}
+		Pour le dessins, nous avons crée une interface lambda type paint. Avec un menu déroulant pour accédé aux outils:
+		
+		\centerline{\includegraphics[scale=0.5]{images/Cmt_placer.png}}
+		
+		Une fois le dessin extrudé, pour le placer dans l'environnement 3D, l'utilisateur pourra à l'aide d'un menu (1) orienté et re-dimensionner la figure selon chacun de ses axes les un après les autres. Pour se retrouvé dans l'environnement, il aura une camera qui suis l'objet selon l'axe courant (2). Et une camera amovible et zoomable qui filmera l'ensemble de la scène déjà crée (3). Ici les cubes sont des objets crée précédemment qui sont passer en transparent pour facilité la lisibilité.
+		
+		
+		
+		
+		Une fois tout ces points définis , nous avons pu passer à l'étape suivante, c'est-à-dire l'architecture du logiciel.
 	\section{Architecture logicielle}
 		%découpage des tâches et répartition du travail + explication séances hebdomadaires
 		Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
