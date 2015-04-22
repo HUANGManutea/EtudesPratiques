@@ -43,7 +43,7 @@
 	\section{État de l'art}
 	%Rappel rapide des technologies utilisées
 		\subsection{Quelle technologie utilisé?}
-		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur créé avec Unity. 
+		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur, créé avec Unity. 
 		
 		En développant notre application sur Unity, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute \hyperlink{ancre}{la partie \ref{extrusion}, qui est l'extrusion}, développée plus loin à la page \pageref{extrusion}. 
 		
@@ -106,11 +106,18 @@
 
 		\subsection{Export}
 			Un fois l'objet en 3D créé, nous devons l'envoyer à un serveur qui affichera cet objet dans une scène 3D.
-			Nous nous sommes orientés vers le socket TCP qui permet d'échanger des données entre 2 applications, de plus il existe une documentation en C\#.
+			Nous nous sommes orientés vers le socket TCP qui permet d'échanger des données entre 2 applications.
+			Nous avons choisi cette approche de l'envoi des données car:
+			\begin{itemize}
+				\item Elle dispose de classes prévues à cet effet en C\#
+				\item Elle est documentée en C\# par Microsoft
+				\item Elle permet d'envoyer des octets, donc flexible
+			\end{itemize}
 						
+			
 			\centerline{\includegraphics[scale=1]{images/tcp-socket.png}}
 			
-			Dans notre cas, dès que la connexion est établie, le client envoie sous forme de flux le fichier contenant l'objet en 3D. Cette action correspond à la requête sur le schéma. Puis, en guise de traitement, le serveur ouvre le fichier et affiche l'objet en 3D dans la scène.
+			Dans notre cas, dès que la connexion est établie, le client envoie sous forme de flux les données de l'objet en 3D. Cette action correspond à la requête sur le schéma. Puis, en guise de traitement, le serveur affiche l'objet en 3D dans la scène.
 			
 	\section{Organisation du travail}
 				
@@ -127,7 +134,6 @@
 				
 				Cette organisation du travail c'est majoritairement révélé efficace. Nous aurions dû fixer notre choix sur Unity dés Octobre et passer moins de temps sur l'état de l'art pour le choix du logiciel. cela nous aurai permis de faire des recherches plus ciblé et ainsi trouver Ucla Mesh Creator plus tôt. De plus nous aurions pu commencer à acquérir des connaissances basiques sur Unity. Manque de connaissance qui nous a ralenti.
 			
-	
 	
 	\section{Objectifs}
 		%Qu'est-ce qu'on a : changé, abandonné ...
