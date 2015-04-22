@@ -43,7 +43,7 @@
 	\section{État de l'art}
 	%Rappel rapide des technologies utilisées
 		\subsection{Quelle technologie utilisé?}
-		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur créé avec Unity. 
+		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur, créé avec Unity. 
 		
 		En développant notre application sur Unity, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute \hyperlink{ancre}{la partie \ref{extrusion}, qui est l'extrusion}, développée plus loin à la page \pageref{extrusion}. 
 		
@@ -63,10 +63,6 @@
 		'Objet', qui représente l'assemblage des divers dessins 2D extrudés.
 
 				\centerline{\includegraphics[scale=0.5]{images/archi.png}}
-	
-	%	Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
-		
-	%	Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont nous ne trouvions pas les solutions.
 
 	\section{Etape par étape}
 		%combien de temps passé pour chaque tâche
@@ -107,13 +103,23 @@
 
 		\subsection{L'envoi}
 			Un fois l'objet en 3D créé, nous devons l'envoyer à un serveur qui affichera cet objet dans une scène 3D.
-			Nous nous sommes orientés vers le socket TCP qui permet d'échanger des données entre 2 applications, de plus il existe une documentation en C\#.
+			Nous nous sommes orientés vers le socket TCP qui permet d'échanger des données entre 2 applications.
+			Nous avons choisi cette approche de l'envoi des données car:
+			\begin{itemize}
+				\item Elle dispose de classes prévues à cet effet en C\#
+				\item Elle est documentée en C\# par Microsoft
+				\item Elle permet d'envoyer des octets, donc flexible
+			\end{itemize}
 						
+			
 			\centerline{\includegraphics[scale=1]{images/tcp-socket.png}}
 			
-			Dans notre cas, dès que la connexion est établie, le client envoie sous forme de flux le fichier contenant l'objet en 3D. Cette action correspond à la requête sur le schéma. Puis, en guise de traitement, le serveur ouvre le fichier et affiche l'objet en 3D dans la scène.
+			Dans notre cas, dès que la connexion est établie, le client envoie sous forme de flux les données de l'objet en 3D. Cette action correspond à la requête sur le schéma. Puis, en guise de traitement, le serveur affiche l'objet en 3D dans la scène.
 			
 	\section{Organisation du travail}
+		%	Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
+		
+		%	Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont nous ne trouvions pas les solutions.
 	\section{Objectifs}
 		%Qu'est-ce qu'on a : changé, abandonné ...
 		Au cours de l'avancement du projet, nous avons du faire certains choix, et changer ou abandonner certaines de nos idées initiales.
