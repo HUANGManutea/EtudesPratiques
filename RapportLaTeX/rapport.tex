@@ -107,11 +107,12 @@
 
 		\subsection{L'envoi}
 			Un fois l'objet en 3D créé, nous devons l'envoyer à un serveur qui affichera cet objet dans une scène 3D.
-			Nous avons tout d'abord pensé utiliser les assets , c'est-à-dire les classes, propres à Unity gérant le réseau entre différentes applications Unity. Mais nous avons très vite été confronté à un problème: Unity est avant tout un moteur de jeu, et les classes sont développées dans cette optique.
-			Par exemple, si on examine un jeu en multijoueur, on se rend compte que le contenu, les objets, sont déjà tous connus du serveur et des clients. Or, nous créons un objet à partir de zéro, et nous voulons l'envoyer au serveur. On ne peut donc pas utiliser les classes dédiées au réseau. Nous avons donc décidé de nous orienter vers d'autres solutions.
-			Comme notre application a été codée en C\#, nous avons décidé de passer par les classes de .NET pour la gestion du réseau.
-			La nouvelle piste a été d'utiliser les "sockets" ou connecteurs réseau qui permettent, entre autre, de connecter un serveur et un client et d'échanger des données. Nous avons dû choisir parmi deux protocoles d'échange de données: UDP et TCP.
-			M. François LEHERICEY nous a informé que le protocole UDP ne fonctionnerait pas sur le réseau de l'IRISA, ainsi nous avons choisi le protocole TCP.
+			Nous nous sommes orientés vers le socket TCP qui permet d'échanger des données entre 2 applications, de plus il existe une documentation en C\#.
+						
+			\centerline{\includegraphics[scale=1]{images/tcp-socket.png}}
+			
+			Dans notre cas, dès que la connexion est établie, le client envoie sous forme de flux le fichier contenant l'objet en 3D. Cette action correspond à la requête sur le schéma. Puis, en guise de traitement, le serveur ouvre le fichier et affiche l'objet en 3D dans la scène.
+			
 	\section{Organisation du travail}
 	\section{Objectifs}
 		%Qu'est-ce qu'on a : changé, abandonné ...
