@@ -63,10 +63,7 @@
 		'Objet', qui représente l'assemblage des divers dessins 2D extrudés.
 
 				\centerline{\includegraphics[scale=0.5]{images/archi.png}}
-	
-	%	Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
-		
-	%	Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont nous ne trouvions pas les solutions.
+
 
 	\section{Etape par étape}
 		%combien de temps passé pour chaque tâche
@@ -81,15 +78,15 @@
 			Chaque boutons ouvrent sur des fenêtres qui n'attendent plus que la liaisons avec les fonctions des autres sections de l'application.
 			
 			Pour respecter la propriété intellectuelle, nous avons dessiné une partie des boutons et pris une autre sur iconmonstr.com (un site proposant des icônes libres pour notre utilisation).
-		\subsection{Le dessin}
+		\subsection{Dessin}
 		
-			\subsubsection{Les outils}	
+			\subsubsection{Outils}	
 						
 				Les outils sont dans un menu coulissant, pour animé le mouvement, un outils est intégré dans Unity, les animations. Nous avons accéléré ces animations après de tests utilisateurs.
 					
 				Pour permettre à un utilisateur novice d'utiliser l'application, nous avons proposer à l'utilisateur un nombre limiter d'outils, de couleurs et de diamètres. On aurai pu être plus exhaustif, avec par exemple un choix des quantités de chaque couleurs primaires entre 1 et 255 pour couvrir toute la palette chromatique. Mais cela aurai trop complexifié l'application.
 				Dans cette partie il est très facile d'ajouté des outils ou couleurs sans toucher au reste du programme. Il n'y as qu'une fonction a écrire et le canevas de ces fonctions est déjà présent dans le code.
-			\subsubsection{La zone de dessin}
+			\subsubsection{Zone dessin}
 			
 			C'est pour nous la première étape de la création d'un objet 3D. À la suite de cette étape, nous souhaitions obtenir une image à extruder. Les images sont appelées textures sous Unity. Nous avons utilisé un plan comme objet de référence pour la zone de dessin. Nous nous sommes rendus compte plus tard que la texture de base ne prenait pas l'alpha\footnote{C'est à dire la transparence} en compte, or nous souhaitions disposer d'une image où seul les parties coloriées seraient extrudées. Nous avons donc précisé, lors de la création de la texture, vouloir un type RGB32, pour avoir un fond transparent.
 			
@@ -98,14 +95,16 @@
 			Il fallait ensuite être capable de dessiner sur la texture, or l'objet (le plan ici) et la texture ont des dimensions différentes : nous avons d'abord tenté de modifier la texture à l'endroit où l'on cliquait, mais il y avait toujours un décalage à l'affichage. Finalement, la solution la plus efficace fut de projeter un Ray, objet monodirectionnel qui traverse l'espace, au moment où l'on clique dans la zone de dessin, et de trouver le pixel à l'intersection de ces deux objets. On a ainsi pu, dans un premier temps, modifier un pixel en cliquant dessus. Ensuite, pour garder un tracé continu, nous avons implémenté une méthode qui trace la droite entre le dernier point colorié, et le point sur lequel on clique. Il restait à faire le lien entre la zone de dessin, et les différents outils définis plus tôt. Ainsi, la zone de dessin va chercher les différentes couleurs, la largeur du trait, et les outils à utiliser dans le menu déroulant. Nous avons aussi implémenté des méthodes "eraser" et "bucket", capables de gommer et remplir rapidement une surface.
 			
 		\hypertarget{ancre}{
-		\subsection{L'extrusion}}
+		\subsection{Passage au 3D}}
 		\label{extrusion}
 		L'extrusion est une autre tâche importante du projet. En effet, il faut à partir d'une texture, créer un objet en 3D. Pour ce faire, nous sommes partis d'une extension Unity déjà existante : UCLA Mesh Creator. C'est un créateur d'objets 3D, à partir d'une texture. Seulement, il a fallu reprendre le code pour l'adapter à notre utilisation. Initialement, cette application sert à créer rapidement et simplement un objet afin de pouvoir l'insérer dans son jeu. De plus, il est possible de la faire fonctionner uniquement en mode "édition". Il y a deux modes quand on l'on travaille sous Unity : le mode "édition", qui nous permet de créer des scènes avec nos objets, nos animations, et un mode "jeu" où l'on voit le rendu final avec lequel l'utilisateur interagira. Nous nous sommes donc concentrés sur l'adaptation du code déjà existant plutôt que sur la recherche et l'implémentation d'un ou plusieurs algorithmes afin de détecter les contours d'une image. Seulement, comme c'est une adaptation, il y a eu une longue phase de compréhension et de test afin de faire fonctionner comme il faut cette application. 
-		\subsection{Placement de la figure}
+		\subsection{Placement et prévisualisation}
 		
-			Pour placer une figure dans le décor 3D, il faut créer des menus pour diriger celle-ci. Et intégrer une caméra qui filmerait l'objet courant selon ses axes. Après de multiples recherches sur la gestion des caméras Unity, nous avons finalement réussi à écrire un script assurant ce suivi avec une possibilité de changer aisément l'axe de vue. Ensuite il y a eu la mise en place d'un menu pour diriger notre figure. Celui-ci est relativement simple à mettre en place aux vues de ce que l'on a réalisé précédemment dans l'IHM. La difficulté de cette partie est de concevoir un script pour modifier la taille de notre figure.
+			Pour placer l'objet courant, nous avons juste intégré des scripts qui translate la figure et des sliders pour choisir la taille. La vitesse et rotation/translation et les tailles admises par les figures sont facilement modifiables, elles nécessiteront probablement des ajustements. Ou sinon un traitement de l'objet dans le serveur peut être imaginer, où celui-ci augmenterai la taille de l'objet pour l'adapter à la salle de réalité augmenté.
+			
+			Pour la prévisualisation et le placement, nous avons intégré des caméras. Celles-ci sont adapté aux objets créée. Mais si on ajuste les tailles des objets, il faudrait aussi modifier la taille de ces caméras.
 
-		\subsection{L'envoi}
+		\subsection{Export}
 			Un fois l'objet en 3D créé, nous devons l'envoyer à un serveur qui affichera cet objet dans une scène 3D.
 			Nous nous sommes orientés vers le socket TCP qui permet d'échanger des données entre 2 applications, de plus il existe une documentation en C\#.
 						
@@ -114,21 +113,42 @@
 			Dans notre cas, dès que la connexion est établie, le client envoie sous forme de flux le fichier contenant l'objet en 3D. Cette action correspond à la requête sur le schéma. Puis, en guise de traitement, le serveur ouvre le fichier et affiche l'objet en 3D dans la scène.
 			
 	\section{Organisation du travail}
+				
+				Pour réalisé toutes ces tâches en parallèles, nous avons hébergé notre projet sous GitHub. La répartition des tâches fut comme suis:
+				- Aurélien Fontaine : Passage au 3D
+				- Etienne Geantet : Zone Dessin
+				- Manutea Huang : Export
+				- Arnaud Martin : IHM - Outils - Placement - Prévisualisation
+			
+				Nous n'avons pas rencontrer de problème lors de la mise en commun des parties. A part au niveau du passage de la texture de la zone de dessin à l'extrusion:
+				%je vous laisse expliquer
+			
+				Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity.
+				
+				Cette organisation du travail c'est majoritairement révélé efficace. Nous aurions dû fixer notre choix sur Unity dés Octobre et passer moins de temps sur l'état de l'art pour le choix du logiciel. cela nous aurai permis de faire des recherches plus ciblé et ainsi trouver Ucla Mesh Creator plus tôt. De plus nous aurions pu commencer à acquérir des connaissances basiques sur Unity. Manque de connaissance qui nous a ralenti.
+			
+	
+	
 	\section{Objectifs}
 		%Qu'est-ce qu'on a : changé, abandonné ...
-		Au cours de l'avancement du projet, nous avons du faire certains choix, et changer ou abandonner certaines de nos idées initiales.
-		Pour le dessin, nous nous sommes contenté de trois tailles pour l'outil de coloriage.
-		La possibilité de sauvegarder des objets n'était pas, à l'origine, une des fonctionnalités de l'application. Mais en se concertant, nous nous sommes rendu compte qu'une personne aimerait sûrement pouvoir réutiliser ses objets dans la construction d'autres objets. Si toutes les autres fonctionnalités de l'application sont opérationnelles, la sauvegarde serait un objectif potentiel à rajouter.
-		Globalement, nous sommes arrivés à un résultat très proche de notre conception initiale de l'application.
+
+	%	Pour le dessin, nous nous sommes contenté de trois tailles pour l'outil de coloriage.
+	%	La possibilité de sauvegarder des objets n'était pas, à l'origine, une des fonctionnalités de l'application. Mais en se concertant, nous nous sommes rendu compte qu'une personne aimerait sûrement pouvoir réutiliser ses objets dans la construction d'autres objets. Si toutes les autres fonctionnalités de l'application sont opérationnelles, la sauvegarde serait un objectif potentiel à rajouter.
+	%	Globalement, nous sommes arrivés à un résultat très proche de notre conception initiale de l'application.Notre application a encore plusieurs voies d'améliorations possibles. Comme l'implantation d'outils pour faire des sphères, avec des extrusions circulaires.
+		Au cours de l'avancement du projet, nous avons du faire certains choix, et changer ou abandonner certaines de nos idées initiales. Notamment : la sauvegarde et l'éditions des éléments créées.
+		Par manque de temps nous n'avons pas pu les implantés nous même, mais dans l'IHM des menus sont déjà présents pour géré la sauvegarde et nous savons en théorie comment mettre en place la liste d'objet, tout cela sera intégré dans la documentation utilisateur.
+		Globalement, nous sommes arrivés à un résultat très proche de notre conception initiale de l'application et qui répond au cahier des charges.
+	
 	\section{Conclusion}
 		%Ce que l'on se souviendra du projet
 		%Si c'était à refaire, quoi changer?
 		%Quelles sont les évolutions que l'on pourrait apporter à notre application finale
-			Nous en retenons qu'Unity est un outil puissant, mais pas encore adapté à la création de menus, et orienté pair-à-pair. Ce travail fut aussi une bonne initiation à la gestion de projet, avec l'utilisation de Git. Il en ressort aussi qu'il est crucial de se donner des tâches précises et des délais à respecter pour arriver au bout d'un projet dans les temps impartis. Cela évite qu'une partie minime du projet ne nous accapare tout notre temps.
 			
 			Si l'on nous présentait ce projet à nouveau, nous changerions notre méthode de travail sur plusieurs points. Notamment, nous passerions moins de temps sur l'état de l'art; il était presque sûr qu'Unity serait notre choix comme outil de développement. Ensuite, nous procéderions à un partage des recherches et des réflexions aux premiers instants du projet. Nous commencerions à apprendre à utiliser Unity dès le mois d'Octobre, car ce manque de connaissances nous a relenti par la suite. Nous étions parfois bloqués par des détails, ou nous trouvions des solutions sans les comprendre entièrement, menant à d'autres problèmes par la suite. Mais le manque de temps ne nous permettait pas de faire autrement.
 			
-			Notre application a encore plusieurs voies d'améliorations possibles. Comme l'implantation d'outils pour faire des sphères, avec des extrusions circulaires.
+		%	Si l'on nous présentait ce projet à nouveau, nous changerions notre méthode de travail sur plusieurs points. Notamment, nous passerions moins de temps sur l'état de l'art; il était presque sûr qu'Unity serait notre choix comme outil de développement. Ensuite, nous procéderions à un partage des recherches et des réflexions aux premiers instants du projet. Nous commencerions à apprendre à utiliser Unity dès le mois d'Octobre, car ce manque de connaissances nous a relenti par la suite. Nous étions parfois bloqués par des détails, ou nous trouvions des solutions sans les comprendre entièrement, menant à d'autres problèmes par la suite. Mais le manque de temps ne nous permettait pas de faire autrement.
+		Nous avons atteint les objectifs du cahier des charges. L'utilisation de Unity, un logiciel puissant et évoluant, assure un suivi et de possibles évolutions facilités de l'application.
+
 	
 	\section{Remerciements}
 		Nous souhaitons tout d'abord remercier Monsieur François LEHERICEY pour sa disponibilité ainsi que pour ses précieuses informations.
