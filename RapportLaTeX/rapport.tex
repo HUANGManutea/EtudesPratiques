@@ -103,7 +103,14 @@
 		\hypertarget{ancre}{
 		\subsection{Passage au 3D}}
 		\label{extrusion}
-			L'extrusion est une autre tâche importante du projet. En effet, il faut à partir d'une texture, créer un objet en 3D. Pour ce faire, nous sommes partis d'une extension Unity déjà existante : UCLA Mesh Creator. C'est un créateur d'objets 3D, à partir d'une texture. Seulement, il a fallu reprendre le code pour l'adapter à notre utilisation. Initialement, cette application sert à créer rapidement et simplement un objet afin de pouvoir l'insérer dans son jeu. De plus, il est possible de la faire fonctionner uniquement en mode "édition". Il y a deux modes quand on l'on travaille sous Unity : le mode "édition", qui nous permet de créer des scènes avec nos objets, nos animations, et un mode "jeu" où l'on voit le rendu final avec lequel l'utilisateur interagira. Nous nous sommes donc concentrés sur l'adaptation du code déjà existant plutôt que sur la recherche et l'implémentation d'un ou plusieurs algorithmes afin de détecter les contours d'une image. Seulement, comme c'est une adaptation, il y a eu une longue phase de compréhension et de test afin de faire fonctionner comme il faut cette application. 
+			L'extrusion est une autre tâche importante du projet. En effet, il faut à partir d'une texture, créer un objet en 3D. Pour ce faire, nous sommes partis d'une extension Unity déjà existante : UCLA Mesh Creator. C'est un créateur d'objets 3D, à partir d'une texture.
+			
+			L'utilisation de cet outil nous a permis un très gros gain de temps et de code. En effet, toute la partie concernant la détection des contours de l'image été déjà faite et fonctionnelle. Il nous a suffit d'intégrer ce code à notre application.
+			
+			L'adaptation du code existant à notre projet ne s'est pas faite naturellement car il y a eu une phase d'appréhension du code existant et de sa modification. Il s'est avéré au cours du développement, que de nombreuses parties, notamment celles gérant l'acquisition de la texture à extruder, ne pouvait pas se faire simplement. Nous avons donc du reconstruire toute une partie afin de faire le fonctionner.
+			
+			Malgré ces contre-temps, l'utilisation de cet outil nous a été très bénéfique et il nous a surement permis de finir le projet dans les temps.
+
 		\subsection{Placement et prévisualisation}
 		
 			Pour placer l'objet courant, nous avons juste intégré des scripts qui translatent la figure et des sliders pour choisir la taille. La vitesse et rotation/translation et les tailles admises par les figures sont facilement modifiables, elles nécessiteront probablement des ajustements. Ou sinon un traitement de l'objet dans le serveur peut être imaginer, où celui-ci augmenterait la taille de l'objet pour l'adapter à la salle de réalité augmentée.
