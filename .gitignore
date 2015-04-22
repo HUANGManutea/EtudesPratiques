@@ -12,6 +12,8 @@
 *.dvi
 *.fdb_latexmk
 *.synctex.gz
+*.bbl
+*.blg
 
 # =============== #
 # Unity generated #
