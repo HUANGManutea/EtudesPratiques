@@ -60,7 +60,7 @@
 		Une fois tout ces points définis , nous avons pu passer à l'étape suivante, c'est-à-dire l'architecture du logiciel.
 		
 	\section{Architecture logicielle}
-		Nous avons découpé le logiciel en plusieurs sous parties qui peuvent être développées indépendamment. Les liens entre les parties obligent à créer des fonctions qui envoie certaines données. L'avantage de cette découpe est qu'une étape est en majorité indépendante de la précédente. Donc le développement et la phase de test chaque partie peuvent se faire de façon optimisée avant de tout réunir et lier.
+		Nous avons découpé le logiciel en plusieurs sous-parties qui peuvent être développées indépendamment. Les liens entre les parties obligent à créer des fonctions qui envoient certaines données. L'avantage de cette découpe est qu'une étape est en majorité indépendante de la précédente. Donc, le développement et la phase de test chaque partie peuvent se faire de façon optimisée avant de tout réunir et lier.
 		
 		Nous avons omis dans le schéma la caméra de prévisualisation, elle est contenu dans 'Objet', qui représente l'assemblage des divers dessins 2D extrudés.
 
@@ -71,13 +71,13 @@
 		%combien de temps passé pour chaque tâche
 		%Problèmes rencontrées et solutions apportées, en quoi ces solutions ont été utilisées par la suite
 		\subsection{L'IHM}
-			La difficulté de la création de l'Interface Homme-Machine (IHM) était de concevoir un espace ergonomique et adapté pour recevoir le reste des éléments de l'application. Après une conception sur papier pour assurer l'adaptabilité, nous avant développer cela avec des outils récemment intégré à Unity, les 'UI'. Ils sont dédiés à la création de fenêtres et de menus. Leur utilisation limite la production de code de notre part et permet une gestion plus optimisée de ces éléments.
+			La difficulté de la création de l'Interface Homme-Machine (IHM) était de concevoir un espace ergonomique et adapté pour recevoir le reste des éléments de l'application. Après une conception sur papier pour assurer cette adaptabilité, nous avons développé cette interface avec des outils récemment intégrés à Unity: les 'UI'. Ils sont dédiés à la création de fenêtres et de menus. Leur utilisation limite la production de codes de notre part et permet une gestion plus optimisée des éléments de l'interface.
 			
-			Voici donc l'IHM finale, avec une zone de dessin (1) et qui servira pour le placement, une barre d'outils (2), une zone pour la prévisualisation (3) et une dernière pour la possible future gestion des figures créées (4).
+			Voici donc l'IHM finale, avec une zone qui servira pour le dessin et qui servira pour le placement (1), une barre d'outils (2), une zone pour la prévisualisation (3) et une dernière pour la possible future gestion des figures créées (4).
 			
 			\centerline{\includegraphics[scale=0.5]{images/ihm.png}}
 
-			Chaque bouton ouvre sur des fenêtres qui n'attendent plus que la liaisons avec les fonctions des autres sections de l'application.
+			Chaque bouton ouvre sur des fenêtres qui n'attendent plus que la liaison avec les fonctions des autres sections de l'application.
 			
 			Pour respecter la propriété intellectuelle, nous avons dessiné une partie des boutons et pris une autre sur \href{http://www.iconmonstr.com}{iconmonstr.com} (un site proposant des icônes libres pour notre utilisation).
 		\subsection{Dessin}
