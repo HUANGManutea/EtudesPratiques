@@ -57,22 +57,28 @@
 		Une fois tout ces points définis , nous avons pu passer à l'étape suivante, c'est-à-dire l'architecture du logiciel.
 		
 	\section{Architecture logicielle}
-	
+		Nous avons découpé le logiciel en plusieurs sous parties qui peuvent être développer indépendamment. Les liens entre les parties obligent à crée des fonctions qui envoie certaines données. L'avantage de cette découpe est qu'une étape est en majorité indépendante de la précédente. Donc on peut développer et tester chaque partie de façon optimiser avant de tout réunir et lié.
+		
+		Nous avons omis dans le schéma la caméra de prévisualisation, elle est contenu dans
+		'Objet', qui représente l'assemblage des divers dessins 2D extrudés.
+
 				\centerline{\includegraphics[scale=0.5]{images/archi.png}}
 	
-		%découpage des tâches et répartition du travail + explication séances hebdomadaires
-		Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
+	%	Dès le début du projet, nous nous sommes divisés le travail et nous avons hébergé notre projet sous GitHub afin que chacun puisse avancer sans pour autant devoir attendre le travail d'un autre membre de notre équipe. Nous avons repéré les axes centraux du développement qui sont : l'affichage de la fenêtre de l'application, la capture et l'affichage du dessin fait par l'utilisateur, l'extrusion de la forme dessinée, le placement de celle-ci, et enfin l'exportation de la figure finale sur un serveur Unity. Ceux-ci ont donc été partagés entre nous.
 		
-		Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont nous ne trouvions pas les solutions.
+	%	Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity pour les problèmes dont nous ne trouvions pas les solutions.
 
-	\section{Présentation de l'application}
+	\section{Etape par étape}
 		%combien de temps passé pour chaque tâche
 		%Problèmes rencontrées et solutions apportées, en quoi ces solutions ont été utilisées par la suite
 		\subsection{L'IHM}
-			Nous devions d'abord créer le design de l'Interface Homme-Machine (IHM). Nous avons défini sur papier à quoi devaient ressembler les divers menus. Afin de les mettre en place sous Unity, nous avons dû nous servir de la mise à jour 4.6 qui contient un système de fenêtres adapté à la création de menus (UI), sortie fin novembre 2014. Au vu de sa date de sortie récente, nous avions accès à peu d'aides sur Internet. Après une avancée assez laborieuse sur le début, nous avons réussi à mettre en place le canevas\footnote{Un canvas, dans Unity, est une zone où l'on peut insérer et positionner d'autres objets.} principal. 
+			La difficulté de la création de l'Interface Homme-Machine (IHM) étais de concevoir un espace ergonomique et adapté pour recevoir le reste des éléments de l'application. Après une conception sur papier pour assurer l'adaptabilité, nous avant développer cela avec des outils récemment intégré à Unity, les 'UI', ils sont dédiés à la création de fenêtres et de menus. Leur utilisation limite la production de code de notre part et permet une gestion plus optimisé de ces éléments.
 			
-			Le temps passé sur cette partie, nous avons permis d'acquérir les connaissances nécessaires sur les outils UI d'Unity et donc d'avancer plus rapidement dans la suite du développement. De plus, les différents boutons étaient en place et n'attendaient plus que les scripts écrits dans les autres parties.
-		
+			Voici donc l'IHM finale, avec une zone de dessins (1) et qui servira pour le placement, une barre d'outils (2), une zone pour la prévisualisation (3) et une dernière pour la possible future gestion des figures créée (4).
+			
+			\centerline{\includegraphics[scale=0.5]{images/ihm.png}}
+
+			Chaque boutons ouvrent sur des fenêtres qui n'attendent plus que la liaisons avec les fonctions des autres sections de l'application.
 		\subsection{Le dessin}
 			La capture du dessin étant une partie lourde, nous avons décidé de séparer les outils de cette partie. C'est la personne en charge de l'IHM, donc déjà accoutumée avec les menus qui s'en sont occupés.
 		
@@ -99,7 +105,6 @@
 		
 			Pour placer une figure dans le décor 3D, il faut créer des menus pour diriger celle-ci. Et intégrer une caméra qui filmerait l'objet courant selon ses axes. Après de multiples recherches sur la gestion des caméras Unity, nous avons finalement réussi à écrire un script assurant ce suivi avec une possibilité de changer aisément l'axe de vue. Ensuite il y a eu la mise en place d'un menu pour diriger notre figure. Celui-ci est relativement simple à mettre en place aux vues de ce que l'on a réalisé précédemment dans l'IHM. La difficulté de cette partie est de concevoir un script pour modifier la taille de notre figure.
 
-		\subsection{La gestion de la liste des figures}
 		\subsection{L'envoi}
 			Un fois l'objet en 3D créé, nous devons l'envoyer à un serveur qui affichera cet objet dans une scène 3D.
 			Nous avons tout d'abord pensé utiliser les assets , c'est-à-dire les classes, propres à Unity gérant le réseau entre différentes applications Unity. Mais nous avons très vite été confronté à un problème: Unity est avant tout un moteur de jeu, et les classes sont développées dans cette optique.
