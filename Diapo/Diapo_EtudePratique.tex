@@ -320,101 +320,38 @@
 				\end{tabular}
 			\end{frame}
 			
-	\section{Network}
+	\section{Envoi des données}
 			
-			\begin{frame}{Network}
-				\centerline{\includegraphics[height=150pt]{images/network/network.png}}
+			\begin{frame}{Envoi des données}
+				\centerline{\includegraphics[height=120pt]{images/network/sending_model2.png}}
 			\end{frame}
 			
-		\subsection{How will it work?}
-		
-			\begin{frame}{What is already set up ?}
-					\centerline{\includegraphics[height=100pt]{images/network/server.png}
-					\pause
-					\includegraphics[height=200pt]{images/network/scenebefore.png}}
-			\end{frame}
-			
-			\begin{frame}{The purpose: sending the model}
-				\centerline{\includegraphics[height=150pt]{images/network/sending_model.png}}
-			\end{frame}
-			
-			\begin{frame}{The purpose: catching the model}
-				\includegraphics[height=125pt]{images/network/scenebefore.png}
-				\includegraphics[height=50pt]{images/network/arrow.png}
-				\includegraphics[height=125pt]{images/network/scene.png}
-			\end{frame}
-			
-		\subsection{In the server}
-			\begin{frame}{Plugin}
+		\subsection{Côté serveur}
+			\begin{frame}{Ajout d'un script}
 				\centerline{\includegraphics[height=150pt]{images/network/plugin.png}}
 				\begin{itemize}	
-					\item Little plugin
-					\item Allow the server to receive data
-					\item Integrated in the 3D scene
+					\item Léger
+					\item Reçoit les données
+					\item Intégré dans la scène 3D
+					\item Affiche l'objet
 				\end{itemize}	
 											
 			\end{frame}
 			
-		\subsection{In the tablet}
-			
-			\begin{frame}{External Application}
-				\begin{multicols}{2}
-					
-					\begin{itemize}
-						\item Use resources
-					\end{itemize}
-					\includegraphics[height=100pt]{images/network/CPU_resources.jpg}
-					\pause
-					\columnbreak	
-					
-					\begin{itemize}
-						\item Too complex to set up /
-						
-						 to use
-					\end{itemize}
-					\includegraphics[height=100pt]{images/network/complex.png}					
-				\end{multicols}	
-			\end{frame}
+		\subsection{Côté client}
 		
-			\begin{frame}{What Protocol to use ?}
-					\begin{multicols}{2}
-						HTTP:
-						\begin{itemize}
-							\item Use: Get data from a server
-							\item Problem: Only post specific files to a server
-						\end{itemize}
-						\pause
-						
-						\includegraphics[height=135pt]{images/network/nmft.png}
-						\pause
-						
-						\columnbreak
-						FTP:
-						\begin{itemize}
-							\item Use: Send files to a server
-							\item Problem: Too complex for the user
-						\end{itemize}
-						\pause
-						
-						\includegraphics[height=135pt]{images/network/classicnet.png}
-					\end{multicols}
-					
+			\begin{frame}{Socket TCP}
+				\centerline{\includegraphics[height=120pt]{images/network/tcp-socket.png}}
+				
+				\begin{itemize}
+					\item Dispose de classes prévues à cet effet en C\#
+					\item Documentée en C\# par Microsoft
+					\item Permet d'envoyer des octets, donc flexible
+				\end{itemize}
 			\end{frame}
 			
-		\begin{frame}{Unity Assets}
-			\begin{itemize}
-				\item Unity Assets : looks like Java Classes
-				\item Well implemented
-				\item Documentation available
-				\pause
-				\item \textbf{\underline{Facilitate Unity to Unity Networking}}
-				\pause
-			\end{itemize}
-			\centerline{\includegraphics[height=75pt]{images/network/easier.png}}
-		\end{frame}
-		
-		
-
+			
+	
 	
 	\section{Conclusion}
 	
