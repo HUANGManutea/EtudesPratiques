@@ -79,16 +79,16 @@
 			\centerline{\includegraphics[scale=0.5]{images/ihm.png}}
 
 			Chaque boutons ouvrent sur des fenêtres qui n'attendent plus que la liaisons avec les fonctions des autres sections de l'application.
+			
+			Pour respecter la propriété intellectuelle, nous avons dessiné une partie des boutons et pris une autre sur iconmonstr.com (un site proposant des icônes libres pour notre utilisation).
 		\subsection{Le dessin}
-			La capture du dessin étant une partie lourde, nous avons décidé de séparer les outils de cette partie. C'est la personne en charge de l'IHM, donc déjà accoutumée avec les menus qui s'en sont occupés.
 		
-		
-			\subsubsection{Les outils}				
-				Suite directe de l'IHM, un sous-menu coulissant devait être présent pour pouvoir choisir les outils de dessin. Pour rendre le menu coulissant, la solution qui nous a paru la plus adaptée est de se servir de la gestion des animations d'Unity. Une fois celles-ci faites, elles ont été liées à des boutons pour les enclencher.
+			\subsubsection{Les outils}	
+						
+				Les outils sont dans un menu coulissant, pour animé le mouvement, un outils est intégré dans Unity, les animations. Nous avons accéléré ces animations après de tests utilisateurs.
 					
-				Dans cette partie la difficulté était de choisir comment coder la sélection d'outils. Pour cela, nous avons choisi de créer une énumération pour chaque ensemble d'outils (couleurs, diamètres, pinceau/gomme/pot de peinture). Des fonctions pour récupérer les outils courants ont été implantées, pour permettre au reste de l'application d'avoir connaissance de l'état des outils. De même des fonctions de Set\footnote{Une fonction de Set est un mutateur. Les mutateurs permettent de changer l'état de données membres tout en vérifiant si la valeur que l'on veut donner à la donnée membre respecte les normes de celle-ci ou diverses règles de cohérence.\emph{Wikipedia}} ont été liées aux boutons appropriés. Pour respecter les droits d'images, nous avons dessiné nous-même les icônes.
-				
-				Cette partie n'était pas très compliquée en elle-même. Après des tests utilisateurs, nous avons accéléré les animations. Et au cours du développement, ces animations ont dû être plusieurs fois refaites, car elles déclenchaient des bugs non expliqués.
+				Pour permettre à un utilisateur novice d'utiliser l'application, nous avons proposer à l'utilisateur un nombre limiter d'outils, de couleurs et de diamètres. On aurai pu être plus exhaustif, avec par exemple un choix des quantités de chaque couleurs primaires entre 1 et 255 pour couvrir toute la palette chromatique. Mais cela aurai trop complexifié l'application.
+				Dans cette partie il est très facile d'ajouté des outils ou couleurs sans toucher au reste du programme. Il n'y as qu'une fonction a écrire et le canevas de ces fonctions est déjà présent dans le code.
 			\subsubsection{La zone de dessin}
 			
 			C'est pour nous la première étape de la création d'un objet 3D. À la suite de cette étape, nous souhaitions obtenir une image à extruder. Les images sont appelées textures sous Unity. Nous avons utilisé un plan comme objet de référence pour la zone de dessin. Nous nous sommes rendus compte plus tard que la texture de base ne prenait pas l'alpha\footnote{C'est à dire la transparence} en compte, or nous souhaitions disposer d'une image où seul les parties coloriées seraient extrudées. Nous avons donc précisé, lors de la création de la texture, vouloir un type RGB32, pour avoir un fond transparent.
