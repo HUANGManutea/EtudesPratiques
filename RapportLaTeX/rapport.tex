@@ -50,11 +50,11 @@
 		En développant notre application sur Unity, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute \hyperlink{ancre}{la partie \ref{extrusion}, qui est l'extrusion}, développée plus loin à la page \pageref{extrusion}. 
 		
 		\subsection{Comment être ergonomique?}
-		Pour le dessins, nous avons créé une interface simplifiée dans l'esprit de Microsoft Paint. Avec un menu déroulant pour accéder aux outils (à gauche, le menu est fermé, à droite, ouvert):
+		Pour le dessin, nous avons créé une interface simplifiée dans l'esprit de Microsoft Paint. Avec un menu déroulant pour accéder aux outils (à gauche, le menu est fermé, à droite, ouvert):
 		
 		\centerline{\includegraphics[scale=0.5]{images/Cmt_placer.png}}
 		
-		Une fois le dessin extrudé, pour le placer dans l'environnement 3D, l'utilisateur pourra à l'aide d'un menu (1) orienter et redimensionner la figure selon chacun de ses axes les un après les autres. Pour se retrouver dans l'environnement, il aura une caméra qui suit l'objet selon l'axe courant (2). De plus, il y a une caméra amovible et zoomable qui filmera l'ensemble de la scène déjà créée (3). Ici les cubes sont des objets créés précédemment qui sont passés en transparent pour faciliter la lisibilité.
+		Une fois le dessin extrudé, pour le placer dans l'environnement 3D, l'utilisateur pourra à l'aide d'un menu (1) orienter et redimensionner la figure selon chacun de ses axes les uns après les autres. Pour se retrouver dans l'environnement, il aura une caméra qui suit l'objet selon l'axe courant (2). De plus, il y a une caméra amovible et zoomable qui filmera l'ensemble de la scène déjà créée (3). Ici les cubes sont des objets créés précédemment qui sont passés en transparent pour faciliter la lisibilité.
 		\newline
 
 		Une fois tout ces points définis , nous avons pu passer à l'étape suivante, c'est-à-dire l'architecture du logiciel.
@@ -86,7 +86,7 @@
 						
 				Les outils sont dans un menu coulissant, pour animer le mouvement, un outil est intégré dans Unity, les animations. Nous avons ensuite accéléré ces animations après des tests utilisateurs.
 					
-				Pour permettre à un utilisateur novice d'utiliser l'application, nous avons proposé à l'utilisateur un nombre limité d'outils, de couleurs et de diamètres. Nous aurions pu être plus exhaustif, avec par exemple un choix des quantités de chaque couleurs primaires entre 1 et 255 pour couvrir toute la palette chromatique. Mais cela aurait trop complexifié l'application.
+				Pour permettre à un utilisateur novice d'utiliser l'application, nous avons proposé à l'utilisateur un nombre limité d'outils, de couleurs et de diamètres. Nous aurions pu être plus exhaustif, avec par exemple un choix des quantités de chaque couleur primaire entre 1 et 255 pour couvrir toute la palette chromatique. Mais cela aurait trop complexifié l'application.
 				Dans cette partie il est très facile d'ajouter des outils ou des couleurs sans toucher au reste du programme. Il n'y a qu'une fonction à écrire et le canevas \footnote{Zone graphique permettant de dessiner. \emph{Wikipedia}} de ces fonctions est déjà présent dans le code.
 			\subsubsection{Zone dessin}
 			
@@ -144,9 +144,9 @@
 				Nous n'avons pas rencontré de problème majeur lors de la mise en commun des parties. A part au niveau du passage de la texture de la zone de dessin à l'extrusion:
 				%je vous laisse expliquer
 			
-				Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M. François LEHERICEY avec Unity.
+				Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M.François LEHERICEY avec Unity.
 				
-				Cette organisation du travail s'est majoritairement révélée efficace. Nous aurions dû fixer notre choix sur Unity dès Octobre et passer moins de temps sur l'état de l'art pour le choix du logiciel. Cela nous aurait permis de faire des recherches plus ciblées et ainsi trouver UCLA Mesh Creator plus tôt. De plus, nous aurions pu commencer à acquérir des connaissances basiques sur Unity. Manque de connaissance qui nous a ralenti dans le début du développement.
+				Cette organisation du travail s'est majoritairement révélée efficace. Nous aurions dû fixer notre choix sur Unity dès octobre et passer moins de temps sur l'état de l'art pour le choix du logiciel. Cela nous aurait permis de faire des recherches plus ciblées et ainsi trouver UCLA Mesh Creator plus tôt. De plus, nous aurions pu commencer à acquérir des connaissances basiques sur Unity. Manque de connaissances qui nous a ralenti dans le début du développement.
 			
 	
 	\section{Objectifs}
@@ -156,7 +156,7 @@
 	%	La possibilité de sauvegarder des objets n'était pas, à l'origine, une des fonctionnalités de l'application. Mais en se concertant, nous nous sommes rendu compte qu'une personne aimerait sûrement pouvoir réutiliser ses objets dans la construction d'autres objets. Si toutes les autres fonctionnalités de l'application sont opérationnelles, la sauvegarde serait un objectif potentiel à rajouter.
 	%	Globalement, nous sommes arrivés à un résultat très proche de notre conception initiale de l'application.Notre application a encore plusieurs voies d'améliorations possibles. Comme l'implantation d'outils pour faire des sphères, avec des extrusions circulaires.
 		Au cours de l'avancement du projet, nous avons du faire certains choix, et changer ou abandonner certaines de nos idées initiales. Notamment : la sauvegarde et l'édition des éléments créés.
-		Par manque de temps nous n'avons pas pu les implanter nous même. Par contre, dans l'IHM, des menus sont déjà présents pour gérer la sauvegarde et nous savons en théorie comment mettre en place la liste des objets. Toutes ces information seront intégrées dans la documentation utilisateur.
+		Par manque de temps, nous n'avons pas pu les implanter nous-même. Par contre, dans l'IHM, des menus sont déjà présents pour gérer la sauvegarde et nous savons en théorie comment mettre en place la liste des objets. Toutes ces informations seront intégrées dans la documentation utilisateur.
 		Globalement, nous sommes arrivés à un résultat très proche de notre conception initiale de l'application et qui répond au cahier des charges.
 	
 	\section{Conclusion}
