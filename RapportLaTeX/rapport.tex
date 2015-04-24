@@ -49,7 +49,7 @@
 	\section{État de l'art}
 	%Rappel rapide des technologies utilisées
 		\subsection{Quelle technologie utiliser ?}
-		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur, créé avec Unity. 
+		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur, créé avec Unity. Nous aurions aussi pu nous tourner vers certains logiciels de dessin gérant la création d'objets 3D, tels Markers, LayerPaint ou SketchBook, mais nous nous sommes rendu compte que ceux-ci étaient souvent complexes à utiliser, ce qui entrait en conflit avec notre idée de faire une application simple et intuitive.
 		
 		En développant notre application sur Unity\cite{Unity}, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator\cite{UCLA}, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute \hyperlink{ancre}{la partie \ref{extrusion}, qui est l'extrusion}, développée plus loin à la page \pageref{extrusion}. 
 		
@@ -94,7 +94,7 @@
 				Dans cette partie il est très facile d'ajouter des outils ou des couleurs sans toucher au reste du programme. Il n'y a qu'une fonction à écrire et le canevas \footnote{Zone graphique permettant de dessiner. \emph{Wikipedia}} de ces fonctions est déjà présent dans le code.
 			\subsubsection{Zone dessin}
 			
-			C'est pour nous la première étape de la création d'un objet 3D. À la suite de cette étape, nous souhaitions obtenir une image à extruder. Les images sont appelées textures sous Unity. Nous avons utilisé un plan comme objet de référence pour la zone de dessin. Nous nous sommes rendus compte plus tard que la texture de base ne prenait pas l'alpha\footnote{C'est à dire la transparence} en compte, or nous souhaitions disposer d'une image où seules les parties coloriées seraient extrudées. Nous avons donc précisé, lors de la création de la texture, vouloir un type RGB32, pour avoir un fond transparent.
+			C'est pour nous la première étape de la création d'un objet 3D. À la suite de cette étape, nous souhaitions obtenir une image à extruder. Les images sont appelées textures sous Unity. Nous avons utilisé un plan comme objet de référence pour la zone de dessin.
 			
 			Un premier problème est apparut alors quant au dimensionnement de cette zone de dessin. Le plan ayant une taille précise, il fallait être capable de modifier sa taille par rapport à celle du canevas. Nous avons donc rédigé un script qui initialise la dimension de la zone de dessin, autant pour le plan que pour la texture qui lui est associée.
 			
@@ -153,6 +153,7 @@
 				% 
 				%
 				%Etienne, Aurélien
+				 Nous nous sommes rendus compte que la texture de base ne prenait pas l'alpha\footnote{C'est à dire la transparence} en compte, or nous souhaitions disposer d'une image où seules les parties coloriées seraient extrudées. Nous avons donc précisé, lors de la création de la texture, vouloir un type RGB32, pour avoir un fond transparent.
 				%
 				% 
 				%
