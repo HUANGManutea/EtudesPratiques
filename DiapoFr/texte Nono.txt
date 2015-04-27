@@ -1,0 +1,66 @@
+Indeed, so to allow a novive user to create a complex 3D model since 2D drawing and send it to a vr room
+we have decide to cut that in few step. The user will draw in 2D and make 3D simple form. 
+After he will put this forms in a 3D environment
+
+To that we have deign a windows like that
+
+diapo 1:
+A Frame divided in 3 areas and a toolbar.
+
+diapo 2:
+On the first zone we got the 2D drawing panel, it's the zone where we will draw our object.
+The second it's a vue of the existing 3D model of our project.
+And here, the list of these figures and the original frame.
+
+
+Now, we will see a normal use, our objective it's to draw a red cube. 
+And put it on the top left hand corner of the grey cube.
+Let's start to draw it in 2D for beginning
+
+diapo 3:
+To begin we click on the new shape bouton, it allow us to draw on the zone. 
+To do that, we have access to a drawing menu with some tools.
+A 2D cube is a square so we simply have to draw a red square.
+
+Now we want to extrude it.
+
+diapo 4:
+When you click on the extrude item, a windows open and ask you the size of the extrusion.
+after that we have to place our cube on the corner. 
+To do that we choose a reference in our 3D world, our object will be place next to it.
+We have also the possibilities of allow the choice of different plane around this figure
+,but we didn't really choose the way already.
+and after we will be allow to move it in the 3D environment
+
+diapo 5:
+To place an item in a 3D environment we have 7 possiblemovements : 3 translations, 3 rotations ,one on each axis
+and the size of the object. 
+We want to make it simple and easy to use, so we have cut that in 3 steps.
+
+these parts are really similars.
+First we will move the screen to a 2D vue with the point of vue of the arrow. 
+And in this plane we will be able to move our object.
+
+diapo 6:
+here we can move the red square with the cursors in the 2D frame.
+with this stape we have possibility to move in 2 translation and 1 rotation.
+
+after that the screen will show us a 2D vue of the 2 other direction and allow us the same thing
+
+diapo 7:
+With all of that, ce finaly placed our object in the 3D environment.
+But a last thing can be modify, is the size of our item. There will be a scaling bar who control that.
+
+So now we have a 3D obect composed by 2 items : a grey and a red cube. 
+We will then have to export it to the server, that will add it in the rv room.
+
+
+diapo 8:
+To export just click on the buton export and it's finish.
+
+the last boutons are an edit tool, a delete, a button to switch this two zone and a parameter
+a normal user don't have to click on this.
+
+
+
+This is our first objective. If we finish that early, we will try to make an tool to make some spheries.
