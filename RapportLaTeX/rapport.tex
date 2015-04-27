@@ -8,7 +8,7 @@
 	linkcolor=black}  % Couleur des liens internes
 
 %Décommanter pour la relecture (interlignes plus importantes)
-\linespread{1,6}
+%\linespread{1,6}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -30,13 +30,17 @@
 \thispagestyle{empty}      % Supprime le numéro de page sur la 1re page
 
 \begin{abstract}
-	Lors de leur troisième année, les étudiants de l'INSA de Rennes doivent réaliser un projet. Notre groupe a choisi de travailler sur le développement d'une application sur tablette. Cette application est destinée à être utilisée lors de séances de démonstration dans la salle de réalité augmentée Immersia. Nous devons permettre au sujet de la démonstration de réaliser simplement (et sans besoin d'explication sur le fonctionnement de l'application) des objets 3D à partir de dessins 2D qu'il aura fait. Une fois sa création effectuée, elle doit être envoyée vers le serveur gérant la salle afin d'y afficher l'objet 3D.
+	En projet de troisième année, notre groupe a choisi de travailler sur le développement d'une application sur tablette. Cette application est destinée à être utilisée lors de séances de démonstration dans la salle de réalité augmentée Immersia. Nous devons permettre au sujet de la démonstration de réaliser simplement (et sans besoin d'explication sur le fonctionnement de l'application) des objets 3D à partir de dessins 2D qu'il a dessiné à main levée. Une fois sa création effectuée, elle doit être envoyée vers le serveur gérant la salle afin d'y afficher l'objet 3D.
 \end{abstract}
 	
 	\section{Introduction} %Etienne
-		%Présentation succinte du projet
+		%Présentation succinte du projet.	
+		%ajouter beaucoup plus de détails en premer lieu.
+		%Dire: Application qui tourne sur un serveur Unity à l'Irisa, ils veulent faire des objets 3D à intégrer dans leur scène
 		Au cours de ce rapport, vous trouverez les choix faits pour développer cette application. Tout d'abord, la sélection des technologies les plus à même de respecter le cahier des charges. Ensuite comment à partir de ces choix, nous avons défini l'architecture de l'application. Sur chaque partie de celle-ci, vous verrez les choix réalisés par l'équipe. Puis nous présenterons notre répartition du travail et le suivit de celui-ci au sein de notre équipe. Pour finir, nous concluons sur les objectifs atteints et les futurs possibles pour le développement de cette application.
+
 	\section{Cahier des charges} %Etienne
+	%Ajouter des trucs, décrire l'application : dessin, extruder, assembler.
 		Notre client nous a imposé le cahier des charges qui suit:
 		\begin{itemize}
 			\item Supportable par Android Tablette
@@ -48,14 +52,16 @@
 
 	\section{État de l'art} %Aurélien
 	%Rappel rapide des technologies utilisées
+	%Ajouter un petit texte avant la première sous-partie pour expliquer.
 		\subsection{Quelle technologie utiliser ?}
 		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur, créé avec Unity. Nous aurions aussi pu nous tourner vers certains logiciels de dessin gérant la création d'objets 3D, tels Markers, LayerPaint ou SketchBook, mais nous nous sommes rendu compte que ceux-ci étaient souvent complexes à utiliser, ce qui entrait en conflit avec notre idée de faire une application simple et intuitive.
 		
 		En développant notre application sur Unity\cite{Unity}, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator\cite{UCLA}, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute \hyperlink{ancre}{la partie \ref{extrusion}, qui est l'extrusion}, développée plus loin à la page \pageref{extrusion}. 
 		
 		\subsection{Comment être ergonomique?} %Arnaud
+		%On bouge ça en 4 où  on fait deux sous parties => grande parttie = Conception.
 		Pour le dessin, nous avons créé une interface simplifiée dans l'esprit de Microsoft Paint. Avec un menu déroulant pour accéder aux outils (à gauche, le menu est fermé, à droite, ouvert):
-		
+		%ajouter espaces entre les captures.
 		\centerline{\includegraphics[scale=0.5]{images/Cmt_placer.png}}
 		
 		Une fois le dessin extrudé, pour le placer dans l'environnement 3D, l'utilisateur pourra à l'aide d'un menu (1) orienter et redimensionner la figure selon chacun de ses axes les uns après les autres. Pour se retrouver dans l'environnement, il aura une caméra qui suit l'objet selon l'axe courant (2). De plus, il y a une caméra amovible et zoomable qui filmera l'ensemble de la scène déjà créée (3). Ici les cubes sont des objets créés précédemment qui sont passés en transparent pour faciliter la lisibilité.
@@ -67,14 +73,16 @@
 		Nous avons découpé le logiciel en plusieurs sous-parties qui peuvent être développées indépendamment. Les liens entre les parties obligent à créer des fonctions qui envoient certaines données. L'avantage de cette découpe est qu'une étape est en majorité indépendante de la précédente. Donc, le développement et la phase de test chaque partie peuvent se faire de façon optimisée avant de tout réunir et lier.
 		
 		Nous avons omis dans le schéma la caméra de prévisualisation, elle est contenu dans 'Objet', qui représente l'assemblage des divers dessins 2D extrudés.
-
+		%Unity basé composant => pas d'héritage toussa toussa...
 				\centerline{\includegraphics[scale=0.5]{images/archi.png}}
 
 
 	\section{Etape par étape}
+	%changer le nom de cette partie.
 		%combien de temps passé pour chaque tâche
 		%Problèmes rencontrées et solutions apportées, en quoi ces solutions ont été utilisées par la suite
 		\subsection{L'IHM} %Arnaud
+		%parler des modifications apportées après les tests soumis à d'autres gens
 			La difficulté de la création de l'Interface Homme-Machine (IHM) était de concevoir un espace ergonomique et adapté pour recevoir le reste des éléments de l'application. Après une conception sur papier pour assurer cette adaptabilité, nous avons développé cette interface avec des outils récemment intégrés à Unity: les 'UI'. Ils sont dédiés à la création de fenêtres et de menus. Leur utilisation limite la production de codes de notre part et permet une gestion plus optimisée des éléments de l'interface.
 			
 			Voici donc l'IHM finale, avec une zone qui servira pour le dessin et qui servira pour le placement (1), une barre d'outils (2), une zone pour la prévisualisation (3) et une dernière pour la possible future gestion des figures créées (4).
@@ -111,10 +119,10 @@
 			
 			L'utilisation de cet outil nous a permis un très gros gain de temps et de code. En effet, toute la partie concernant la détection des contours de l'image été déjà faite et fonctionnelle. Il nous a suffit d'intégrer ce code à notre application.
 			
-			L'adaptation du code existant à notre projet ne s'est pas faite naturellement car il y a eu une phase d'appréhension du code existant et de sa modification. Il s'est avéré au cours du développement, que de nombreuses parties, notamment celles gérant l'acquisition de la texture à extruder, ne pouvait pas se faire simplement. Nous avons donc du reconstruire toute une partie afin de faire le fonctionner.
+			L'adaptation du code existant à notre projet ne s'est pas faite naturellement car il y a eu une phase de compréhension du code existant et de sa modification. Il s'est avéré au cours du développement, que de nombreuses parties, notamment celles gérant l'acquisition de la texture à extruder, ne pouvait pas se faire simplement. Nous avons donc du reconstruire toute une partie afin de faire le fonctionner.
 			
 			Malgré ces contre-temps, l'utilisation de cet outil nous a été très bénéfique et il nous a surement permis de finir le projet dans les temps.
-
+			%Expliquer le problème avec ce qui compile pas à cause de l'UnityEditor.
 		\subsection{Placement et prévisualisation} %Arnaud
 		
 			Pour placer l'objet courant, nous avons juste intégré des scripts qui translatent la figure et des sliders\footnote{Un slider, ou curseur de défilement, est un composant d'interface graphique permettant d'entrer une valeur numérique dans un programme en déplaçant un curseur sur une échelle graduée. Dans certains cas, l'utilisateur peut spécifier une valeur simplement en cliquant sur un point de l’échelle. \emph{Wikipedia}} pour choisir la taille. La vitesse et rotation/translation et les tailles admises par les figures sont facilement modifiables, elles nécessiteront probablement des ajustements. Ou sinon un traitement de l'objet dans le serveur peut être imaginer, où celui-ci augmenterait la taille de l'objet pour l'adapter à la salle de réalité augmentée.
@@ -155,9 +163,6 @@
 				%Etienne, Aurélien
 				 Nous nous sommes rendus compte que la texture de base ne prenait pas l'alpha\footnote{C'est à dire la transparence} en compte, or nous souhaitions disposer d'une image où seules les parties coloriées seraient extrudées. Nous avons donc précisé, lors de la création de la texture, vouloir un type RGB32, pour avoir un fond transparent.
 				%
-				% 
-				%
-				%
 				%
 				%
 				Afin de faire un point régulier et d'être sûr de répondre aux exigences de notre encadrant, nous nous sommes réunis hebdomadairement. Au cours de ces séances, nous pouvions ainsi voir le travail effectué par les différents membres de notre projet et nous pouvions bénéficier de l'expérience de M.François LEHERICEY avec Unity.
@@ -171,6 +176,9 @@
 	%	Pour le dessin, nous nous sommes contenté de trois tailles pour l'outil de coloriage.
 	%	La possibilité de sauvegarder des objets n'était pas, à l'origine, une des fonctionnalités de l'application. Mais en se concertant, nous nous sommes rendu compte qu'une personne aimerait sûrement pouvoir réutiliser ses objets dans la construction d'autres objets. Si toutes les autres fonctionnalités de l'application sont opérationnelles, la sauvegarde serait un objectif potentiel à rajouter.
 	%	Globalement, nous sommes arrivés à un résultat très proche de notre conception initiale de l'application.Notre application a encore plusieurs voies d'améliorations possibles. Comme l'implantation d'outils pour faire des sphères, avec des extrusions circulaires.
+	%
+	%
+	%		On y met dans les deux parties autoures. Pas vraiment besoin de garder.
 		Au cours de l'avancement du projet, nous avons du faire certains choix, et changer ou abandonner certaines de nos idées initiales. Notamment : la sauvegarde et l'édition des éléments créés.
 		Par manque de temps, nous n'avons pas pu les implanter nous-même. Par contre, dans l'IHM, des menus sont déjà présents pour gérer la sauvegarde et nous savons en théorie comment mettre en place la liste des objets. Toutes ces informations seront intégrées dans la documentation utilisateur.
 		Globalement, nous sommes arrivés à un résultat très proche de notre conception initiale de l'application et qui répond au cahier des charges.

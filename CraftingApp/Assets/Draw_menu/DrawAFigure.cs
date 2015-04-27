@@ -92,7 +92,8 @@ public class DrawAFigure : MonoBehaviour {
 				}
 				if(dm.getTool()==Draw_menu.Tools.PENCIL){
 					dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height), color);
-					dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), color);
+					//dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), color);
+					dessinLigne(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), color);
 				}
 				if(dm.getTool()==Draw_menu.Tools.ERASER){
 					dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height), Color.clear);
@@ -119,7 +120,9 @@ public class DrawAFigure : MonoBehaviour {
 			lastPosY = -1;
 		}
 	}
-
+	/********************
+	 *** DessinePoint ***
+	 ********************/
 	//Dessine un poit de largeur largeurTrait aux coordonnées x et y
 	void dessinePoint (int x, int y, Color c){
 		// y<largeurTrait || y>(300-largeurTrait)
@@ -181,7 +184,9 @@ public class DrawAFigure : MonoBehaviour {
 		}
 
 	}
-
+	/**************
+	 *** Dessin ***
+	 **************/
 	//Cree une ligne continu entre chaque point
 	public void dessinContinu(int x1, int y1, int x2, int y2, Color c){
 		int i;
@@ -234,7 +239,40 @@ public class DrawAFigure : MonoBehaviour {
 		}
 	}
 
+
+	/***************
+	 *** Dessin2 ***
+	 ***************/
+
+	public void dessinLigne(int x1, int y1, int x2, int y2, Color col){
+		int xMin = Mathf.Min (x1 , x2);
+		int xMax = Mathf.Max (x1 , x2);
+		int yMin = Mathf.Min (y1 , y2);
+		int yMax = Mathf.Max (y1 , y2);
+		int b = -(xMax - xMin);
+		int a = (yMax - yMin);
+		int c = -(a*x1 + b*y1);
+		int i,j;
+
+		for(i=xMin-largeurTrait; i<=xMax+largeurTrait; i++){
+			for(j=yMin-largeurTrait; j<=yMax+largeurTrait; j++){
+				//Si la distance à la droite <= largeur trait,
+				//et qu'on est bien entre les deux points,
+				//on colorie le point (i,j)
+				if(Mathf.Abs(a*i+b*j+c)<=(largeurTrait/2) && (i*a - j*b)>=0){
+					tex.SetPixel (i, j, col);
+				}
+			}
+		}
+	}
+
+
 	
+
+	/**************
+	 *** Bucket ***
+	 **************/
+
 	private Stack lesX = new Stack(texWidth*texHight);
 	private Stack lesY = new Stack(texWidth*texHight);
 	private int leX;
@@ -286,4 +324,4 @@ public class DrawAFigure : MonoBehaviour {
 		return (c1.a == c2.a && c1.b == c2.b && c1.g == c2.g && c1.r == c2.r);
 	}
 
-}
+}//DrawAFigure
