@@ -92,8 +92,8 @@ public class DrawAFigure : MonoBehaviour {
 				}
 				if(dm.getTool()==Draw_menu.Tools.PENCIL){
 					dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height), color);
-					//dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), color);
-					dessinLigne(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), color);
+					dessinContinu(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), color);
+					//dessinLigne(lastPosX,lastPosY,(int)(uv.x * tex.width),(int)(uv.y * tex.height), color);
 				}
 				if(dm.getTool()==Draw_menu.Tools.ERASER){
 					dessinePoint ((int)(uv.x * tex.width), (int)(uv.y * tex.height), Color.clear);
