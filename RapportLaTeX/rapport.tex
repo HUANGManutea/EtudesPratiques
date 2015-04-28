@@ -43,33 +43,38 @@
 	%Ajouter des trucs, décrire l'application : dessin, extruder, assembler.
 		Notre client nous a imposé le cahier des charges qui suit:
 		\begin{itemize}
-			\item Supportable par Android Tablette
-			\item Application ergonomique: utilisation rapide pour un nouvel utilisateur
-			\item Outils de dessin
-			\item Création d'objet 3D à partir les dessins ainsi faits
-			\item Pouvoir exporter la création vers un serveur Unity
+			\item Supportable par Android Tablette, l'utilisation du tactile permet de rendre la démonstration plus intuitive et interactive.
+			\item Application ergonomique: utilisation rapide pour un nouvel utilisateur. Les icônes doivent donc être le plus clair possibles, l'utilisateur peut donc trouver ce qu'il veut rapidement. Et que celui-ci n'ai pas d'options à sélectionné.
+			\item Outils de dessin: c'est à dire mettre à disposition une éventails de couleurs, la possibilité de changer le rayon de son crayon et plusieurs outils à disposition, comme une gomme par exemple.
+			\item Création d'objet 3D à partir les dessins ainsi faits: l'application doit détecté les contours du dessin. Crée un objets 3D à partir de cette détection, et ensuite permettre à l'utilisateur d'assembler son objet avec ce qu'il a fait précédemment.
+			\item Pouvoir exporter la création vers un serveur Unity: cette exportation doit de se faire sans fils et permettra ensuite de visualiser l'objet dans la salle de réalité augmentée.
 		\end{itemize}
 
 	\section{État de l'art} %Aurélien
 	%Rappel rapide des technologies utilisées
 	%Ajouter un petit texte avant la première sous-partie pour expliquer.
-		\subsection{Quelle technologie utiliser ?}
+	%	\subsection{Quelle technologie utiliser ?}
 		La première étape du projet fut d'établir un état de l'art, afin de déterminer quelles technologies utiliser, parmi celles que nous avons à disposition. Nous avons choisi Unity plutôt que d'autres moteurs de jeu comme Cry Engine ou Unreal Engine. C'était le choix le plus adapté à la gestion des objets dans une scène, et pour une gestion grandement simplifiée du transfert de l'objet vers le serveur, créé avec Unity. Nous aurions aussi pu nous tourner vers certains logiciels de dessin gérant la création d'objets 3D, tels Markers, LayerPaint ou SketchBook, mais nous nous sommes rendu compte que ceux-ci étaient souvent complexes à utiliser, ce qui entrait en conflit avec notre idée de faire une application simple et intuitive.
 		
 		En développant notre application sur Unity\cite{Unity}, nous avions accès à de nombreux outils libres pour nous aider. Nous avons ainsi décidé de nous servir de l'application UCLA Mesh Creator\cite{UCLA}, qui permet de créer un objet 3D à partir d'une image. Cela nous donnait une base solide pour toute \hyperlink{ancre}{la partie \ref{extrusion}, qui est l'extrusion}, développée plus loin à la page \pageref{extrusion}. 
 		
+	
+		
+	\section{Conception}
+	
+		Une fois la technologie sélectionné, nous avons dû établir précisément comment notre application allais fonctionner et donc dés maintenant définir quel serai l'approche la plus ergonomique du problème.
+		
 		\subsection{Comment être ergonomique?} %Arnaud
-		%On bouge ça en 4 où  on fait deux sous parties => grande parttie = Conception.
 		Pour le dessin, nous avons créé une interface simplifiée dans l'esprit de Microsoft Paint. Avec un menu déroulant pour accéder aux outils (à gauche, le menu est fermé, à droite, ouvert):
 		%ajouter espaces entre les captures.
 		\centerline{\includegraphics[scale=0.5]{images/Cmt_placer.png}}
 		
 		Une fois le dessin extrudé, pour le placer dans l'environnement 3D, l'utilisateur pourra à l'aide d'un menu (1) orienter et redimensionner la figure selon chacun de ses axes les uns après les autres. Pour se retrouver dans l'environnement, il aura une caméra qui suit l'objet selon l'axe courant (2). De plus, il y a une caméra amovible et zoomable qui filmera l'ensemble de la scène déjà créée (3). Ici les cubes sont des objets créés précédemment qui sont passés en transparent pour faciliter la lisibilité.
 		\newline
-
+		
 		Une fois tout ces points définis , nous avons pu passer à l'étape suivante, c'est-à-dire l'architecture du logiciel.
 		
-	\section{Architecture logicielle} %Manutea
+		\subsection{Architecture logicielle} %Manutea
 		Nous avons découpé le logiciel en plusieurs sous-parties qui peuvent être développées indépendamment. Les liens entre les parties obligent à créer des fonctions qui envoient certaines données. L'avantage de cette découpe est qu'une étape est en majorité indépendante de la précédente. Donc, le développement et la phase de test chaque partie peuvent se faire de façon optimisée avant de tout réunir et lier.
 		
 		Nous avons omis dans le schéma la caméra de prévisualisation, elle est contenu dans 'Objet', qui représente l'assemblage des divers dessins 2D extrudés.
@@ -131,7 +136,7 @@
 
 		\subsection{Export} %Manutea
 			Un fois l'objet en 3D créé, nous devons l'envoyer à un serveur qui affichera cet objet dans une scène 3D.
-			Ce serveur est mis en place par l'IRISA et tourne sous Unity, nous avons donc jugé intéressant d'exploiter des solutions implémentées dans Unity ou en C#.
+			Ce serveur est mis en place par l'IRISA et tourne sous Unity, nous avons donc jugé intéressant d'exploiter des solutions implémentées dans Unity ou en C\#.
 			Nous nous sommes donc orientés vers le socket TCP qui permet d'échanger des données entre 2 applications.
 			Nous avons choisi cette approche de l'envoi des données car:
 			\begin{itemize}
