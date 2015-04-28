@@ -43,15 +43,17 @@ public class DrawAFigure : MonoBehaviour {
 
 	//Active ou désactive la zone de dessin
 	public void setIsSelect(int i){
-		System.Threading.Thread.Sleep(50);
-		isSelected += i;
-		print (isSelected);
+		if (!Input.GetMouseButton (0)) {
+						System.Threading.Thread.Sleep (50);
+						isSelected += i;
+				}
 	}
 
 	public void initIsSelect(){
-		System.Threading.Thread.Sleep(150);
-		isSelected =0;
-		print (isSelected);
+		if (!Input.GetMouseButton (0)) {
+						System.Threading.Thread.Sleep (150);
+						isSelected = 0;
+				}
 	}
 
 	//Pour Aurelien : rend la texture dessinee
