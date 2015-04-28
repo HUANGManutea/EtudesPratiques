@@ -56,6 +56,8 @@
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\gameObjToPrefab.cs" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\getIpInput.cs" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\getNameInput.cs" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\getNameInputLoad.cs" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\load.cs" />
      <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreator.cs" />
      <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreatorInspector.cs" />
      <Compile Include="Assets\UCLAGameLab\PasEditor\MeshCreatorUndoManager.cs" />

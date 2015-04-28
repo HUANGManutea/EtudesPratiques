@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 
 public class gameObjToPrefab : MonoBehaviour {
-	public static string prefabPath = "Assets/Standard Assets (Mobile)/Prefabs/";
+	public static string prefabPath = "Assets/Standard Assets (Mobile)/Resources/";
 	public GameObject go;
 	// Use this for initialization
 	void Start () {
