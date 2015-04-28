@@ -45,8 +45,9 @@ public class UclaExtrusion : MonoBehaviour {
 
 		//Utilisation de la texture rendue par le DrawAFigure
 		var bytes = drawing.getTex().EncodeToPNG();
-		File.WriteAllBytes("Assets/textures/textureExtruded.png", bytes);
-		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath("Assets/textures/textureExtruded.png", typeof(Texture2D));
+		File.Copy ("Assets/textures/textureExtruded.png", "Assets/textures/textureExtruded" + gameObjectName + ".png");
+		File.WriteAllBytes("Assets/textures/textureExtruded" + gameObjectName + ".png", bytes);
+		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath("Assets/textures/textureExtruded" + gameObjectName + ".png", typeof(Texture2D));
 
 		MeshCreatorData mcd = newObject.AddComponent("MeshCreatorData") as MeshCreatorData;
 		
@@ -100,14 +101,14 @@ public class UclaExtrusion : MonoBehaviour {
 		//met un shader transparant
 		newObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
 
-		//ajout pour la suite, a placer après la création de l'objet! tout en fin de la fonction, ça foire.
+		//ajout pour la suite, a placer après la création de l'objet!
 		placement.SetActive (true);
 		followObject.front();
 		followObject.setName (gameObjectName);
 		followObject.makeTran();
 		
 		//TODO Detruire la texture créée
-		//File.Delete("Assets/textures/textureExtruded.png");
+		File.Delete("Assets/textures/textureExtruded" + gameObjectName + ".png");
 
 
 		//Close();
