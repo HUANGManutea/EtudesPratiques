@@ -7,6 +7,6 @@ public class load : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject go = Instantiate(Resources.Load(getNameInputLoad.name,typeof(GameObject)),parent.transform.position,Quaternion.identity) as GameObject;
-		go.transform.parent=parent.transform;
+
 	}
 }
