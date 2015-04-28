@@ -13,8 +13,8 @@ public class Client : MonoBehaviour {
 		TcpClient client = new TcpClient();
 		try{
 			if(!(ipserv = IPAddress.Parse(getInput.ip)).Equals(IPAddress.None)){
-				IPEndPoint serverEndPoint = new IPEndPoint(ipserv, 3000);
-				Debug.Log ("Connecting to "+ipserv+"  : 3000");
+				IPEndPoint serverEndPoint = new IPEndPoint(ipserv, 80);
+				Debug.Log ("Connecting to "+ipserv+"  : 80");
 				client.Connect(serverEndPoint);
 				
 				NetworkStream clientStream = client.GetStream();

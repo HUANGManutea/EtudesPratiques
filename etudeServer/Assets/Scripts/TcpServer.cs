@@ -14,7 +14,7 @@ public class TcpServer : MonoBehaviour {
 
 	void Start(){
 		okPrefab = false;
-		tcpListener = new TcpListener(IPAddress.Any,3000); //starting the listener
+		tcpListener = new TcpListener(IPAddress.Any,80); //starting the listener
 		listenThread = new Thread(new ThreadStart(ListenForClients)); 
 		listenThread.IsBackground = true;
 		listenThread.Start();
