@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class getInput : MonoBehaviour {
+public class getIpInput : MonoBehaviour {
 	public GameObject textfield;
 	public static string ip = "";
 

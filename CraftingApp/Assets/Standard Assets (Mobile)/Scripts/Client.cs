@@ -12,14 +12,14 @@ public class Client : MonoBehaviour {
 	void Start(){
 		TcpClient client = new TcpClient();
 		try{
-			if(!(ipserv = IPAddress.Parse(getInput.ip)).Equals(IPAddress.None)){
+			if(!(ipserv = IPAddress.Parse(getIpInput.ip)).Equals(IPAddress.None)){
 				IPEndPoint serverEndPoint = new IPEndPoint(ipserv, 80);
 				Debug.Log ("Connecting to "+ipserv+"  : 80");
 				client.Connect(serverEndPoint);
 				
 				NetworkStream clientStream = client.GetStream();
 				Debug.Log ("Connected");
-				string path = "C:/Users/Khayron/Documents/GitHub/EtudesPratiques/CraftingApp/Assets/Standard Assets (Mobile)/Prefabs/Cube.prefab";
+				string path = gameObjToPrefab.prefabPath;
 				byte[] buffer = System.IO.File.ReadAllBytes(path);
 				Debug.Log ("sending file.Length");
 				clientStream.Write(buffer, 0 ,buffer.Length);
