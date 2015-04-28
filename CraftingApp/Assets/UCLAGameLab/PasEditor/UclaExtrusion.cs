@@ -45,9 +45,8 @@ public class UclaExtrusion : MonoBehaviour {
 
 		//Utilisation de la texture rendue par le DrawAFigure
 		var bytes = drawing.getTex().EncodeToPNG();
-		File.Copy ("Assets/textures/textureExtruded.png", "Assets/textures/textureExtruded" + gameObjectName + ".png");
-		File.WriteAllBytes("Assets/textures/textureExtruded" + gameObjectName + ".png", bytes);
-		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath("Assets/textures/textureExtruded" + gameObjectName + ".png", typeof(Texture2D));
+		File.WriteAllBytes("Assets/textures/textureExtruded.png", bytes);
+		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath("Assets/textures/textureExtruded.png", typeof(Texture2D));
 
 		MeshCreatorData mcd = newObject.AddComponent("MeshCreatorData") as MeshCreatorData;
 		
@@ -108,7 +107,7 @@ public class UclaExtrusion : MonoBehaviour {
 		followObject.makeTran();
 		
 		//TODO Detruire la texture créée
-		File.Delete("Assets/textures/textureExtruded" + gameObjectName + ".png");
+		//File.Delete("Assets/textures/textureExtruded" + gameObjectName + ".png");
 
 
 		//Close();
