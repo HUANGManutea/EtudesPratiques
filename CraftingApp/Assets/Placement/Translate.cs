@@ -14,7 +14,7 @@ public class Translate : MonoBehaviour {
 	private Direction dir = Direction.X;
 
 	//objet à déplacer
-	private string name = "Exemple1";
+	private string name = "Destination";
 
 	//camera qui suis l'objet lors du placement
 	public Camera followObject;
@@ -26,10 +26,8 @@ public class Translate : MonoBehaviour {
 	public Slider sZ;
 
 
-	//fonction à supprimer au moment de la compilation(car exemple1 n'existera plus)
 	void Start () {
 		target = GameObject.Find(name).transform;
-		dir = Direction.X;
 	}
 
 	//set de la figure à déplacer

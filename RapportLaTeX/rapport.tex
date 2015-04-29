@@ -70,7 +70,7 @@
 		Pour le dessin, nous avons créé une interface simplifiée dans l'esprit de Microsoft Paint. Avec un menu déroulant pour accéder aux outils (à gauche, le menu est fermé, à droite, ouvert):
 		
 		%ajouter espaces entre les captures.
-		\centerline{\includegraphics[scale=0.65]{images/Cmt_placer2.png}}
+		\centerline{\includegraphics[scale=0.55]{images/Cmt_placer2.png}}
 		
 		 Une fois le dessin extrudé, pour le placer dans l'environnement 3D, l'utilisateur pourra à l'aide d'un menu (1) orienter et redimensionner la figure selon chacun de ses axes les uns après les autres. Pour se retrouver dans l'environnement, il aura une caméra qui suit l'objet selon l'axe courant (2). De plus, il y a une caméra amovible et zoomable qui filmera l'ensemble de la scène déjà créée (3). Ici les cubes sont des objets créés précédemment qui sont passés en transparent pour faciliter la lisibilité.
 		\newline
@@ -82,7 +82,7 @@
 		
 		Nous avons omis dans le schéma la caméra de prévisualisation, elle est contenu dans 'Objet', qui représente l'assemblage des divers dessins 2D extrudés.
 		%Unity basé composant => pas d'héritage toussa toussa...
-				\centerline{\includegraphics[scale=0.5]{images/archi.png}}
+				\centerline{\includegraphics[scale=0.3]{images/archi.png}}
 
 
 	\section{Etape par étape}
@@ -130,6 +130,8 @@
 			
 			L'adaptation du code existant à notre projet ne s'est pas faite naturellement car il y a eu une phase de compréhension du code existant et de sa modification. Il s'est avéré au cours du développement, que de nombreuses parties, notamment celles gérant l'acquisition de la texture à extruder, ne pouvait pas se faire simplement. Nous avons donc du reconstruire toute une partie afin de faire le fonctionner.
 			
+			De plus, lors de la manipulation de fichiers via des scripts, il y a une utilisation du package Unity.Editor\footnote{Le package Unity.Editor est une aide au développement et à l'édition d'un jeu sous Unity. Notamment, il permet la manipulation de fichiers via des scripts}. Cela empêche la compilation de l'application pour en faire un exécutable. Mais l'application reste fonctionnelle si la tablette utilise Unity pour la lancer. Malheureusement, l'accès tardif à la salle tactile ne nous a pas permis de détecter ce problème assez tôt pour pouvoir le corriger avant la date buttoir.
+			
 			Malgré ces contre-temps, l'utilisation de cet outil nous a été très bénéfique et il nous a surement permis de finir le projet dans les temps.
 			%Expliquer le problème avec ce qui compile pas à cause de l'UnityEditor.
 		\subsection{Placement et prévisualisation} %Arnaud
@@ -151,7 +153,7 @@
 			\end{itemize}
 						
 			
-			\centerline{\includegraphics[scale=1]{images/tcp-socket.png}}
+			\centerline{\includegraphics[scale=0.76]{images/tcp-socket.png}}
 			
 			Dès que la connexion est établie, le client envoie sous forme de flux les données de l'objet en 3D. Cette action correspond à la requête sur le schéma. Puis, en guise de traitement, le serveur affiche l'objet en 3D dans la scène.
 			Dans notre cas, un script léger du côté du serveur permet de gérer la connexion avec le client et l'affichage de l'objet.

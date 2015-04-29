@@ -97,6 +97,7 @@ public class UclaExtrusion : MonoBehaviour {
 		Debug.Log ("Objet créé");
 
 
+
 		//met un shader transparant
 		newObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
 

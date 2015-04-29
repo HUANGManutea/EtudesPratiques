@@ -16,7 +16,7 @@ public class FollowObject : MonoBehaviour {
 	private Direction dir = Direction.X;
 
 	//objet à déplacer
-	private string name = "Exemple1";
+	private string name = "Destination";
 
 	//objet englobant les objects crées
 	public GameObject destination;
@@ -26,13 +26,10 @@ public class FollowObject : MonoBehaviour {
 	public Translate t;
 
 
-	//fonction à supprimer au moment de la compilation(car exemple1 n'existera plus)
 	void Start () {
 		GameObject go = GameObject.Find (name);
 		target = go.transform;
 		target2 = go.renderer;
-		dir = Direction.X;
-
 	}
 
 	//set la figure à suivre et initialise toutes les variables en rapport
