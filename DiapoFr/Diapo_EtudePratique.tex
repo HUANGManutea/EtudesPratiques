@@ -45,13 +45,92 @@
 		Quelle techno Aurélien
 	\end{frame}
 		
-	\begin{frame}
-		Ergonomie Arnaud
-	\end{frame}	
+
 	
-	\section{Architecture logicielle}	
-	
-	\begin{frame}{Découpage de l'application}
+	\section{Conception}	
+		\begin{frame}{Conception}
+	 		En parallèle du choix de technologie, nous avons dû réfléchir à sur deux points centraux:
+		
+			\begin{itemize}
+				  \item Définir comment être ergonomique : découpé pas à pas pour s'assurer de la simplicité à chaque instant
+				  \item Divisé le logiciel en éléments les plus simples possibles et indépendant pour organisé le développement
+			\end{itemize}
+		\end{frame}
+		
+		
+		\begin{frame}{Comment être ergonomique?}
+				Repérage des parties pouvant posé problèmes:
+				
+				\begin{itemize}
+					\item Comment dessiner?
+					\item Comment extruder ce dessin?
+					\item Comment placer la figure créée dans l'environnement 3D?
+					\item Comment se repérer dans notre création?
+				\end{itemize}
+		\end{frame}	
+		
+		\begin{frame}{Comment être ergonomique?}
+
+				Comment dessiner?
+					\begin{itemize}
+						\item Interface sobre
+						\item Menu d'outils déroulant
+					\end{itemize}
+				
+				\centerline{\includegraphics[scale=0.3]{images/Nono/img1.png}} \centerline{\includegraphics[scale=0.3]{images/Nono/img2.png}}
+			
+
+
+		\end{frame}	
+		
+		\begin{frame}{Comment être ergonomique?}
+			
+			Comment extruder ce dessin?
+			\begin{itemize}
+				\item Jeu d'icônes assez clair
+				\item Limité les options
+				\item L'utilisateur n'as pas à intervenir plus que nécessaire
+			\end{itemize}
+			
+			\centerline{\includegraphics[scale=0.5]{images/Nono/img3.png}} 
+			
+			
+			
+		\end{frame}	
+			
+		\begin{frame}{Comment être ergonomique?}
+						
+				Comment placer la figure créée dans l'environnement 3D?
+				
+				\begin{itemize}
+					\item Découpé en plusieurs étapes
+					\item Menu clair
+					\item Ne pas surcharger d'informations
+				\end{itemize}
+				
+				\centerline{\includegraphics[scale=0.5]{images/Nono/img4.png}} 
+						
+						
+						
+		\end{frame}	
+		
+		\begin{frame}{Comment être ergonomique?}
+			
+			Comment se repérer dans notre création?
+			
+			\begin{itemize}
+				\item Vue d'ensemble permanente
+				\item Caméra mobile
+				\item Limité les déplacements
+			\end{itemize}
+			
+			\centerline{\includegraphics[scale=0.5]{images/Nono/img5.png}} 
+			
+			
+			
+		\end{frame}	
+
+	\begin{frame}{Architecture logicielle} %Découpage de l'application}
 		%Archi logi Manutea
 		\centerline{\includegraphics[scale=0.3]{images/archilogi/archi.png}}
 		\begin{itemize}
@@ -62,12 +141,44 @@
 			
 	\section{Etape par étape}
 		%Expliquer nos choix par rapports aux objectifs énoncés
-	\begin{frame}
-		IHM Arnaud
+			\begin{frame}{Etape par étape}
+				Ce qui a été fait:
+					\begin{itemize}
+						\item Choix technologique : Unity
+						\item Définition du fonctionnement de l'application
+						\item L'architecture du logiciel
+					\end{itemize}
+				Grâce tout cela, nous avons les éléments pour développer l'application.
+			\end{frame}
+		
+		
+	\begin{frame}{IHM}
+			Problématique:
+				\begin{itemize}
+					\item Accueillir les éléments définis précédemment
+					\item Simple
+				\end{itemize}
+				
+			Solution:
+				\begin{itemize}
+					\item Technologie: utilisation du système d'UI (outils de menus et fenêtre) d'Unity
+					\item Des espaces prêt à accueillir les autres composants
+				\end{itemize}
+				\centerline{\includegraphics[scale=0.3]{images/Nono/img6.png}} 
 	\end{frame}
 	
-	\begin{frame}
-		Dessin -> Outils Arnaud
+	\begin{frame}{Menu d'outils}
+		Pour assurer l'ergonomie et l'évolution de ce menu:
+			\begin{itemize}
+				\item Choix de couleur limité
+				\item Choix de taille limité
+				\item Choix d'outils limité
+					\centerline{\includegraphics[scale=0.4]{images/Nono/img7.png}} 
+				\item Modèle de fonction simple
+							\centerline{\includegraphics[scale=0.6]{images/Nono/img8.png}} 
+			\end{itemize}
+
+
 	\end{frame}
 	
 	\begin{frame}
