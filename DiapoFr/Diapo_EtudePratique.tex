@@ -51,8 +51,12 @@
 	
 	\section{Architecture logicielle}	
 	
-	\begin{frame}
-		Archi logi Manutea
+	\begin{frame}{Découpage de l'application}
+		%Archi logi Manutea
+		\centerline{\includegraphics[scale=0.3]{images/archilogi/archi.png}}
+		\begin{itemize}
+			\item 
+		\end{itemize}
 	\end{frame}	
 	
 			
@@ -78,7 +82,37 @@
 		Placement Arnaud
 	\end{frame}
 	
-	\begin{frame}
+	\subsection{Envoi des données}
+	
+	\begin{frame}{Envoi des données}
+		\centerline{\includegraphics[height=120pt]{images/network/sending_model2.png}}
+	\end{frame}
+	
+	\subsubsection{Côté serveur}
+	\begin{frame}{Ajout d'un script}
+		\centerline{\includegraphics[height=150pt]{images/network/plugin.png}}
+		\begin{itemize}	
+			\item \pause Léger \pause
+			\item Reçoit les données \pause
+			\item Intégré dans la scène 3D \pause
+			\item Affiche l'objet 
+		\end{itemize}	
+		
+	\end{frame}
+	
+	\subsubsection{Côté client}
+	
+	\begin{frame}{Socket TCP}
+		\centerline{\includegraphics[height=120pt]{images/network/tcp-socket.png}}
+		
+		\begin{itemize}
+			\item Dispose de classes prévues à cet effet en C\#
+			\item Documentée en C\# par Microsoft
+			\item Permet d'envoyer des octets, donc flexible
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Côté client}
 		Export Manutea
 	\end{frame}
 	
