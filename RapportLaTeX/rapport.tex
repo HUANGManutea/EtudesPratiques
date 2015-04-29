@@ -1,5 +1,5 @@
 \documentclass[a4paper,11pt]{article}
-
+\bibliographystyle{unsrt} % Le style est mis entre accolades.
 \usepackage{exptech,hyperref}
 \hypersetup{
 	colorlinks=true,                         
@@ -141,10 +141,11 @@
 			Un fois l'objet en 3D créé, nous devons l'envoyer à un serveur qui affichera cet objet dans une scène 3D.
 			Ce serveur est mis en place par l'IRISA et tourne sous Unity, nous avons donc jugé intéressant d'exploiter des solutions implémentées dans Unity ou en C\#.
 			Nous nous sommes donc orientés vers le socket TCP qui permet d'échanger des données entre 2 applications.
-			Nous avons choisi cette approche de l'envoi des données car:
+			Nous avons choisi cette approche de l'envoi des données car :
 			\begin{itemize}
 				\item Elle dispose de classes prévues à cet effet en C\#
-				\item Elle est documentée en C\# par Microsoft
+				\item Elle est documentée en C\# par Microsoft\cite{MSDN} 
+				\item Il existe de nombreux tutoriels sur internet\cite{CodeProject}
 				\item Elle permet d'envoyer des octets, donc flexible
 			\end{itemize}
 						
@@ -213,7 +214,7 @@
 		
 		Nous voudrions également remercier Monsieur Bertrand COUASNON pour son apport de connaissances ainsi que son aide dans l'élaboration de nos différentes présentations.
 		
-\bibliographystyle{} % Le style est mis entre accolades.
+
 \bibliography{bibli} % mon fichier de base de données s'appelle bibli.bib
 
 \end{document}
