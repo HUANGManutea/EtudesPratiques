@@ -147,7 +147,7 @@
 			
 		\end{frame}	
 	\begin{frame}{Architecture logicielle} %Découpage de l'application}
-		%Archi logi Manutea
+		\huge Comment découper l'application?
 	\end{frame}
 	
 	\begin{frame}{Architecture logicielle} %Découpage de l'application}
@@ -170,7 +170,10 @@
 		%Archi logi Manutea
 		\centerline{\includegraphics[scale=0.3]{images/archilogi/archi5.png}}
 	\end{frame}	
-	
+	\begin{frame}{Architecture logicielle} %Découpage de l'application}
+		%Archi logi Manutea
+		\centerline{\includegraphics[scale=0.3]{images/archilogi/archi6.png}}
+	\end{frame}
 			
 	\section{Etape par étape}
 		%Expliquer nos choix par rapports aux objectifs énoncés
@@ -232,9 +235,8 @@
 		\centerline{\includegraphics[height=120pt]{images/network/sending_model2.png}}
 	\end{frame}
 	
-	\subsubsection{Côté serveur}
 	
-	\begin{frame}{Ajout d'un script}
+	\begin{frame}{Côté serveur}
 		\centerline{\includegraphics[height=150pt]{images/network/plugin1.png}}
 		\invisible{
 		\begin{itemize}	
@@ -245,21 +247,19 @@
 		\end{itemize}	}
 		
 	\end{frame}
-	\begin{frame}{Ajout d'un script}
+	\begin{frame}{Côté serveur}
 		\centerline{\includegraphics[height=150pt]{images/network/plugin.png}}
 		\begin{itemize}	
 			\item \pause Léger \pause
 			\item Reçoit les données \pause
-			\item Intégré dans la scène 3D \pause
 			\item Affiche l'objet 
 		\end{itemize}	
 		
 	\end{frame}
 	
-	\subsubsection{Côté client}
 	
 	\begin{frame}{Socket TCP}
-				\centerline{\includegraphics<1>[height=120pt]{images/network/tcp-socket1.png}}
+				\centerline{\includegraphics[height=150pt]{images/network/tcp-socket1.png}}
 				\invisible{
 					\begin{itemize}
 						\item Dispose de classes prévues à cet effet en C\#
@@ -270,7 +270,7 @@
 	\end{frame}
 	
 	\begin{frame}{Socket TCP}
-		\centerline{\includegraphics<1>[height=120pt]{images/network/tcp-socket2.png}}
+		\centerline{\includegraphics[height=150pt]{images/network/tcp-socket2.png}}
 		\invisible{
 			\begin{itemize}
 				\item Dispose de classes prévues à cet effet en C\#
@@ -280,7 +280,7 @@
 		}
 	\end{frame}
 	\begin{frame}{Socket TCP}
-		\centerline{\includegraphics<1>[height=120pt]{images/network/tcp-socket3.png}}
+		\centerline{\includegraphics[height=150pt]{images/network/tcp-socket3.png}}
 		\invisible{
 			\begin{itemize}
 				\item Dispose de classes prévues à cet effet en C\#
@@ -290,7 +290,7 @@
 		}
 	\end{frame}
 	\begin{frame}{Socket TCP}
-		\centerline{\includegraphics<1>[height=120pt]{images/network/tcp-socket4.png}}
+		\centerline{\includegraphics[height=150pt]{images/network/tcp-socket4.png}}
 		\invisible{
 			\begin{itemize}
 				\item Dispose de classes prévues à cet effet en C\#
@@ -300,7 +300,7 @@
 		}
 	\end{frame}
 	\begin{frame}{Socket TCP}
-		\centerline{\includegraphics<1>[height=120pt]{images/network/tcp-socket5.png}}
+		\centerline{\includegraphics[height=150pt]{images/network/tcp-socket5.png}}
 		\invisible{
 			\begin{itemize}
 				\item Dispose de classes prévues à cet effet en C\#
@@ -310,7 +310,7 @@
 		}
 	\end{frame}
 	\begin{frame}{Socket TCP}
-		\centerline{\includegraphics<1>[height=120pt]{images/network/tcp-socket6.png}}
+		\centerline{\includegraphics[height=150pt]{images/network/tcp-socket6.png}}
 		\invisible{
 			\begin{itemize}
 				\item Dispose de classes prévues à cet effet en C\#
@@ -320,10 +320,10 @@
 		}
 	\end{frame}
 	\begin{frame}{Socket TCP}
-		\centerline{\includegraphics<1>[height=120pt]{images/network/tcp-socket6.png}}
+		\centerline{\includegraphics[height=150pt]{images/network/tcp-socket6.png}}
 			\begin{itemize}
-				\item Dispose de classes prévues à cet effet en C\#
-				\item Documentée en C\# par Microsoft
+				\item Dispose de classes prévues à cet effet en C\# \pause
+				\item Documentée en C\# par Microsoft \pause
 				\item Permet d'envoyer des octets, donc flexible
 			\end{itemize}
 	\end{frame}
