@@ -65,9 +65,43 @@
 	
 	\section{Etat de l'art}
 	
-	\begin{frame}
-		Quelle techno Aurélien
+	\begin{frame}{Quelle technologie utiliser ?}
+		
+		\centerline{\includegraphics[height=75pt]{images/techno/unity-logo.png}
+			\includegraphics[height=75pt]{images/techno/UE3_logo.png}
+			\includegraphics[height=75pt]{images/techno/CryENGINE3-Logo.png}}
+		
+		\centerline{\includegraphics[height=75pt]{images/techno/opengl-logo.jpg}
+			\includegraphics[height=60pt]{images/techno/auto.png}}
 	\end{frame}
+	
+		\begin{frame}{Un comparatif}
+			\begin{tabular}{|M{45pt}|M{40pt}|M{45pt}|M{75pt}|M{30pt}|}
+				\hline
+				\textbf{Software} & \textbf{Facile à apprendre} & \textbf{Manipule de nombreux objets} & \textbf{Prix} & \textbf{Aide pour tablettes}\\
+				\hline
+				\textit{Unreal Engine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}{19\euro/mois} + 5 \% & \color{red}{$\times$}\\
+				\hline
+				\textit{CryEngine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}{9.99\euro/mois} & \color{orange}{$\sim$}\\
+				\hline
+				\textit{OpenGl} & \color{red}{$\times$} & \color{orange}{$\sim$} & \color{green}{0\euro} & \color{red}{$\times$}\\
+				\hline
+				\textit{Autodesk Maya} & \color{red}{$\times$} & \color{green}{\checkmark} & \color{red}{\$185.00/mois} & \color{orange}{$\sim$}\\
+				\hline
+				\textit{Unity} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{green}{0\euro : licence gratuite} & \color{green}{\checkmark} \\
+				\hline
+			\end{tabular}
+		\end{frame}
+		
+		\begin{frame}{Le petit plus pour Unity}
+			\centerline{\includegraphics[height=80pt]{images/techno/ucla.jpg}}
+			
+			\begin{itemize}
+				\item UCLA Mesh Creator : Une aide à la création d'objets en 3D à partir d'une texture
+				\item Gros avantage : Réutilisable facilement et sans contrainte
+			\end{itemize}
+			
+		\end{frame}
 		
 
 	
@@ -228,9 +262,18 @@
 		Dessin -> zone Etienne
 	\end{frame}
 	
-	\begin{frame}
-		Aurélien Passage au 3D
+	\begin{frame}{L'extrusion}
+		Plusieurs étapes pour passer d'une texture à un objet :
+		\begin{itemize}
+			\item Détection des contours du dessin
+			\item Création de meshes
+			\item Assemblage des meshes -> Objet 3D
+			\item Application de la texture pour rendre l'objet coloré
+		\end{itemize}
+		
+		L'utilisation de UCLA Mesh Creator nous a facilité dans le développement, notamment au niveau de la détection des contours et de l'assemblage des meshes.
 	\end{frame}
+		
 	
 	\begin{frame}{Placement}
 			Modèle défini précédemment:
@@ -358,9 +401,23 @@
 	
 	\section{Conclusion}
 	
-	\begin{frame}
-		Aurélien Conclu
+	\begin{frame}{Notre application}
+		Voici une vidéo montrant un exemple d'utilisation de notre application :
 		%vidéo -> présente les points clés de notre présentation
+	\end{frame}
+	
+	\begin{frame}{Pour résumer}
+		Nous avons fait une application Unity :
+		\begin{itemize}
+			\item Fonctionnant sur tablette Windows
+			\item Utilisation simplifiée pour des utilisateurs novices via 
+			\begin{itemize}
+				\item Une palette de couleurs réduite
+				\item Un placement de l'objet créé en 3 étapes
+				\item Un système d'icônes clair
+			\end{itemize}
+			\item Un export de l'objet sur un serveur distant dans une scène
+		\end{itemize}
 	\end{frame}
 		
 \end{document}
