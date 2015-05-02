@@ -112,7 +112,8 @@ public class UclaExtrusion : MonoBehaviour {
 		followObject.front();
 		followObject.setName (gameObjectName);
 		followObject.makeTran();
-		
+
+		gameObjectName = "Mesh Creator Object";
 		//TODO Detruire la texture créée
 		//File.Delete("Assets/textures/textureExtruded" + gameObjectName + ".png");
 
