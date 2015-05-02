@@ -1,5 +1,5 @@
 \documentclass[a4paper,11pt]{article}
-\bibliographystyle{unsrt} % Le style est mis entre accolades.
+
 \usepackage{exptech,hyperref}
 \hypersetup{
 	colorlinks=true,                         
@@ -37,16 +37,14 @@
 		%Présentation succinte du projet.	
 		%ajouter beaucoup plus de détails en premer lieu.
 		%Dire: Application qui tourne sur un serveur Unity à l'Irisa, ils veulent faire des objets 3D à intégrer dans leur scène
-		Ce projet nous a été proposé par l'IRISA, avec pour but de répondre à la problématique suivante : Comment meubler rapidement et facilement, une scène de réalité virtuelle avec des objets 3D ? Notre application cherche ainsi à répondre à ce besoin en permettant une création d'objets 3D, à partir de dessins 2D, suffisamment intuitive pour être employée par un utilisateur novice. Notre application devra à terme, servir à meubler une scène sans perdre de temps à créer des objets avec des logiciels plus compliqués.
-		
 		Au cours de ce rapport, vous trouverez les choix faits pour développer cette application. Tout d'abord, la sélection des technologies les plus à même de respecter le cahier des charges. Ensuite comment à partir de ces choix, nous avons défini l'architecture de l'application. Sur chaque partie de celle-ci, vous verrez les choix réalisés par l'équipe. Puis nous présenterons notre répartition du travail et le suivit de celui-ci au sein de notre équipe. Pour finir, nous concluons sur les objectifs atteints et les futurs possibles pour le développement de cette application.
 
 	\section{Cahier des charges} %Etienne
 	%Ajouter des trucs, décrire l'application : dessin, extruder, assembler.
 		Notre client nous a imposé le cahier des charges qui suit:
 		\begin{itemize}
-			\item Supportable sur tablette tactile, l'utilisation du tactile permet de rendre la démonstration plus intuitive et interactive.
-			\item Application ergonomique: utilisation rapide pour un nouvel utilisateur. Les icônes doivent donc être le plus clair possibles. L'utilisateur peut donc trouver ce qu'il veut rapidement et celui-ci n'a pas d'options à sélectionné.
+			\item Supportable par Android Tablette, l'utilisation du tactile permet de rendre la démonstration plus intuitive et interactive.
+			\item Application ergonomique: utilisation rapide pour un nouvel utilisateur. Les icônes doivent donc être le plus clair possibles, l'utilisateur peut donc trouver ce qu'il veut rapidement. Et que celui-ci n'ai pas d'options à sélectionné.
 			\item Outils de dessin: c'est à dire mettre à disposition une éventails de couleurs, la possibilité de changer le rayon de son crayon et plusieurs outils à disposition, comme une gomme par exemple.
 			\item Création d'objet 3D à partir les dessins ainsi faits: l'application doit détecté les contours du dessin. Crée un objets 3D à partir de cette détection, et ensuite permettre à l'utilisateur d'assembler son objet avec ce qu'il a fait précédemment.
 			\item Pouvoir exporter la création vers un serveur Unity: cette exportation doit de se faire sans fils et permettra ensuite de visualiser l'objet dans la salle de réalité augmentée.
@@ -64,15 +62,14 @@
 		
 	\section{Conception}
 	
-		Une fois la technologie sélectionné, nous avons dû établir précisément comment notre application allait fonctionner et donc dès maintenant définir quel serait l'approche la plus ergonomique du problème.
+		Une fois la technologie sélectionné, nous avons dû établir précisément comment notre application allais fonctionner et donc dés maintenant définir quel serai l'approche la plus ergonomique du problème.
 		
 		\subsection{Comment être ergonomique?} %Arnaud
 		Pour le dessin, nous avons créé une interface simplifiée dans l'esprit de Microsoft Paint. Avec un menu déroulant pour accéder aux outils (à gauche, le menu est fermé, à droite, ouvert):
-		
 		%ajouter espaces entre les captures.
-		\centerline{\includegraphics[scale=0.55]{images/Cmt_placer2.png}}
+		\centerline{\includegraphics[scale=0.5]{images/Cmt_placer2.png}}
 		
-		 Une fois le dessin extrudé, pour le placer dans l'environnement 3D, l'utilisateur pourra à l'aide d'un menu (1) orienter et redimensionner la figure selon chacun de ses axes les uns après les autres. Pour se retrouver dans l'environnement, il aura une caméra qui suit l'objet selon l'axe courant (2). De plus, il y a une caméra amovible et zoomable qui filmera l'ensemble de la scène déjà créée (3). Ici les cubes sont des objets créés précédemment qui sont passés en transparent pour faciliter la lisibilité.
+		Une fois le dessin extrudé, pour le placer dans l'environnement 3D, l'utilisateur pourra à l'aide d'un menu (1) orienter et redimensionner la figure selon chacun de ses axes les uns après les autres. Pour se retrouver dans l'environnement, il aura une caméra qui suit l'objet selon l'axe courant (2). De plus, il y a une caméra amovible et zoomable qui filmera l'ensemble de la scène déjà créée (3). Ici les cubes sont des objets créés précédemment qui sont passés en transparent pour faciliter la lisibilité.
 		\newline
 		
 		Une fois tout ces points définis , nous avons pu passer à l'étape suivante, c'est-à-dire l'architecture du logiciel.
@@ -82,7 +79,7 @@
 		
 		Nous avons omis dans le schéma la caméra de prévisualisation, elle est contenu dans 'Objet', qui représente l'assemblage des divers dessins 2D extrudés.
 		%Unity basé composant => pas d'héritage toussa toussa...
-				\centerline{\includegraphics[scale=0.3]{images/archi.png}}
+				\centerline{\includegraphics[scale=0.5]{images/archi.png}}
 
 
 	\section{Etape par étape}
@@ -130,8 +127,6 @@
 			
 			L'adaptation du code existant à notre projet ne s'est pas faite naturellement car il y a eu une phase de compréhension du code existant et de sa modification. Il s'est avéré au cours du développement, que de nombreuses parties, notamment celles gérant l'acquisition de la texture à extruder, ne pouvait pas se faire simplement. Nous avons donc du reconstruire toute une partie afin de faire le fonctionner.
 			
-			De plus, lors de la manipulation de fichiers via des scripts, il y a une utilisation du package Unity.Editor\footnote{Le package Unity.Editor est une aide au développement et à l'édition d'un jeu sous Unity. Notamment, il permet la manipulation de fichiers via des scripts}. Cela empêche la compilation de l'application pour en faire un exécutable. Mais l'application reste fonctionnelle si la tablette utilise Unity pour la lancer. Malheureusement, l'accès tardif à la salle tactile ne nous a pas permis de détecter ce problème assez tôt pour pouvoir le corriger avant la date buttoir.
-			
 			Malgré ces contre-temps, l'utilisation de cet outil nous a été très bénéfique et il nous a surement permis de finir le projet dans les temps.
 			%Expliquer le problème avec ce qui compile pas à cause de l'UnityEditor.
 		\subsection{Placement et prévisualisation} %Arnaud
@@ -144,16 +139,15 @@
 			Un fois l'objet en 3D créé, nous devons l'envoyer à un serveur qui affichera cet objet dans une scène 3D.
 			Ce serveur est mis en place par l'IRISA et tourne sous Unity, nous avons donc jugé intéressant d'exploiter des solutions implémentées dans Unity ou en C\#.
 			Nous nous sommes donc orientés vers le socket TCP qui permet d'échanger des données entre 2 applications.
-			Nous avons choisi cette approche de l'envoi des données car :
+			Nous avons choisi cette approche de l'envoi des données car:
 			\begin{itemize}
 				\item Elle dispose de classes prévues à cet effet en C\#
-				\item Elle est documentée en C\# par Microsoft\cite{MSDN} 
-				\item Il existe de nombreux tutoriels sur internet\cite{CodeProject}
+				\item Elle est documentée en C\# par Microsoft
 				\item Elle permet d'envoyer des octets, donc flexible
 			\end{itemize}
 						
 			
-			\centerline{\includegraphics[scale=0.76]{images/tcp-socket.png}}
+			\centerline{\includegraphics[scale=1]{images/tcp-socket.png}}
 			
 			Dès que la connexion est établie, le client envoie sous forme de flux les données de l'objet en 3D. Cette action correspond à la requête sur le schéma. Puis, en guise de traitement, le serveur affiche l'objet en 3D dans la scène.
 			Dans notre cas, un script léger du côté du serveur permet de gérer la connexion avec le client et l'affichage de l'objet.
@@ -183,7 +177,7 @@
 				Cette organisation du travail s'est majoritairement révélée efficace. Nous aurions dû fixer notre choix sur Unity dès octobre et passer moins de temps sur l'état de l'art pour le choix du logiciel. Cela nous aurait permis de faire des recherches plus ciblées et ainsi trouver UCLA Mesh Creator plus tôt. De plus, nous aurions pu commencer à acquérir des connaissances basiques sur Unity. Manque de connaissances qui nous a ralenti dans le début du développement.
 			
 	
-	
+	\section{Objectifs} 
 		%Qu'est-ce qu'on a : changé, abandonné ...
 
 	%	Pour le dessin, nous nous sommes contenté de trois tailles pour l'outil de coloriage.
@@ -192,8 +186,8 @@
 	%
 	%
 	%		On y met dans les deux parties autoures. Pas vraiment besoin de garder.
-		Au cours de l'avancement du projet, nous avons du faire certains choix, et changer ou abandonner certaines de nos idées initiales. Notamment : la sauvegarde, ainsi que l'ouverture et l'édition des éléments créés.
-		Par manque de temps, nous n'avons pas pu les implanter complètement. Par contre, dans l'IHM, des menus sont déjà présents pour gérer la sauvegarde et nous avons écrit les débuts de scripts qui correspondent. Toutes ces informations seront intégrées dans la documentation utilisateur.
+		Au cours de l'avancement du projet, nous avons du faire certains choix, et changer ou abandonner certaines de nos idées initiales. Notamment : la sauvegarde et l'édition des éléments créés.
+		Par manque de temps, nous n'avons pas pu les implanter nous-même. Par contre, dans l'IHM, des menus sont déjà présents pour gérer la sauvegarde et nous savons en théorie comment mettre en place la liste des objets. Toutes ces informations seront intégrées dans la documentation utilisateur.
 		Globalement, nous sommes arrivés à un résultat très proche de notre conception initiale de l'application et qui répond au cahier des charges.
 	
 	\section{Conclusion} %Aurélien
@@ -203,16 +197,12 @@
 		%	Nous en retenons qu'Unity est un outil puissant, mais pas encore adapté à la création de menus, et orienté pair-à-pair. Ce travail fut aussi une bonne initiation à la gestion de projet, avec l'utilisation de Git. Il en ressort aussi qu'il est crucial de se donner des tâches précises et des délais à respecter pour arriver au bout d'un projet dans les temps impartis. Cela évite qu'une partie minime du projet ne nous accapare tout notre temps.
 			
 		%	Si l'on nous présentait ce projet à nouveau, nous changerions notre méthode de travail sur plusieurs points. Notamment, nous passerions moins de temps sur l'état de l'art; il était presque sûr qu'Unity serait notre choix comme outil de développement. Ensuite, nous procéderions à un partage des recherches et des réflexions aux premiers instants du projet. Nous commencerions à apprendre à utiliser Unity dès le mois d'Octobre, car ce manque de connaissances nous a relenti par la suite. Nous étions parfois bloqués par des détails, ou nous trouvions des solutions sans les comprendre entièrement, menant à d'autres problèmes par la suite. Mais le manque de temps ne nous permettait pas de faire autrement.
-		Au cours de l'avancement du projet, nous avons du faire certains choix, et changer ou abandonner certaines de nos idées initiales. Notamment : la sauvegarde, ainsi que l'ouverture et l'édition des éléments créés.
-		Par manque de temps, nous n'avons pas pu les implanter complètement. Par contre, dans l'IHM, des menus sont déjà présents pour gérer la sauvegarde et nous avons créé les débuts de scripts correspondant, rendant cette fonction facile à implémenter dans l'avenir. Toutes ces informations seront intégrées dans la documentation utilisateur.
-		Globalement, nous sommes arrivés à un résultat très proche de notre conception initiale de l'application.
+		Nous avons atteint les objectifs du cahier des charges:
+		L'application est donc utilisable sur tablette Windows, possède une interface graphique, une gestion du dessin, une extrusion avec prévisualisation et enfin un mode de transfert de l'objet 3D. L'utilisation de Unity, un logiciel puissant et évoluant, assure un suivi et de possibles évolutions facilitées par l'application.
 		
-		Notre application respecte le cahier des charges imposé :
-		L'application est donc utilisable sur tablette Windows, bien qu'il faille utiliser l'UnityEditor qui contient certaines fonctions spécifiques. Elle possède une interface graphique suffisamment claire pour un utilisateur novice. Le dessin se fait de façons très intuitives, avec une utilisation similaire aux logiciels de dessin classiques. L'extrusion permet une prévisualisation, puis un placement guidé en trois étapes. Il est ensuite possible d'exporter l'objet créé vers un serveur. L'utilisation d'Unity, un logiciel puissant et évoluant, assure un suivi et de possibles évolutions facilitées par l'application.
+		Nous avons réalisé des tests avec des utilisateurs, ce qui assure un certain niveau d'ergonomie. En précisant juste où se trouve les outils et le menu extrudés, ils arrivent à créer des objets 3D.
 		
-		Nous avons réalisé des tests avec des utilisateurs, ce qui assure un certain niveau d'ergonomie. En précisant juste où se trouve les outils et le menu extrudés, ils arrivent à créer des objets 3D sans rencontrer de problème.
-		
-		L'utilisation d'un système de gestion de version est un vrai plus dans un projet de groupe, nous permettant une répartition efficace du travail. Il faut aussi garder à l'esprit que nous réfléchissons tous différemment: il est donc primordial de bien définir les règles qui permettent de lier les différentes fonctionnalités de l'application.
+		L'utilisation d'un système de gestion de version est un vrai plus dans un projet de groupe, il faut garder à l'esprit que nous réflechissons tous différemment: il est primordial de bien définir les règles qui permettent de lier les différentes fonctionnalités de l'application.
 		
 
 	
@@ -221,7 +211,7 @@
 		
 		Nous voudrions également remercier Monsieur Bertrand COUASNON pour son apport de connaissances ainsi que son aide dans l'élaboration de nos différentes présentations.
 		
-
+\bibliographystyle{} % Le style est mis entre accolades.
 \bibliography{bibli} % mon fichier de base de données s'appelle bibli.bib
 
 \end{document}
