@@ -12,6 +12,7 @@ public class UclaExtrusion : MonoBehaviour {
 	public DrawAFigure drawing;
 	public Vector3 posIni = new Vector3(0, 0, 0);
 	public float size = 1;
+	public int cpt = 0;
 
 
 	//Appellée à tout changement de valeur du slider
@@ -34,7 +35,9 @@ public class UclaExtrusion : MonoBehaviour {
 
 	public void doTheCube(){
 		
-		// create the new object and set the proper variables		
+		// create the new object and set the proper variables	
+		gameObjectName += cpt;
+		cpt ++;
 		GameObject newObject = new GameObject(gameObjectName);
 		newObject.transform.position = posIni;
 		//le place comme fils
@@ -45,6 +48,9 @@ public class UclaExtrusion : MonoBehaviour {
 
 		//Utilisation de la texture rendue par le DrawAFigure
 		var bytes = drawing.getTex().EncodeToPNG();
+		//File.WriteAllBytes ("Assets/textures/" + gameObjectName+".png", bytes);
+		//textureToCreateMeshFrom.LoadImage (bytes);
+
 		File.WriteAllBytes("Assets/textures/textureExtruded.png", bytes);
 		textureToCreateMeshFrom = (Texture2D) Resources.LoadAssetAtPath("Assets/textures/textureExtruded.png", typeof(Texture2D));
 
@@ -98,6 +104,7 @@ public class UclaExtrusion : MonoBehaviour {
 
 
 		//met un shader transparant
+		newObject.renderer.material.mainTexture = textureToCreateMeshFrom;
 		newObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
 
 		//ajout pour la suite, a placer après la création de l'objet!
