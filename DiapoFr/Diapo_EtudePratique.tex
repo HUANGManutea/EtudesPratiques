@@ -34,7 +34,7 @@
 		\centerline{virtuelle avec divers objets 3D ?}
 	\end{frame}
 	
-	\begin{frame}{Introduction}
+	\begin{frame}{Objectifs du projet}
 		Pour l'étude du comportement physique des modèles 3D dans une scène, les chercheurs souhaitent pouvoir créer des objets rapidement.
 		
 		
@@ -117,7 +117,7 @@
 		
 		
 		\begin{frame}{Comment être ergonomique?}
-				Repérage des parties pouvant posé problèmes:
+				Repérage des parties pouvant poser problèmes:
 				
 				\begin{itemize}
 					\item Comment dessiner?
@@ -233,13 +233,13 @@
 			Problématique:
 				\begin{itemize}
 					\item Accueillir les éléments définis précédemment
-					\item Simple
+					\item Simplicité
 				\end{itemize}
 				
 			Solution:
 				\begin{itemize}
 					\item Technologie: utilisation du système d'UI (outils de menus et fenêtre) d'Unity
-					\item Des espaces prêt à accueillir les autres composants
+					\item Des espaces prêts à accueillir les autres composants
 				\end{itemize}
 				\centerline{\includegraphics[scale=0.3]{images/Nono/img6.png}} 
 	\end{frame}
@@ -248,7 +248,7 @@
 		Pour assurer l'ergonomie et l'évolution de ce menu:
 			\begin{itemize}
 				\item Choix de couleur limité
-				\item Choix de taille limité
+				\item Choix de taille du trait limitée
 				\item Choix d'outils limité
 					\centerline{\includegraphics[scale=0.4]{images/Nono/img7.png}} 
 				\item Modèle de fonction simple
@@ -263,9 +263,9 @@
 			\centerline{\includegraphics[scale=0.4]{images/intro/spheres.jpg}}
 			
 			\begin{itemize}
-				\item Les plan (GameObject dans Unity) et la texture n'ont pas le même référentiel. 
-				\item Pour accéder au pixel sur lequel on clic, on doit chercher le point d'intersection entre un Ray que l'on projette, et la zone de dessin.
-				\item Le dessin se fait simplement en modifiant la texture aux endroit où  l'on clique.
+				\item Le plan (GameObject dans Unity) et la texture n'ont pas le même référentiel. 
+				\item Pour accéder au pixel sur lequel on clique, on doit chercher le point d'intersection entre un Ray que l'on projette, et la zone de dessin.
+				\item Le dessin se fait simplement en modifiant la texture aux endroits où  l'on clique.
 			\end{itemize} 
 		La fond de la texture doit être en alpha pour n'extruder que ce qui a été colorié.
 	\end{frame}
@@ -289,7 +289,7 @@
 			\item Application de la texture pour rendre l'objet coloré
 		\end{itemize}
 		
-		L'utilisation de UCLA Mesh Creator nous a facilité dans le développement, notamment au niveau de la détection des contours et de l'assemblage des meshes.
+		L'utilisation de UCLA Mesh Creator nous a facilité le développement, notamment au niveau de la détection des contours et de l'assemblage des meshes.
 	\end{frame}
 		
 	
