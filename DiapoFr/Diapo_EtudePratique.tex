@@ -19,7 +19,7 @@
 	\begin{frame}
 		\begin{titlepage}
 			\centerline{\includegraphics[scale=0.1]{images/logos/logoINSA.jpg}}
-			\centerline{Encadrants : François Lehericey and Bertrand Coüasnon}	
+			\centerline{Encadrants : François Lehericey et Bertrand Coüasnon}	
 		\end{titlepage}
 	\end{frame}
 	
@@ -35,15 +35,22 @@
 	\end{frame}
 	
 	\begin{frame}{Objectifs du projet}
-		Pour l'étude du comportement physique des modèles 3D dans une scène, les chercheurs souhaitent pouvoir créer des objets rapidement.
-		
-		
+		Contexte:
 		\begin{itemize}
-			\item Ce projet a pour but de permettre la \textbf{création rapide} d'objets simples.
-			\centerline{\includegraphics[scale=0.5]{images/intro/car.jpg}}
-			\item L'application met l'accent sur la \textbf{simplicité} d'utilisation et \textbf{l'ergonomie}.
+			\item Recherches sur la physique des objets 3D en réalité virtuelle.
+			\item Besoin: Créer rapidement des modèles 3D pour les tests.
 		\end{itemize}
-		
+		Problème:
+			\begin{itemize}
+				\item Créer un objet 3D prend beaucoup de temps (au moins 1h pour un artiste).
+				\item Or dans ce cas, pas besoin d'objets complexes et esthétiques !
+			\end{itemize}
+		Notre projet:
+		\begin{itemize}
+		\item Permettre la \textbf{création rapide} d'objets simples à partir de dessins 2D.
+		\item L'application met l'accent sur la \textbf{simplicité} d'utilisation et \textbf{l'ergonomie} plutôt que sur la qualité graphique des modèles.
+		\end{itemize}
+			\centerline{\includegraphics[scale=0.3]{images/intro/car.jpg}}
 	\end{frame}
 	
 	\begin{frame}{Sommaire}
@@ -55,11 +62,13 @@
 	\begin{frame}{Cahier des charges}
 		Notre projet doit respecter les contraintes suivantes:
 		\begin{itemize}
-			\item Cette application doit fonctionner sur tablette.
-			\item Permettre la création d'objets 3D grâce à une suite de dessins à main levée.
+			\item Fonctionne sur tablette.
+			\item Création d'objets 3D grâce à une suite de dessins à main levée.
 			\item L'utilisateur disposera de plusieurs outils de dessin, afin de varier ses créations.
+			\item L'application transforme ces dessins en objets 3D (ajout de la profondeur)
+			\item L'objet final est constitué de plusieurs objets ainsi créés.
 			\item L'application doit rester ergonomique, et utilisable intuitivement par tous.
-			\item L'objet créé doit pouvoir être exporté vers un serveur Unity.
+			\item L'objet final peut finalement être exporté vers un serveur Unity.
 		\end{itemize}
 	\end{frame}
 	
