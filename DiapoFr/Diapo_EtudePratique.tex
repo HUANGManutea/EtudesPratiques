@@ -75,13 +75,16 @@
 	\section{Etat de l'art}
 	
 	\begin{frame}{Quelle technologie utiliser ?}
-		
+		 Des moteurs de jeu :
 		\centerline{\includegraphics[height=75pt]{images/techno/unity-logo.png}
 			\includegraphics[height=75pt]{images/techno/UE3_logo.png}
 			\includegraphics[height=75pt]{images/techno/CryENGINE3-Logo.png}}
+		\medbreak
+		\begin{tabular}{l l}
+			Une API : & Un logiciel de modélisation :\\
+			\includegraphics[height=75pt]{images/techno/opengl-logo.jpg} & \includegraphics[height=60pt]{images/techno/auto.png}
+		\end{tabular}
 		
-		\centerline{\includegraphics[height=75pt]{images/techno/opengl-logo.jpg}
-			\includegraphics[height=60pt]{images/techno/auto.png}}
 	\end{frame}
 	
 		\begin{frame}{Un comparatif}
@@ -89,13 +92,13 @@
 				\hline
 				\textbf{Software} & \textbf{Facile à apprendre} & \textbf{Manipule de nombreux objets} & \textbf{Prix} & \textbf{Aide pour tablettes}\\
 				\hline
-				\textit{Unreal Engine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}{19\euro/mois} + 5 \% & \color{red}{$\times$}\\
-				\hline
-				\textit{CryEngine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}{9.99\euro/mois} & \color{orange}{$\sim$}\\
-				\hline
 				\textit{OpenGl} & \color{red}{$\times$} & \color{orange}{$\sim$} & \color{green}{0\euro} & \color{red}{$\times$}\\
 				\hline
 				\textit{Autodesk Maya} & \color{red}{$\times$} & \color{green}{\checkmark} & \color{red}{\$185.00/mois} & \color{orange}{$\sim$}\\
+				\hline
+				\textit{Unreal Engine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}5 \% & \color{red}{$\times$}\\
+				\hline
+				\textit{CryEngine} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{orange}{9.99\euro/mois} & \color{orange}{$\sim$}\\
 				\hline
 				\textit{Unity} & \color{green}{\checkmark} & \color{green}{\checkmark} & \color{green}{0\euro : licence gratuite} & \color{green}{\checkmark} \\
 				\hline
@@ -107,6 +110,10 @@
 			
 			\begin{itemize}
 				\item UCLA Mesh Creator : Une aide à la création d'objets en 3D à partir d'une texture
+					\begin{itemize}
+						\item Création uniquement en mode "Edition" de Unity
+						\item Ne gère pas les trous
+					\end{itemize}
 				\item Gros avantage : Réutilisable facilement et sans contrainte
 			\end{itemize}
 			
@@ -256,7 +263,7 @@
 	\end{itemize}
 	\end{frame}
 	
-	\begin{frame}{L'extrusion}
+	\begin{frame}{L'extrusion : Définition}
 		Plusieurs étapes pour passer d'une texture à un objet :
 		\begin{itemize}
 			\item Détection des contours du dessin
@@ -264,10 +271,23 @@
 			\item Assemblage des meshes -> Objet 3D
 			\item Application de la texture pour rendre l'objet coloré
 		\end{itemize}
-		
-		L'utilisation de UCLA Mesh Creator nous a facilité le développement, notamment au niveau de la détection des contours et de l'assemblage des meshes.
+	
 	\end{frame}
 		
+	\begin{frame}{L'extrusion}
+		
+		Le passage du dessin à l'objet 3D pour notre application :
+		\begin{itemize}
+			\item Extrusion faite par UCLA Mesh Creator
+			\item Intégration de l'outil à notre application
+		\end{itemize}
+		\medbreak
+		Problèmes rencontrés :
+		\begin{itemize}
+			\item Utilisation impossible en mode "Jeu" -> Exécutable impossible
+			\item Création de nombreux fichiers inutiles pour la suite
+		\end{itemize}
+	\end{frame}
 	
 	\begin{frame}{Envoi des données}
 		\centerline{\includegraphics[height=120pt]{images/network/sending_model2.png}}
