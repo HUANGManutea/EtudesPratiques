@@ -77,6 +77,8 @@ public class FollowObject : MonoBehaviour {
 		Renderer[] child = destination.GetComponentsInChildren<Renderer> ();
 
 		foreach (Renderer o in child) {
+			o.material.shader = Shader.Find("Transparent/Diffuse");
+
 			for (int j = 0; j < o.materials.Length; j++) {
 				
 				Color color = o.materials [j].color;
@@ -89,8 +91,9 @@ public class FollowObject : MonoBehaviour {
 		//rend l'objet suivi visible
 		for (int j = 0; j < target2.materials.Length; j++)
 		{
+			target2.material.shader = Shader.Find("Diffuse");
 			Color color = target2.materials[j].color;
-			color.a = 1f;
+			color.a = 255f;
 			target2.materials[j].color = color;
 		}
 		
@@ -101,7 +104,8 @@ public class FollowObject : MonoBehaviour {
 	public void makeNorm(){
 		Renderer[] child = destination.GetComponentsInChildren<Renderer> ();
 		foreach (Renderer o in child) {
-			
+			o.material.shader = Shader.Find("Diffuse");
+
 			for (int j = 0; j < o.materials.Length; j++) {
 				
 				Color color = o.materials [j].color;
