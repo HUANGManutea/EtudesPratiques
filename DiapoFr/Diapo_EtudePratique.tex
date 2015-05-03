@@ -120,19 +120,32 @@
 				Repérage des parties pouvant poser problèmes:
 				
 				\begin{itemize}
+					\item Comment organiser l'IHM?
 					\item Comment dessiner?
-					\item Comment extruder ce dessin?
-					\item Comment placer la figure créée dans l'environnement 3D?
-					\item Comment se repérer dans notre création?
+					\item Comment extruder et placer la figure créée dans l'environnement 3D?
 				\end{itemize}
 		\end{frame}	
+		
+			
+			\begin{frame}{Comment être ergonomique?}
+				Comment organiser l'IHM?
+				Problématique:
+				\begin{itemize}
+					\item Accueillir les futurs éléments
+					\item Simplicité: peu d'options, sobre
+				\end{itemize}
+
+				\centerline{\includegraphics[scale=0.2]{images/Nono/img6.png}}
+			Blender:
+				\centerline{\includegraphics[scale=0.2]{images/Nono/img5.png}} 
+			\end{frame}
 		
 		\begin{frame}{Comment être ergonomique?}
 
 				Comment dessiner?
 					\begin{itemize}
 						\item Interface sobre
-						\item Menu d'outils déroulant
+						\item Menu d'outils avec choix limités
 					\end{itemize}
 				
 				\centerline{\includegraphics[scale=0.3]{images/Nono/img1.png}} \centerline{\includegraphics[scale=0.3]{images/Nono/img2.png}}
@@ -143,50 +156,20 @@
 		
 		\begin{frame}{Comment être ergonomique?}
 			
-			Comment extruder ce dessin?
+			Comment extruder et placer la figure créée dans l'environnement 3D?
 			\begin{itemize}
-				\item Jeu d'icônes assez clair
 				\item Limiter les options
-				\item L'utilisateur n'a pas à intervenir plus que nécessaire
+				\item Découper en plusieurs étapes
+				\item Transparences des autres objets
+				\item Caméra globale amovible
 			\end{itemize}
 			
-			\centerline{\includegraphics[scale=0.5]{images/Nono/img3.png}} 
-			
-			
-			
-		\end{frame}	
-			
-		\begin{frame}{Comment être ergonomique?}
-						
-				Comment placer la figure créée dans l'environnement 3D?
-				
-				\begin{itemize}
-					\item Découper en plusieurs étapes
-					\item Menu clair
-					\item Ne pas surcharger d'informations
-				\end{itemize}
-				
-				\centerline{\includegraphics[scale=0.5]{images/Nono/img4.png}} 
-						
-						
-						
-		\end{frame}	
-		
-		\begin{frame}{Comment être ergonomique?}
-			
-			Comment se repérer dans notre création?
-			
-			\begin{itemize}
-				\item Vue d'ensemble permanente
-				\item Caméra mobile
-				\item Limiter les déplacements
-			\end{itemize}
-			
-			\centerline{\includegraphics[scale=0.5]{images/Nono/img5.png}} 
-			
+				\centerline{\includegraphics[scale=0.4]{images/Nono/img4.png}} 
 			
 			
 		\end{frame}	
+			
+	
 	\begin{frame}{Architecture logicielle} %Découpage de l'application}
 		\huge Comment découper l'application?
 	\end{frame}
@@ -216,47 +199,31 @@
 		\centerline{\includegraphics[scale=0.3]{images/archilogi/archi6.png}}
 	\end{frame}
 			
-	\section{Etape par étape}
+	\section{Implémentation sous Unity}
 		%Expliquer nos choix par rapports aux objectifs énoncés
-			\begin{frame}{Etape par étape}
-				Ce qui a été fait:
+			\begin{frame}{Implémentation sous Unity}
+				Phase de réflexion terminée. On a déjà défini:
 					\begin{itemize}
 						\item Choix technologique : Unity
-						\item Définition du fonctionnement de l'application
+						\item Le fonctionnement de l'application
 						\item L'architecture du logiciel
 					\end{itemize}
-				Grâce tout cela, nous avons les éléments pour développer l'application.
+					
+				Nous avons désormais les éléments pour implémenter notre projet.
 			\end{frame}
 		
 		
-	\begin{frame}{IHM}
-			Problématique:
+	\begin{frame}{IHM et Outils}
+
 				\begin{itemize}
-					\item Accueillir les éléments définis précédemment
-					\item Simplicité
+					\item Technologie Unity UI (gestion de menus)
+					\item Boutons et caméras vides
+					\item Facilité d'implémentation de nouveaux outils
 				\end{itemize}
-				
-			Solution:
-				\begin{itemize}
-					\item Technologie: utilisation du système d'UI (outils de menus et fenêtre) d'Unity
-					\item Des espaces prêts à accueillir les autres composants
-				\end{itemize}
-				\centerline{\includegraphics[scale=0.3]{images/Nono/img6.png}} 
+			
 	\end{frame}
 	
-	\begin{frame}{Menu d'outils}
-		Pour assurer l'ergonomie et l'évolution de ce menu:
-			\begin{itemize}
-				\item Choix de couleur limité
-				\item Choix de taille du trait limitée
-				\item Choix d'outils limité
-					\centerline{\includegraphics[scale=0.4]{images/Nono/img7.png}} 
-				\item Modèle de fonction simple
-							\centerline{\includegraphics[scale=0.6]{images/Nono/img8.png}} 
-			\end{itemize}
 
-
-	\end{frame}
 	
 	\begin{frame}{La zone de dessin}
 		Le dessin doit apparaître sur la texture de l'objet.
@@ -292,21 +259,6 @@
 		L'utilisation de UCLA Mesh Creator nous a facilité le développement, notamment au niveau de la détection des contours et de l'assemblage des meshes.
 	\end{frame}
 		
-	
-	\begin{frame}{Placement}
-			Modèle défini précédemment:
-					\centerline{\includegraphics[scale=0.4]{images/Nono/img4.png}} 
-					Il faut:
-			\begin{itemize}
-				\item Une caméra de suivi changeant d'axe à chaque étape.
-				\item Des boutons pour déplacer l'objet.
-				\item Pouvoir modifier la taille de l'objet. Choix retenu : taille globale et taille selon un axe.
-				\item Rendre les autres objets légèrement transparents lors du placement.
-
-			\end{itemize}
-					
-	\end{frame}
-	
 	
 	\begin{frame}{Envoi des données}
 		\centerline{\includegraphics[height=120pt]{images/network/sending_model2.png}}
