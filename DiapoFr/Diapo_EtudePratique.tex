@@ -5,6 +5,7 @@
 \usepackage{hyperref,graphicx,multicol,eurosym,tabularx,color}
 \usetheme{Berkeley}
 \setbeamercolor{structure}{fg=cyan!60!black}
+\setbeamercolor{navigation symbols}{fg=black}
 \setbeamertemplate{navigation symbols}{\large \insertframenumber /\inserttotalframenumber}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
@@ -38,12 +39,12 @@
 		Contexte :
 		\begin{itemize}
 			\item Recherches sur la physique des objets 3D en réalité virtuelle.
-			\item Besoin: Créer rapidement des modèles 3D pour les tests.
+			\item Besoin: Créer rapidement des modèles 3D pour les tests.\pause
 		\end{itemize}
 		Problème :
 			\begin{itemize}
 				\item Créer un objet 3D prend beaucoup de temps (au moins 1h pour un artiste).
-				\item Or dans ce cas, pas besoin d'objets complexes et esthétiques !
+				\item Or dans ce cas, pas besoin d'objets complexes et esthétiques !\pause
 			\end{itemize}
 		Notre projet :
 		\begin{itemize}
@@ -62,13 +63,13 @@
 	\begin{frame}{Cahier des charges}
 		Notre projet doit respecter les contraintes suivantes:
 		\begin{itemize}
-			\item Fonctionne sur tablette.
-			\item Création d'objets 3D grâce à une suite de dessins à main levée.
-			\item L'utilisateur disposera de plusieurs outils de dessin, afin de varier ses créations.
-			\item L'application transforme ces dessins en objets 3D (ajout de la profondeur)
-			\item L'objet final est constitué de plusieurs objets ainsi créés.
-			\item L'application doit rester ergonomique, et utilisable intuitivement par tous.
-			\item L'objet final peut finalement être exporté vers un serveur Unity.
+			\item Fonctionner sur tablette
+			\item Dessiner à main levée
+			\item Plusieurs outils de dessin
+			\item Transformer ces dessins en objets 3D (Extrusion)
+			\item Pouvoir assembler les objets 3D
+			\item Application ergonomique et intuitive
+			\item Exportation vers un serveur Unity
 		\end{itemize}
 	\end{frame}
 	
@@ -109,7 +110,7 @@
 			\centerline{\includegraphics[height=80pt]{images/techno/ucla.jpg}}
 			
 			\begin{itemize}
-				\item UCLA Mesh Creator : Une aide à la création d'objets en 3D à partir d'une texture
+				\item UCLA Mesh Creator : Extrusion d'un dessin 2D
 					\begin{itemize}
 						\item Création uniquement en mode "Edition" de Unity
 						\item Ne gère pas les trous
@@ -123,17 +124,17 @@
 	
 	\section{Conception}	
 		\begin{frame}{Conception}
-	 		En parallèle du choix de technologie, nous avons dû réfléchir en nous basant sur deux points centraux:
 		
+		Deux points de réflexion:
 			\begin{itemize}
-				  \item Définir comment être ergonomique : découper pas à pas pour s'assurer de la simplicité à chaque instant
-				  \item Diviser le logiciel en éléments les plus simples possibles et indépendants pour organiser le développement
+				  \item Définir comment être ergonomique
+				  \item Diviser le logiciel en éléments simples
 			\end{itemize}
 		\end{frame}
 		
 		
 		\begin{frame}{Comment être ergonomique?}
-				Repérage des parties pouvant poser problèmes:
+				Parties pouvant poser problèmes:
 				
 				\begin{itemize}
 					\item Comment organiser l'IHM?
@@ -214,7 +215,7 @@
 	\section{Implémentation sous Unity}
 		%Expliquer nos choix par rapports aux objectifs énoncés
 			\begin{frame}{Implémentation sous Unity}
-				Phase de réflexion terminée. On a déjà défini:
+				Nous avons défini:
 					\begin{itemize}
 						\item Choix technologique : Unity
 						\item Le fonctionnement de l'application
@@ -224,7 +225,7 @@
 				Nous avons désormais les éléments pour implémenter notre projet.
 			\end{frame}
 		
-		
+	\subsection{IHM et Outils}
 	\begin{frame}{IHM et Outils}
 
 				\begin{itemize}
@@ -236,37 +237,38 @@
 	\end{frame}
 	
 
-	
+	\subsection{La zone de dessin}
 	\begin{frame}{La zone de dessin}
-		Le dessin doit apparaître sur la texture de l'objet.
-		Celle-ci se trouve simplement sur un plan.
-			\centerline{\includegraphics[scale=0.3]{images/Nono/img1.png}}
-		Problèmes rencontrés et solutions :
+		Objectif: dessiner sur un plan
+			
+		Problèmes:
 			\begin{itemize}
-				\item Le plan (GameObject dans Unity) et la texture n'ont pas le même référentiel.
+				\item La zone de dessin et l'écran pas le même référentiel
+				
 			\end{itemize} 
-			Lancé de rayon : L'intersection nous donne le pixel à modifier.
+			Lancé de rayon : 
+			Trouver la position du doigt
 			\begin{itemize}
-				\item La texture n'a pas de bord, il faut donc faire attention à ce que le dessin apparait quand on dessine sur le plan.
+				\item Effet de bord
 			\end{itemize}
-			Nous vérifions que le curseur est bien dans la zone de dessin. 	
-
+			Vérification de la position du curseur	
+		\centerline{\includegraphics[scale=0.3]{images/Nono/img1.png}}
 	\end{frame}
 	
 	\begin{frame}{La zone de dessin}
 			\begin{itemize}
-				\item Gérer la transparence de la texture pour n'extruder que les parties où l'on a dessiné sur la texture.
+				\item Fond transparent pour la détection de contours
 			\end{itemize} 
-			Nous précisons le type de texture à la création, en définissant un fond en alpha(transparence).
+			Définition d'un fond en alpha (transparence)
 			\begin{itemize}
-				\item Comment garder un tracé continu alors que le script est appelé à chaque frame (donc temps discret) ?
+				\item Comment garder un tracé continu ?
 			\end{itemize}
-			Nous calculons puis traçons la droite entre le point courant et le poitn précédent. On utilise l'équation cartésienne de la droite :
-			\centerline{\includegraphics[scale=0.4]{images/intro/trait.png}}
+			Nous utilisons l'équation cartésienne de la droite :
+			\centerline{\includegraphics[scale=0.6]{images/intro/trait.png}}
 	\end{frame}
-	
+	\subsection{Extrusion}
 	\begin{frame}{L'extrusion : Définition}
-		Plusieurs étapes pour passer d'une texture à un objet :
+		Plusieurs étapes pour passer d'un dessin à un objet :
 		\begin{itemize}
 			\item Détection des contours du dessin
 			\item Création de meshes
@@ -278,9 +280,9 @@
 		
 	\begin{frame}{L'extrusion}
 		
-		Le passage du dessin à l'objet 3D pour notre application :
+		Passage du dessin à l'objet 3D :
 		\begin{itemize}
-			\item Extrusion faite par UCLA Mesh Creator
+			\item Détection et extrusion faites par UCLA Mesh Creator
 			\item Intégration de l'outil à notre application
 		\end{itemize}
 		\medbreak
@@ -290,7 +292,7 @@
 			\item Création de nombreux fichiers inutiles pour la suite
 		\end{itemize}
 	\end{frame}
-	
+	\subsection{Export}
 	\begin{frame}{Envoi des données}
 		\centerline{\includegraphics[height=120pt]{images/network/sending_model2.png}}
 	\end{frame}
@@ -300,9 +302,8 @@
 		\centerline{\includegraphics[height=150pt]{images/network/plugin1.png}}
 		\invisible{
 		\begin{itemize}	
-			\item  Léger 
+			\item Simple et modulaire
 			\item Reçoit les données 
-			\item Intégré dans la scène 3D
 			\item Affiche l'objet 
 		\end{itemize}	}
 		
@@ -310,7 +311,7 @@
 	\begin{frame}{Côté serveur}
 		\centerline{\includegraphics[height=150pt]{images/network/plugin.png}}
 		\begin{itemize}	
-			\item \pause Léger \pause
+			\item \pause Simple et modulaire \pause
 			\item Reçoit les données \pause
 			\item Affiche l'objet 
 		\end{itemize}	
@@ -320,18 +321,8 @@
 	
 	\begin{frame}{Socket TCP}
 		\centerline{\includegraphics[height=150pt]{images/network/tcp-socket6.png}}
-		\invisible{
-		\begin{itemize}
-			\item Dispose de classes prévues à cet effet en C\# 
-			\item Documentée en C\# par Microsoft 
-			\item Permet d'envoyer des octets, donc flexible
-		\end{itemize}
-	}
-	\end{frame}
-	\begin{frame}{Socket TCP}
-		\centerline{\includegraphics[height=150pt]{images/network/tcp-socket6.png}}
 			\begin{itemize}
-				\item Dispose de classes prévues à cet effet en C\# \pause
+				\item \pause Protocole de communication universel \pause
 				\item Documentée en C\# par Microsoft \pause
 				\item Permet d'envoyer des octets, donc flexible
 			\end{itemize}
@@ -344,11 +335,11 @@
 		%vidéo -> présente les points clés de notre présentation
 	\end{frame}
 	
-	\begin{frame}{Pour résumer}
+	\begin{frame}{Conclusion}
 		Nous avons fait une application Unity :
 		\begin{itemize}
-			\item sur tablette Windows\pause
-			\item Simple et rapide:\pause
+			\item Sur tablette Windows\pause
+			\item Simple et rapide\pause
 		\end{itemize}
 		\centerline{\includegraphics[height=60pt]{images/conclu/menu.png}\pause\hspace{10 mm}\includegraphics[height=60pt]{images/conclu/place.png}\pause}
 		\begin{tabular}{lll}
