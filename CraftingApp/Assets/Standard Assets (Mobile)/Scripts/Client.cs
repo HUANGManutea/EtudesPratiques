@@ -7,6 +7,9 @@ using System.Text;
 using System.IO;
 using System;
 
+/* 
+ *
+ */
 public class Client : MonoBehaviour {
 	public IPAddress ipserv;
 	void Start(){
