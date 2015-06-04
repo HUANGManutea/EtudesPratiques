@@ -29,6 +29,27 @@
 \maketitle                 % Génère le titre
 \thispagestyle{empty}      % Supprime le numéro de page sur la 1re page
 
+\begin{abstract}
+	Notre projet fonctionne sous Unity 4.6.1 en mode éditeur, dû à des parties qui seront détaillées dans la partie du code de l'extrusion.
+\end{abstract}
 
+\section{arborescence}
+\includegraphics[scale=0.7]{./images/arborescence.png}
+		\begin{itemize}
+			\item Les trois premiers objets sont les caméras
+				\begin{itemize}
+					\item Preview\_cam est la caméra qui affiche en permanence en haut à droite le rendu de notre figure
+					\item Follow\_ object est la caméra qui suis notre objets quand on le place dans l'environnement 3D
+					\item Main camera est la caméra principale
+				\end{itemize}
+			\item Destination, c'est le contenant de tout les objets que l'ont va crée, c'est lui qui sera transmis par la suite au serveur. Il possède un sous item invisible, car cela posais des problèmes pour la disposition des caméras quand il n'y avais rien. Nous n'avons pas trouver d'où cela venais
+			\item Windows, le canvas principal, c'est lui qui est filmé par la Main Camera
+			\item Toolbar, barre de menu grise en haut
+			\item DrawingArea, zone où l'on dessine
+			\item Draw\_menu, menu des outils, il est associé à une animation pour la rentrée/sortie
+			\item List, canvas vide qui représente la zone en bas à droite
+			\item XXX\_menu, toutes les fenêtres
+			\item Placement\_menu, ne suis pas le même modèle que les menus précédant, c'est ce qui permet le placement de la figure dans l'environnement 3D
+		\end{itemize}
 
 \end{document}
