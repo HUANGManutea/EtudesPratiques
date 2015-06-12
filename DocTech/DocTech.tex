@@ -54,6 +54,32 @@
 		
 \section{Réseau}
 	\subsection{Serveur}
+		\includegraphics[scale=0.9]{./images/arbserver.png}
+		\begin{itemize}
+			\item Network contient le script qui gère la création et le comportement du serveur.
+			\item Spawn est le point de repère pour faire apparaître l'objet reçu.
+		\end{itemize}
+		
+		Le serveur se lance automatiquement au démarrage de l'application si Spawn et Network ne sont pas masqués.
+		\subsubsection{Network et TcpServer}
+			Le GameObject Network ne contient que le script "TcpServer".
+			
+			Le script "TcpServer" est composé essentiellement de 5 fonctions:
+			\begin{itemize}
+				\item Start : Crée un TcpListener et lance l'attente d'un client dans un thread qui tournera en arrière-plan.
+				
+				\item ListenForClients : Lance le TcpListener et attend qu'un client se connecte. Dès qu'un client est connecté, la communication avec ce client est établie dans un nouveau thread qui tournera en arrière-plan.
+				
+				\item HandleClientComm : Gère la communication avec le client. Tout d'abord nous créons un TcpClient chez le serveur, nous établissons un flux de données NetworkStream, et un buffer d'octets qui stocke 1Ko de données. Nous ne savons pas quelle sera la taille de l'objet donc nous écrivons progressivement dans un MemoryStream Ko par Ko en utilisant le buffer.
+				Une fois que les données sont reçus, nous écrivons les données dans un fichier .prefab et nous fermons le fichier et le TcpClient.
+				
+				\item IsFileLocked : Rend vrai si le fichier est actuellement utilisé par une autre source. Faux sinon. Le fichier ne doit pas être bloqué pour pouvoir l'afficher.
+				
+				\item Appear : Fait apparaître l'objet au point de repère Spawn, cette fonction est utilisée dans Update, uniquement si le prefab peut-être utilisé, signalé par okPrefab.
+			\end{itemize}
+			
+		\subsubsection{Adaptation}
+			Pour importer le serveur sur une autre scène ou un autre projet Unity, il suffit de copier le script "TcpServer", de l'appliquer à un GameObject et de renseigner le GameObject repère pour l'apparition.
 		
 	\subsection{Client}
 

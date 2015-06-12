@@ -18,13 +18,12 @@ public class TcpServer : MonoBehaviour {
 		listenThread = new Thread(new ThreadStart(ListenForClients)); 
 		listenThread.IsBackground = true;
 		listenThread.Start();
-		Debug.Log("Starting listener");
 	}
 
 	/*The prefab will we instantiated just after being saved in a file*/
 	void Update(){
 		if(okPrefab){
-			appear();
+			Appear();
 			okPrefab = false;
 		}
 	}
@@ -32,11 +31,9 @@ public class TcpServer : MonoBehaviour {
 	/*This method waits for clients to connect*/
 	public void ListenForClients(){
 		this.tcpListener.Start();
-		Debug.Log("Waiting for client");
 		while (true){
 			//blocks until client connected
 			TcpClient client = this.tcpListener.AcceptTcpClient();
-			Debug.Log ("Client connected");
 			//create thread to handle com with connected client
 			Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
 			clientThread.IsBackground = true;
@@ -53,17 +50,16 @@ public class TcpServer : MonoBehaviour {
 	private void HandleClientComm(object client){
 		TcpClient tcpClient = (TcpClient)client;
 		NetworkStream clientStream = tcpClient.GetStream();
-		byte[] message = new byte[1024]; //transfert Ko by Ko
-		MemoryStream ms = new MemoryStream();
-		int numBytesRead;
+		byte[] message = new byte[1024]; //1Ko buffer
+		MemoryStream ms = new MemoryStream(); //will contain the whole object data
+		int numBytesRead; //the number of bytes to write
 		string localWritePath = "C:/Users/Khayron/Documents/GitHub/EtudesPratiques/etudeServer/Assets/Resources/";
 		while((numBytesRead = clientStream.Read(message,0,message.Length))>0){
 			//we register the file in a memoryStream progressively
 			ms.Write(message,0,numBytesRead);
 		}
 		
-		//file has successfully been received
-		Debug.Log ("Stream success");
+		//file has been received
 		byte[] msArray = ms.ToArray();
 		FileStream fs = File.Create(localWritePath+"recu.prefab"); //creating the file here if don't exist, else rewriting
 		fs.Write(msArray,0,msArray.Length);
@@ -73,9 +69,8 @@ public class TcpServer : MonoBehaviour {
 
 		FileInfo fi = new FileInfo(localWritePath+"recu.prefab");
 		while(IsFileLocked(fi)){
-			Debug.Log ("waiting for the file"); //Is the file currently locked? just precaution
+			 //Is the file currently locked? just precaution
 		}
-		Debug.Log("filestream closed");
 		okPrefab = true; //the prefab is ready to be instantiated
 	}
 
@@ -107,7 +102,7 @@ public class TcpServer : MonoBehaviour {
 	}
 
 	/*This method will instantiate the prefab*/
-	private void appear(){
+	private void Appear(){
 		GameObject go = Instantiate(Resources.Load("recu",typeof(GameObject)),spawn.transform.position,Quaternion.identity) as GameObject;
 		Debug.Log("Object instantiated");
 	}
