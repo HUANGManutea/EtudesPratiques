@@ -51,7 +51,23 @@
 			\item XXX\_menu, toutes les fenêtres
 			\item Placement\_menu, ne suis pas le même modèle que les menus précédant, c'est ce qui permet le placement de la figure dans l'environnement 3D
 		\end{itemize}
+\section{Dessin}
+	\subsection{Draw\_menu}	
+		Ce menu est associé à un script	qui permet la gestion des outils. Pour ajouté un outils, il faut crée une fonction sur le même modèle que les setX(), et appeler selectionne() avec le nom du bouton et le type d'outils. 
+	\subsection{DrawingArea}
+		Ce composant possède un script qui le redimensionne pour l'adapter à l'écran.
+		Il possède un script qui gère le dessin, dans ce script on retrouve aussi les fonctions pour rendre actif ou non cette zone: SetIsSelect(int i) et InitIsSelect(), quand isSelected == 0, le dessin est autorisé. La latence permet de ne pas dessiné dessus quand on ferme une fenêtre qui étais devant. C'est cette partie qu'il faut revoir avec le tactile.
 		
+\section{Previem\_cam}
+		Possède un script qui gère le glissement de la souris pour ensuite déplacé la caméra selon cela. Nécessite des corrections pour le tactile.
+\section{Placement}
+		\subsection{Les objet}
+			L'objet Taille fils de Placement\_menu correspond à un coefficient à appliquer aux 3 dimensions de l'objet. Il y a ensuite 3 menu, un pour chaque axe. Chaque menu possède une objet Taille qui lui correspond dà la taille selon un axe orthogonal.
+			
+			Quand on extrude un objet, tout les menus autre que Placement\_menu sont désactivé et réactivé à la fin. Cela peut crée un léger bug au niveau des animation du Draw\_menu au prochain click dessus.
+		\subsection{Les scripts}
+			Le placement d'un objet est initialisé dans UclaExtrusion.cs (les lignes concerné on un commentaire adapté). Cette initialisation, comprend l'activation des menu, et le chargement dans la caméra FollowObject\_cam de l'objet à suivre et de passé tout les autres objets en transparence.
+			Quand on fait cet initialisation, celle ci initialise le script Translate.cs placé sur l'objet Destination. Ce script permet de déplacer l'objet que l'ont viens de crée avec UclaExtrusion via les boutons de Placement\_menu.
 \section{Réseau}
 	\subsection{Serveur}
 		\includegraphics[scale=0.9]{./images/arbserver.png}

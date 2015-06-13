@@ -52,7 +52,7 @@ public class DrawAFigure : MonoBehaviour {
 						isSelected = 0;
 	}
 
-	//Pour Aurelien : rend la texture dessinee
+	//Pour l'extrusion : rend la texture dessinee
 	public Texture2D getTex(){
 		tex.Apply ();
 		return tex;

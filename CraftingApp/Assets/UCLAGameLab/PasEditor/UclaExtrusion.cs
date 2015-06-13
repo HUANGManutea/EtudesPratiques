@@ -107,7 +107,7 @@ public class UclaExtrusion : MonoBehaviour {
 		newObject.renderer.material.mainTexture = (Texture) Texture.Instantiate(textureToCreateMeshFrom);
 		newObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
 
-		//ajout pour la suite, a placer après la création de l'objet!
+		//Initialise le placement de l'objet
 		placement.SetActive (true);
 		followObject.front();
 		followObject.setName (gameObjectName);

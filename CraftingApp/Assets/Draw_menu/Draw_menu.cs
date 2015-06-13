@@ -33,7 +33,7 @@ public class Draw_menu : MonoBehaviour {
 	}
 
 
-	//A partir d'un nom de bouton et du type de ce bouton, on set les variables
+	//A partir d'un nom de bouton et du type de ce bouton, on active et désactive les boutons
 	public void selectionne(string c,int type){
 
 		GameObject bouton = GameObject.Find (c);
