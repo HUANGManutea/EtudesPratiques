@@ -94,9 +94,38 @@
 				\item Appear : Fait apparaître l'objet au point de repère Spawn, cette fonction est utilisée dans Update, uniquement si le prefab peut-être utilisé, signalé par okPrefab.
 			\end{itemize}
 			
-		\subsubsection{Adaptation}
-			Pour importer le serveur sur une autre scène ou un autre projet Unity, il suffit de copier le script "TcpServer", de l'appliquer à un GameObject et de renseigner le GameObject repère pour l'apparition.
+		\subsubsection{Remarques}
+			Pour importer la partie serveur sur une autre scène ou un autre projet Unity, il suffit de copier le script "TcpServer", de l'appliquer à un GameObject et de renseigner le GameObject "Spawn" repère pour l'apparition.
+			
+			Il y a un problème de Thread sur le serveur, les Thread de connexion se ferment mal, le problème pourrait venir du Thread "clientThread" qui ne se ferme pas.
+			
+			La transformation en prefab n'est pas au point, les formes sont sauvegardées mais pas les textures.
 		
 	\subsection{Client}
+	\includegraphics[scale=0.9]{./images/option_exp.png}
+	
+		La partie Client du réseau se divise en 2 parties, d'une part, l'adresse IP du serveur est renseignée, d'autre part le Client est créé.
+		\subsubsection{Menu d'options}
+		\includegraphics[scale=0.9]{./images/option.png} Le composant principal du menu d'options est "IpInput", qui est composé d'un champ de saisie dans lequel une personne de l'IRISA doit renseigner l'adresse IP (IPv4) du serveur. Lorsque qu'une personne écrit dans le champ de saisie puis valide le texte en cliquant ailleurs ou en appuyant sur ENTREE, le script "getter" appliqué au GameObject de même nom enregistre la chaîne de caractères.
+			Le "Placeholder" affiche un texte en grisé dans le champ pour guider la personne qui écrit.
+		
+		\subsubsection{Menu d'export}
+		\includegraphics[scale=0.9]{./images/export.png} Le menu d'export est utilisé une fois qu'une adresse ip a été renseignée dans le menu d'options.
+			Le composant le plus important du menu d'export est le GameObject "exportScript" qui contient le script "Client".
+			Le comportement de ce script est décrit ici:
+			\begin{itemize}
+				\item Si l'adresse IP renseignée n'est pas écrite dans un format IPv4 valide (XXX.XXX.XXX.XXX) alors le script lève une exception. Nous laissons le choix aux personnes de l'IRISA pour décider des actions dans l'exception.
+				\item Un point de connexion IPEndPoint avec l'adresse IP renseignée et le port 80 sur lequel nous connectons un nouveau TcpClient pour établir la connexion, est créé.
+				\item Un buffer d'octets qui contient les données du prefab ciblé par le "path" est créé.
+				\item Les bytes contenus dans le buffer au serveur en utilisant un flux de données NetworkStream.
+				\item Le flux de données est nettoyé.
+			\end{itemize}
 
+\section{Sauvegarder et Charger}
+	\subsection{Sauvegarder}
+		\subsubsection{Menu de sauvegarde}
+		\includegraphics[scale=1]{./images/save.png} Le menu de sauvegarde est déjà créé mais caché ainsi que la sauvegarde de la forme dans un prefab. Il reste à sauvegarder les textures dans le prefab. Il est conseillé de sauvegarder les prefabs dans un dossier "Resources" pour pouvoir utiliser la méthode "Resources.Load" pour charger un prefab.
+	\subsection{Charger}
+		\subsubsection{Menu d'ouverture}
+			\includegraphics[scale=1]{./images/load.png} Le menu d'ouverture est déjà créé mais caché, l'ouverture d'un prefab se fait dans le script "Load" appliqué au GameObject "Charger". Pour charger un GameObject  à partir d'un prefab il faut instancier le prefab comme s'il s'agissait d'un GameObject et renseigner le GameObject repère "parent" pour qu'il apparaisse.
 \end{document}
